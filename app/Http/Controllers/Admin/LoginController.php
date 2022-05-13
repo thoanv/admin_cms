@@ -9,7 +9,7 @@ use App\Http\Middleware\Admin;
 
 class LoginController extends Controller
 {
-    public function login(Admin $request)
+    public function login(Request $request)
     {
         if ($request->getMethod() == 'GET') {
             return view('admin.auths.login');
