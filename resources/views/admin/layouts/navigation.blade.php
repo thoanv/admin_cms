@@ -136,7 +136,7 @@
                     </a>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-item preview-item">
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="">
                             @csrf
                             <button type="submit" class="btn" style="display: inline-flex; padding: 0">
                                 <div class="preview-thumbnail">

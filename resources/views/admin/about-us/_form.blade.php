@@ -5,8 +5,6 @@
             <div class="card-body">
                 <h5 class="card-title">Thông tin chung</h5>
                 <hr>
-                <input type="hidden" name="lang" value="{{$lang}}">
-                <input type="hidden" name="parent_lang" value="{{$parent_lang}}">
                 <div class="form-group row mb-3">
                     <label for="company" class="col-sm-3 col-form-label">Tên công ty</label>
                     <div class="col-sm-9">
@@ -17,12 +15,6 @@
                                 {{$errors->first('company')}}
                             </div>
                         @endif
-                    </div>
-                </div>
-                <div class="form-group row mb-3">
-                    <label for="parent_id" class="col-sm-3 col-form-label">Ngôn ngữ</label>
-                    <div class="col-sm-9">
-                        <img width="30px" src="{{$lang == 'en' ? '/assets/images/English.png' : '/assets/images/vietnam.png'}}" alt="">
                     </div>
                 </div>
             </div>
@@ -154,6 +146,13 @@
             <div class="card-body">
                 <h5 class="card-title">Media</h5>
                 <hr>
+                <div class="form-group">
+                    <label for="">Logo Admin</label>
+                    <div class="upload_image" data-name="logo-admin">
+                        <input type="hidden" class="logo-admin" name="logo_admin" value="{{old('logo_admin', $aboutU['logo_admin'])}}">
+                        <img src="{{$aboutU['logo_admin'] ? $aboutU['logo_admin'] : '/assets/images/department.jpg'}}" width="180px" alt="" class="image-logo-admin">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="">Logo</label>
                     <div class="upload_image" data-name="logo">

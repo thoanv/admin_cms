@@ -24,26 +24,8 @@ class CategoryRepository extends AbstractRepository
         endforeach;
         return $data;
     }
-    public function getAllCategories($lang)
+    public function getCategoriesStatus()
     {
-        return $this->model->where([['lang', $lang],['status', true]])->get();
-    }
-    public function checkLangExist($lang, $category_id)
-    {
-        return $this->model->where([['lang', $lang], ['parent_lang', $category_id]])->first();
-    }
-    public function getCategoryByType($type, $lang, $status =  true)
-    {
-        return $query = $this->model->where([['status', $status],['type', $type],['lang', $lang]])->get();
-
-    }
-    //Api
-    public function getCategoryBySlug($cate_slug, $lang = 'vi')
-    {
-        return $this->model->where([['status', true], ['lang', $lang], ['slug', $cate_slug]])->first();
-    }
-    public function getCategoryByParentId($parent_id)
-    {
-        return $this->model->where([['status', true], ['parent_id', $parent_id]])->get();
+        return $this->model->where('status', true)->orderBy('ID', 'DESC')->get();
     }
 }

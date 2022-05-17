@@ -3,96 +3,96 @@
 namespace App\Policies;
 
 use App\Models\Permission;
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PermissionPolicy
 {
     use HandlesAuthorization;
-    public function before($user, $ability)
+    public function before($employee, $ability)
     {
-        if ($user->isSuperAdmin()) {
+        if ($employee->isSuperAdmin()) {
             return true;
         }
     }
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the Employee can view any models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(Employee $employee)
     {
-        return $user->hasPermission('permission-views');
+        return $employee->hasPermission('permission-views');
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the Employee can view the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Permission $permission)
+    public function view(Employee $employee, Permission $permission)
     {
         //
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the Employee can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(Employee $employee)
     {
-        return $user->hasPermission('permission-add');
+        return $employee->hasPermission('permission-add');
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the Employee can update the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Permission $permission)
+    public function update(Employee $employee, Permission $permission)
     {
-        return $user->hasPermission('permission-edit');
+        return $employee->hasPermission('permission-edit');
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Determine whether the Employee can delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Permission $permission)
+    public function delete(Employee $employee, Permission $permission)
     {
-        return $user->hasPermission('permission-delete');
+        return $employee->hasPermission('permission-delete');
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Determine whether the Employee can restore the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Activity  $fieldActivity
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Permission $permission)
+    public function restore(Employee $employee, Permission $permission)
     {
         //
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Determine whether the Employee can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Permission $permission)
+    public function forceDelete(Employee $employee, Permission $permission)
     {
         //
     }

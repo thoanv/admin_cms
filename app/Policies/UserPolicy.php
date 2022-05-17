@@ -2,15 +2,15 @@
 
 namespace App\Policies;
 
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
 {
     use HandlesAuthorization;
-    public function before($user, $ability)
+    public function before($employee, $ability)
     {
-        if ($user->isSuperAdmin()) {
+        if ($employee->isSuperAdmin()) {
             return true;
         }
     }

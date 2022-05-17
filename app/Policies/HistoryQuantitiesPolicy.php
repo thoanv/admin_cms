@@ -16,7 +16,7 @@ class HistoryQuantitiesPolicy
         }
     }
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the Employee can view any models.
      *
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
@@ -27,7 +27,7 @@ class HistoryQuantitiesPolicy
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the Employee can view the model.
      *
      * @param  \App\Models\Employee  $employee
      * @param  \App\Models\HistoryQuantity  $historyQuantity
@@ -39,7 +39,7 @@ class HistoryQuantitiesPolicy
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the Employee can create models.
      *
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
@@ -50,9 +50,9 @@ class HistoryQuantitiesPolicy
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the Employee can update the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\HistoryQuantity  $historyQuantity
      * @return \Illuminate\Auth\Access\Response|bool
      */
@@ -62,9 +62,9 @@ class HistoryQuantitiesPolicy
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Determine whether the Employee can delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\HistoryQuantity  $historyQuantity
      * @return \Illuminate\Auth\Access\Response|bool
      */
@@ -74,7 +74,7 @@ class HistoryQuantitiesPolicy
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Determine whether the Employee can restore the model.
      *
      * @param  \App\Models\Employee  $employee
      * @param  \App\Models\HistoryQuantity  $historyQuantity
@@ -86,7 +86,7 @@ class HistoryQuantitiesPolicy
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Determine whether the Employee can permanently delete the model.
      *
      * @param  \App\Models\Employee  $employee
      * @param  \App\Models\HistoryQuantity  $historyQuantity

@@ -11,7 +11,7 @@ use App\Repositories\AboutURepository as AboutURepo;
 
 class AboutUController extends Controller
 {
-    protected $view = 'about-us';
+    protected $view = 'admin.about-us';
     protected $boutURepo;
     public function __construct(AboutURepo $aboutURepo)
     {
@@ -73,13 +73,10 @@ class AboutUController extends Controller
     public function edit(AboutU $aboutU)
     {
         $this->authorize('update', $aboutU);
-        $lang = $aboutU['lang'];
-        $parent_lang = $aboutU['parent_lang'];
+        if(!$aboutU) return abort(404);
         return view($this->view.'.update',[
             'aboutU'    => $aboutU,
             'view'      => $this->view,
-            'lang'      => $lang,
-            'parent_lang' => $parent_lang,
         ]);
     }
 
@@ -94,10 +91,10 @@ class AboutUController extends Controller
     {
         $data = $request->only(
             'company',
+            'logo_admin',
             'logo',
             'favicon',
             'thumbnail',
-            'company',
             'email',
             'address',
             'phone',
@@ -111,7 +108,7 @@ class AboutUController extends Controller
             'description',
             'youtube');
         $this->aboutURepo->update($data, $aboutU['id']);
-        return redirect(route('aboutUs.index'))->with('success',  'Cập nhật thành công');
+        return redirect(route('aboutUs.edit', 1))->with('success',  'Cập nhật thành công');
     }
 
     /**

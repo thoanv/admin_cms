@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('title', 'Loại hình dự án')
 @section('content')
     <div class="content-wrapper">
@@ -6,7 +6,7 @@
             <h3 class="page-title">Thông tin chung</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                 </ol>
             </nav>
@@ -34,6 +34,7 @@
                                 <tr>
                                     <th scope="col" class="text-center">STT</th>
                                     <th scope="col">Thông tin</th>
+                                    <th scope="col">logo Admin</th>
                                     <th scope="col">logo</th>
                                     <th scope="col">favicon</th>
                                     <th scope="col">thumbnail</th>
@@ -56,11 +57,24 @@
                                                 <p><i class="mdi mdi-map-marker-radius"></i>  {{$item->address}}</p>
                                             @endif
                                         </td>
-                                        <td><img class="img-customer" src="{{$item['logo']}}" alt="logo"></td>
-                                        <td><img class="img-customer" src="{{$item['favicon']}}" alt="favicon"></td>
-                                        <td><img class="img-customer" src="{{$item['thumbnail']}}" alt="thumbnail"></td>
+                                        <td>
+                                            @if($item['logo_admin'])
+                                                <img class="img-customer" src="{{$item['logo_admin']}}" alt="logo_admin"></td>
+                                            @endif
+                                        <td>
+                                        <td>
+                                            @if($item['logo'])
+                                                <img class="img-customer" src="{{$item['logo']}}" alt="logo"></td>
+                                            @endif
+                                        <td>
+                                            @if($item['favicon'])
+                                                <img class="img-customer" src="{{$item['favicon']}}" alt="favicon"></td>
+                                            @endif
+                                        <td>
+                                            @if($item['thumbnail'])
+                                                <img class="img-customer" src="{{$item['thumbnail']}}" alt="thumbnail"></td>
+                                            @endif
                                         <td role="cell" class="text-center">{{date('H:i d/m/Y', strtotime($item->created_at))}}</td>
-                                        <td role="cell" class="text-center"><img src="{{$item->langs->icon}}" alt="icon"></td>
                                         <td class="text-center">
                                             @can('update', $item)
                                                 <a href="{{route('aboutUs.edit', $item['id'])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend icon-mr"></i> Sửa</a>
@@ -73,7 +87,7 @@
                             </table>
                         </div>
                         @if(!count($aboutUs))
-                            @include('components.data-empty')
+                            @include('admin.components.data-empty')
                         @endif
 
                     </div>

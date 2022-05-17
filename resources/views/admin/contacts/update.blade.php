@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('title', 'Cập nhập loại hình dự án')
 @section('content')
     <div class="content-wrapper">
@@ -7,7 +7,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{route('home')}}">Dashboard</a>
+                        <a href="{{route('dashboard')}}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="{{route('candidates.index')}}">Danh sách</a>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('title', 'Danh mục')
 @section('content')
     <div class="content-wrapper">
@@ -6,7 +6,7 @@
             <h3 class="page-title">Danh mục</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                 </ol>
             </nav>
@@ -86,7 +86,7 @@
                             </table>
                         </div>
                         @if(!count($categories))
-                            @include('components.data-empty')
+                            @include('admin.components.data-empty')
                         @endif
 
                     </div>

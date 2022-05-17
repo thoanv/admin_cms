@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class TypePermissionController extends Controller
 {
+    protected $view = 'admin.type-permissions';
     protected $typePermissionRepoRepo;
 
     public function __construct(TypePermissionRepo $typePermissionRepoRepo)
@@ -24,8 +25,9 @@ class TypePermissionController extends Controller
     {
         $typePermissions = $this->typePermissionRepoRepo->getTypePermissions();
 
-        return view('type-permissions.index',[
-            'typePermissions' => $typePermissions
+        return view($this->view.'.index',[
+            'typePermissions' => $typePermissions,
+            'view'      => $this->view,
         ]);
     }
 
@@ -37,8 +39,9 @@ class TypePermissionController extends Controller
     public function create()
     {
         $typePermission = new TypePermission();
-        return view('type-permissions.create',[
-            'typePermission' => $typePermission
+        return view($this->view.'.create',[
+            'typePermission' => $typePermission,
+            'view'      => $this->view,
         ]);
     }
 
@@ -81,8 +84,9 @@ class TypePermissionController extends Controller
     {
         $typePermission = $this->typePermissionRepoRepo->find($id);
         if(!$typePermission) return abort(404);
-        return view('type-permissions.update',[
-            'typePermission' => $typePermission
+        return view($this->view.'.update',[
+            'typePermission' => $typePermission,
+            'view'      => $this->view,
         ]);
     }
 

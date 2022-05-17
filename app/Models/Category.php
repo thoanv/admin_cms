@@ -29,4 +29,21 @@ class Category extends Model
     {
         return $this->hasMany(Image::class);
     }
+    public static function recursive($categories, $parent = 0, $level = 1, &$listCategory)
+    {
+        if(count($categories) > 0){
+            foreach ($categories as $key => $value){
+                if($value->parent_id == $parent){
+                    $value->level = $level;
+
+                    $listCategory[] = $value;
+
+                    unset($categories[$key]);
+
+                    $parent = $value->id;
+                    self::recursive($categories, $parent, $level + 1, $listCategory);
+                }
+            }
+        }
+    }
 }

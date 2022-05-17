@@ -17,7 +17,6 @@ class CreateRoleEmployeesTable extends Migration
             $table->id();
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('role_id');
-            $table->timestamps();
         });
     }
 

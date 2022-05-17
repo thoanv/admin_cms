@@ -2,16 +2,16 @@
 namespace App\Repositories;
 
 use App\Repositories\Support\AbstractRepository;
-use App\Models\RoleUser;
+use App\Models\RoleEmployee;
 
 class RoleUserRepository extends AbstractRepository
 {
     public function model(){
-        return RoleUser::class;
+        return RoleEmployee::class;
     }
-    public function checkPermission($user_id, $role_id)
+    public function checkPermission($employee_id, $role_id)
     {
-        $query = $this->model->where('user_id', $user_id)->where('role_id', $role_id)->first();
+        $query = $this->model->where('employee_id', $employee_id)->where('role_id', $role_id)->first();
         return $query ? true : false;
     }
 }

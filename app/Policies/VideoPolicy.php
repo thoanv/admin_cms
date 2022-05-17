@@ -2,97 +2,97 @@
 
 namespace App\Policies;
 
-use App\Models\User;
+use App\Models\Employee;
 use App\Models\Videos;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class VideoPolicy
 {
     use HandlesAuthorization;
-    public function before($user, $ability)
+    public function before($employee, $ability)
     {
-        if ($user->isSuperAdmin()) {
+        if ($employee->isSuperAdmin()) {
             return true;
         }
     }
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the Employee can view any models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(Employee $employee)
     {
         //
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the Employee can view the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Videos $videos)
+    public function view(Employee $employee, Videos $videos)
     {
         //
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the Employee can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(Employee $employee)
     {
         //
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the Employee can update the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Videos $videos)
+    public function update(Employee $employee, Videos $videos)
     {
         //
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Determine whether the Employee can delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Videos $videos)
+    public function delete(Employee $employee, Videos $videos)
     {
         //
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Determine whether the Employee can restore the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Videos $videos)
+    public function restore(Employee $employee, Videos $videos)
     {
         //
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Determine whether the Employee can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Videos  $videos
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Videos $videos)
+    public function forceDelete(Employee $employee, Videos $videos)
     {
         //
     }

@@ -18,10 +18,10 @@ class EmployeeSeeder extends Seeder
     public function run()
     {
         DB::table('employees')->insert([
-            'name' => 'Vũ Đức Thành',
-            'username' => 'VuThanh',
-            'email' => 'vuthanh@gmail.com',
-            'password' => Hash::make('Thanh@123'),
+            'name' => 'Super Admin',
+            'username' => 'super_admin',
+            'email' => 'super_admin@gmail.com',
+            'password' => Hash::make('123456'),
             'is_admin' => 1,
         ]);
 

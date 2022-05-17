@@ -17,10 +17,23 @@ class Employee extends Authenticatable
     protected $guarded = 'admin';
 
     protected $fillable = [
-        'name', 'username', 'avatar', 'is_admin', 'status', 'email', 'password',
+        'name', 'username', 'phone', 'address', 'avatar', 'is_admin', 'status', 'email', 'password',
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isSuperAdmin()
+    {
+        return $this->is_admin ? true : false;
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_employees');
+    }
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'owner_id', 'id');
+    }
 }

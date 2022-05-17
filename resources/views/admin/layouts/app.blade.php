@@ -6,16 +6,16 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
-        @include('layouts.styles')
+        @include('admin.layouts.styles')
     </head>
     <body class="font-sans antialiased">
         <div class="container-scroller">
             <!-- partial:partials/_sidebar.html -->
-            @include('layouts.slidebar_vertical')
+            @include('admin.layouts.slidebar_vertical')
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_navbar.html -->
-                @include('layouts.navigation')
+                @include('admin.layouts.navigation')
                 <!-- partial -->
                 <div class="main-panel">
                     @yield('content')
@@ -32,6 +32,6 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
-        @include('layouts.js')
+        @include('admin.layouts.js')
     </body>
 </html>

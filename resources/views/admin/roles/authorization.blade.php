@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('title', 'Tạo chức vụ')
 @section('content')
     <div class="content-wrapper">
@@ -7,7 +7,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{route('home')}}">Dashboard</a>
+                        <a href="{{route('dashboard')}}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="{{route('permissions.index')}}">Danh sách</a>
@@ -18,10 +18,10 @@
         </div>
         <!-- Container-fluid starts-->
         <div class="container-fluid">
-            <form class="theme-form" method="POST" action="{{route('authorization-user-post')}}" enctype="multipart/form-data">
+            <form class="theme-form" method="POST" action="{{route('authorization-employee-post')}}" enctype="multipart/form-data">
                 @csrf
-                <input name="user_id" type="hidden" value="{{$user->id}}">
-                @include('roles._form',['user'=>$user, 'role' => $role])
+                <input name="employee_id" type="hidden" value="{{$employee->id}}">
+                @include('admin.roles._form',['employee'=>$employee, 'role' => $role])
             </form>
         </div>
     </div>

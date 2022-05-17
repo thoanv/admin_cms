@@ -12,6 +12,7 @@ use phpDocumentor\Reflection\Types\AbstractList;
 
 class PermissionController extends Controller
 {
+    protected $view = 'admin.permissions';
     protected $typePermissionRepoRepo;
     protected $permissionRepoRepo;
 
@@ -27,9 +28,10 @@ class PermissionController extends Controller
      */
     public function index(Permission $permission)
     {
+
         $this->authorize('viewAny', $permission);
         $permissions = $this->permissionRepoRepo->getPermissions();
-        return view('permissions.index',[
+        return view($this->view.'.index',[
             'permissions'  => $permissions,
         ]);
     }
@@ -44,9 +46,10 @@ class PermissionController extends Controller
         $this->authorize('create', $permission);
         $typePermissions = $this->typePermissionRepoRepo->getTypePermissionByStatus(true);
         $permission = new Permission();
-        return view('permissions.create',[
+        return view($this->view.'.create',[
             'typePermissions' => $typePermissions,
-            'permission' => $permission
+            'permission' => $permission,
+            'view' => $this->view,
         ]);
     }
 
@@ -66,7 +69,7 @@ class PermissionController extends Controller
 
         $data = $request->only('name', 'key', 'type_permission_id');
         $data['status'] = isset($request['status']) ? 1 : 0;
-        $data['user_id'] = Auth::id();
+        $data['employee_id'] = Auth::id();
 
         $this->permissionRepoRepo->create($data);
         return redirect(route('permissions.index'))->with('success',  'Thêm quyền thành công');
@@ -94,9 +97,10 @@ class PermissionController extends Controller
         $this->authorize('update', $permission);
         $typePermissions = $this->typePermissionRepoRepo->getTypePermissionByStatus(true);
         if(!$permission) return  abort(404);
-        return view('permissions.update',[
+        return view($this->view.'.update',[
             'typePermissions' => $typePermissions,
-            'permission' => $permission
+            'permission' => $permission,
+            'view' => $this->view,
         ]);
     }
 

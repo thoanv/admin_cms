@@ -21,6 +21,7 @@ class CreateAboutUSTable extends Migration
             $table->string('thumbnail')->nullable();
 
             $table->string('company')->nullable();
+            $table->string('tax_code')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();

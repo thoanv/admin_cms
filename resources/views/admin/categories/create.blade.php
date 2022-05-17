@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('title', 'Thêm mới')
 @section('content')
     <div class="content-wrapper">
@@ -7,7 +7,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{route('home')}}">Dashboard</a>
+                    <a href="{{route('dashboard')}}">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
                     <a href="{{route('categories.index')}}">Danh sách</a>
@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <form class="theme-form" method="POST" action="{{route('categories.store')}}">
             @csrf
-            @include('categories._form')
+            @include($view.'._form')
         </form>
     </div>
     </div>

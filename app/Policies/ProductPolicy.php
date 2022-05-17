@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Product;
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProductPolicy
@@ -11,83 +11,83 @@ class ProductPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the Employee can view any models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(Employee $employee)
     {
         //
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the Employee can view the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Product $product)
+    public function view(Employee $employee, Product $product)
     {
         //
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the Employee can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(Employee $employee)
     {
         //
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the Employee can update the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Product $product)
+    public function update(Employee $employee, Product $product)
     {
         //
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Determine whether the Employee can delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Product $product)
+    public function delete(Employee $employee, Product $product)
     {
         //
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Determine whether the Employee can restore the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Product $product)
+    public function restore(Employee $employee, Product $product)
     {
         //
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Determine whether the Employee can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Product $product)
+    public function forceDelete(Employee $employee, Product $product)
     {
         //
     }

@@ -3,97 +3,97 @@
 namespace App\Policies;
 
 use App\Models\Category;
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CategoryPolicy
 {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
+    public function before($employee, $ability)
     {
-        if ($user->isSuperAdmin()) {
+        if ($employee->isSuperAdmin()) {
             return true;
         }
     }
     /**
-     * Determine whether the user can view any models.
+     * Determine whether the Employee can view any models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(Employee $employee)
     {
-        return $user->hasPermission('category-views');
+        return $employee->hasPermission('category-views');
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the Employee can view the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Category  $categories
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Category $categories)
+    public function view(Employee $employee, Category $categories)
     {
         //
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the Employee can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(Employee $employee)
     {
-        return $user->hasPermission('category-add');
+        return $employee->hasPermission('category-add');
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Determine whether the Employee can update the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Category  $categories
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Category $categories)
+    public function update(Employee $employee, Category $categories)
     {
-        return $user->hasPermission('category-edit');
+        return $employee->hasPermission('category-edit');
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Determine whether the Employee can delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Category  $categories
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Category $categories)
+    public function delete(Employee $employee, Category $categories)
     {
-        return $user->hasPermission('category-delete');
+        return $employee->hasPermission('category-delete');
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Determine whether the Employee can restore the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Category  $categories
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Category $categories)
+    public function restore(Employee $employee, Category $categories)
     {
         //
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Determine whether the Employee can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Category  $categories
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Category $categories)
+    public function forceDelete(Employee $employee, Category $categories)
     {
         //
     }

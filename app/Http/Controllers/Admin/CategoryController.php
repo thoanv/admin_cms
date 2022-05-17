@@ -15,6 +15,7 @@ use App\Repositories\ImageRepository as ImageRepo;
 
 class CategoryController extends Controller
 {
+    protected $view = 'admin.categories';
     protected $categoryRepo;
     protected $imageRepo;
 
@@ -32,8 +33,9 @@ class CategoryController extends Controller
     {
         $this->authorize('viewAny', $category);
         $categories =  $this->categoryRepo->getCategories();
-        return view('categories.index', [
-            'categories' => $categories
+        return view($this->view.'.index', [
+            'categories' => $categories,
+            'view' => $this->view
         ]);
     }
 
@@ -45,40 +47,21 @@ class CategoryController extends Controller
     public function create(Category $category)
     {
         $this->authorize('create', $category);
-        $lang = 'vi';
-        $category_parent_lang = 0;
         $category = new Category();
-        $categories = $this->categoryRepo->getAllCategories($lang);
-        return view('categories.create', [
+        $categories = $this->getCategories();
+        return view($this->view.'.create', [
             'category' => $category,
             'categories' => $categories,
-            'lang'     => $lang,
-            'category_parent_lang' => $category_parent_lang
+            'view' => $this->view
         ]);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createLanguage(Category $category, $lang, $category_id)
+    private function getCategories()
     {
-        $this->authorize('create', $category);
-        $cate = $this->categoryRepo->checkLangExist($lang, $category_id);
-        if($cate)
-            return abort(404);
-
-        $category = new Category();
-        $category_parent_lang = $category_id;
-        $categories = $this->categoryRepo->getAllCategories($lang);
-        return view('categories.create', [
-            'category' => $category,
-            'categories' => $categories,
-            'lang'     => $lang,
-            'category_parent_lang' => $category_parent_lang
-        ]);
+        $categories = $this->categoryRepo->getCategoriesStatus();
+        $listCategory = [];
+        Category::recursive($categories, $parent = 0, $level = 1, $listCategory);
+        return $listCategory;
     }
-
     /**
      * Store a newly created resource in storage.
      *

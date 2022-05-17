@@ -26,17 +26,17 @@
                 <div class="card-body">
                     <h4 class="card-title">Thông tin cá nhân</h4>
                     <hr>
-                    <p><i class="mdi mdi-account"></i> {{$user->name}}</p>
-                    <p><i class="mdi mdi-email"></i> {{$user->email}}</p>
-                    @if($user->phone)
-                        <p><i class="mdi mdi-cellphone-iphone"></i> {{$user->phone}}</p>
+                    <p><i class="mdi mdi-account"></i> {{$employee->name}}</p>
+                    <p><i class="mdi mdi-email"></i> {{$employee->email}}</p>
+                    @if($employee->phone)
+                        <p><i class="mdi mdi-cellphone-iphone"></i> {{$employee->phone}}</p>
                     @endif
-                    <p><i class="mdi mdi-login"></i> {{$user->username}}</p>
-                    @if($user->phone)
-                        <p><i class="mdi mdi-map-marker-radius"></i> {{$user->address}}</p>
+                    <p><i class="mdi mdi-login"></i> {{$employee->username}}</p>
+                    @if($employee->phone)
+                        <p><i class="mdi mdi-map-marker-radius"></i> {{$employee->address}}</p>
                     @endif
                     <p title="Tham gia"><i
-                            class="mdi mdi-timer"></i> {{date('H:i d/m/Y', strtotime($user['created_at']))}}</p>
+                            class="mdi mdi-timer"></i> {{date('H:i d/m/Y', strtotime($employee['created_at']))}}</p>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
                         <div class="card-body">
                             <div class="my-3 text-center">
                                 <button type="submit" class="btn btn-primary me-2">Lưu</button>
-                                <a href="{{route('users.index')}}" class="btn btn-dark">Quay lại</a>
+                                <a href="{{route('employees.index')}}" class="btn btn-dark">Quay lại</a>
                             </div>
                         </div>
                     </div>

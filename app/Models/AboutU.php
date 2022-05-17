@@ -9,6 +9,7 @@ class AboutU extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'logo_admin',
         'logo',
         'favicon',
         'thumbnail',
