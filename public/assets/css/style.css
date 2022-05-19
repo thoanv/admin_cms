@@ -10640,7 +10640,7 @@ textarea.is-invalid.tt-hint {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center; }
-  
+
   .btn-group-vertical > .btn,
   .fc .btn-group-vertical > button,
   .ajax-upload-dragdrop .btn-group-vertical > .ajax-file-upload,
@@ -15846,6 +15846,29 @@ input:focus {
   font-weight: 700;
   src: url("../fonts/Rubik/Rubik-Bold.ttf");
   /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Rubik';
+    font-weight: 300;
+    src: url("../fonts/Rubik/Rubik-Light.ttf");
+    /* IE9 Compat Modes */ }
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 400;
+    src: url("../fonts/Roboto/Roboto-Regular.ttf");
+    /* IE9 Compat Modes */ }
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 500;
+    src: url("../fonts/Roboto/Roboto-Medium.ttf");
+    /* IE9 Compat Modes */ }
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 700;
+    src: url("../fonts/Roboto/Roboto-Bold.ttf");
+}
 
 /* Backgrounds  */
 .bg-gradient-primary {
@@ -15889,7 +15912,7 @@ body {
   font-weight: normal;
   font-weight: initial;
   line-height: 1.5;
-  font-family: "Rubik", sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased; }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,

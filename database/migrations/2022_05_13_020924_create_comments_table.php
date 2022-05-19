@@ -19,8 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('content')->nullable();
             $table->tinyInteger('start')->default(0);
             $table->unsignedInteger('user_id')->nullable();
-            $table->unsignedInteger('product_id')->nullable();
-            $table->unsignedInteger('news_id')->nullable();
+            $table->unsignedInteger('post_id')->nullable();
             $table->timestamps();
         });
     }

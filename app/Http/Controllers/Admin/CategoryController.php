@@ -32,7 +32,9 @@ class CategoryController extends Controller
     public function index(Category $category)
     {
         $this->authorize('viewAny', $category);
-        $categories =  $this->categoryRepo->getCategories();
+        $categories = $this->getCategories(false);
+        $listCategory = [];
+        Category::recursive($categories, $parents = 0, $level = 1, $listCategory);
         return view($this->view.'.index', [
             'categories' => $categories,
             'view' => $this->view
@@ -48,18 +50,18 @@ class CategoryController extends Controller
     {
         $this->authorize('create', $category);
         $category = new Category();
-        $categories = $this->getCategories();
+        $categories = $this->getCategories(true);
         return view($this->view.'.create', [
             'category' => $category,
             'categories' => $categories,
             'view' => $this->view
         ]);
     }
-    private function getCategories()
+    private function getCategories($status)
     {
-        $categories = $this->categoryRepo->getCategoriesStatus();
+        $categories = $this->categoryRepo->getCategoriesStatus($status);
         $listCategory = [];
-        Category::recursive($categories, $parent = 0, $level = 1, $listCategory);
+        Category::recursive($categories, $parents = 0, $level = 1, $listCategory);
         return $listCategory;
     }
     /**
@@ -70,27 +72,12 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $data = $request->only('name', 'parent_id', 'type', 'cover', 'description', 'lang');
+        $data = $request->only('name', 'parent_id', 'type', 'avatar', 'description');
         $data['slug'] = Str::slug($request->get('name'), '-');
         $data['status'] = isset($request['status']) ? 1 : 0;
-        $data['noi_bat'] = isset($request['noi_bat']) ? 1 : 0;
+        $data['featured'] = isset($request['featured']) ? 1 : 0;
         $data['created_by'] = Auth::id();
-        if ($data['parent_id'] == null) {
-            $children = Category::whereNull('parent_id')->count();
-        } else {
-            $children = Category::where('parent_id', '=', $request->get('parent_id'))->count();
-        }
-        $data['serial'] = $children + 1;
-        if($request->parent_lang)
-            $data['parent_lang'] = $request->parent_lang;
-        $result = $this->categoryRepo->create($data);
-        if($request->gallery && !empty($request->gallery)):
-            foreach ($request->gallery as $v_image):
-                $image['url'] = $v_image;
-                $image['category_id'] = $result['id'];
-                $this->imageRepo->create($image);
-            endforeach;
-        endif;
+        $this->categoryRepo->create($data);
         return redirect(route('categories.index'))->with('success',  'Cập nhật thành công');
     }
 

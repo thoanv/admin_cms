@@ -29,11 +29,11 @@ class Category extends Model
     {
         return $this->hasMany(Image::class);
     }
-    public static function recursive($categories, $parent = 0, $level = 1, &$listCategory)
+    public static function recursive($categories, $parents = 0, $level = 1, &$listCategory)
     {
         if(count($categories) > 0){
             foreach ($categories as $key => $value){
-                if($value->parent_id == $parent){
+                if($value->parent_id == $parents){
                     $value->level = $level;
 
                     $listCategory[] = $value;
@@ -45,5 +45,9 @@ class Category extends Model
                 }
             }
         }
+    }
+    public function createdBy()
+    {
+        return $this->belongsTo(Employee::class, 'created_by', 'id');
     }
 }

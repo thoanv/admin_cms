@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\DestinationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,7 @@ Route::middleware('auth:admin')->group(function (){
         'news'              => NewsController::class,
         'contacts'          => ContactController::class,
         'employees'         => EmployeeController::class,
+        'destinations'      => DestinationController::class,
     ]);
     //Phân quyền cho nhân viên
     Route::get('/role/authorization/{employee_id}', [RoleController::class, 'authorization'])->name('authorization-employee');
