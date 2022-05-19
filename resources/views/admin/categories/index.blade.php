@@ -38,8 +38,7 @@
                                     <th scope="col">STT</th>
                                     <th scope="col">Tên</th>
                                     <th scope="col">Danh mục cha</th>
-                                    <th scope="col" class="text-center">Ngôn ngữ</th>
-                                    <th scope="col" class="text-center">Ngôn ngữ cha</th>
+                                    <th scope="col">Tảo bởi</th>
                                     <th scope="col" class="text-center">Trạng thái</th>
                                     <th scope="col" class="text-center">Hành động</th>
                                 </tr>
@@ -48,12 +47,18 @@
                                 @foreach($categories as $category)
                                     <tr role="row" >
                                         <td role="cell">{{$loop->iteration}}</td>
-                                        <td role="cell">{{$category->name}}</td>
-                                        <td role="cell">{{$category->parent_id ? $category->parent->name : '' }}</td>
-                                        <td role="cell" class="text-center">
-                                            <img src="{{$category->langs->icon}}" alt="">
+                                        <td role="cell">
+                                            @php
+                                                $str = '';
+                                                for($i = 0; $i< $category->level; $i++){
+                                                    echo $str;
+                                                    $str.='-- ';
+                                                }
+                                            @endphp
+                                            {{$category->name}}
                                         </td>
-                                        <td role="cell" class="text-center">{{$category->parent_lang ? $category->parentLanguage->name : '' }}</td>
+                                        <td role="cell">{{$category->parent_id ? $category->parent->name : '' }}</td>
+                                        <td role="cell">{{$category->createdBy->name}}</td>
                                         <td role="cell" class="text-center">
                                             <div class="form-check form-switch" style="display: inline-block">
                                                 <input name="my-checkbox" type="checkbox" class="form-check-input css-switch" data-id="{{$category['id']}}"
@@ -71,13 +76,6 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
                                             </form>
-                                            @endcan
-                                            @can('create', $category)
-                                                @if(!$category['parent_lang'])
-                                                    @if(\App\Helpers\FunctionHelpers::checkLangCategoryExist('en', $category['id']))
-                                                        <a href="{{route('categories-create.lang',['lang'=> 'en', 'category_id' => $category['id']])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-flag icon-mr"></i> Ngôn ngữ</a>
-                                                    @endif
-                                                @endif
                                             @endcan
                                         </td>
                                     </tr>

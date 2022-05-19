@@ -46,7 +46,7 @@
             </a>
         </li>
 
-        <li class="nav-item menu-items {{ request()->is('/aboutUs') ? 'active' : '' }}">
+        <li class="nav-item menu-items {{ request()->is('admin/aboutUs/1/edit') ? 'active' : '' }}">
             <a class="nav-link" href="{{route('aboutUs.edit', 1)}}">
           <span class="menu-icon">
             <i class="mdi  mdi-information-outline"></i>
@@ -55,7 +55,7 @@
             </a>
         </li>
         @canany(['create', 'viewAny'], \App\Models\Employee::class)
-        <li class="nav-item menu-items {{ (request()->is('employees/*') || request()->is('role/*')) ? 'active' : '' }}">
+        <li class="nav-item menu-items {{ (request()->is('admin/employees/*') || request()->is('admin/role/*')) ? 'active' : '' }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#employees" aria-expanded="false" aria-controls="employees">
               <span class="menu-icon">
                 <i class="mdi mdi-account-multiple"></i>
@@ -64,15 +64,15 @@
                 <i class="menu-arrow"></i>
             </a>
             <div
-                class="collapse {{ (request()->is('employees') || request()->is('employees/create') || request()->is('role/*')) ? 'show' : '' }}"
+                class="collapse {{ (request()->is('admin/employees') || request()->is('admin/employees/create') || request()->is('admin/role/*')) ? 'show' : '' }}"
                 id="employees">
                 <ul class="nav flex-column sub-menu">
                     @can('viewAny', \App\Models\Employee::class)
-                    <li class="nav-item"><a class="nav-link {{ (request()->is('employees')) ? 'active' : '' }}"
+                    <li class="nav-item"><a class="nav-link {{ (request()->is('admin/employees')) ? 'active' : '' }}"
                                             href="{{route('employees.index')}}">Danh sách</a></li>
                     @endcan
                     @can('create', \App\Models\Employee::class)
-                    <li class="nav-item"><a class="nav-link {{ request()->is('employees/create') ? 'active' : '' }}"
+                    <li class="nav-item"><a class="nav-link {{ request()->is('admin/employees/create') ? 'active' : '' }}"
                                             href="{{route('employees.create')}}">Thêm mới</a></li>
                     @endcan
                 </ul>
@@ -80,7 +80,7 @@
         </li>
         @endcanany
         @canany(['create', 'viewAny'], \App\Models\Permission::class)
-            <li class="nav-item menu-items {{ (request()->is('permissions') || request()->is('permissions/create') || request()->is('type-permissions') || request()->is('type-permissions/create')) ? 'active' : '' }}">
+            <li class="nav-item menu-items {{ (request()->is('admin/permissions') || request()->is('admin/permissions/create') || request()->is('admin/type-permissions') || request()->is('type-permissions/create')) ? 'active' : '' }}">
                 <a class="nav-link" data-bs-toggle="collapse" href="#permission" aria-expanded="false"
                    aria-controls="permission">
               <span class="menu-icon">
@@ -90,29 +90,27 @@
                     <i class="menu-arrow"></i>
                 </a>
                 <div
-                    class="collapse {{ (request()->is('permissions') || request()->is('permissions/create') || request()->is('type-permissions') || request()->is('type-permissions/create')) ? 'show' : '' }}"
+                    class="collapse {{ (request()->is('admin/permissions') || request()->is('admin/permissions/create') || request()->is('admin/type-permissions') || request()->is('admin/type-permissions/create')) ? 'show' : '' }}"
                     id="permission">
                     <ul class="nav flex-column sub-menu">
                         @can('viewAny', \App\Models\Permission::class)
                             <li class="nav-item"><a
-                                    class="nav-link {{ (request()->is('permissions')) ? 'active' : '' }}"
+                                    class="nav-link {{ (request()->is('admin/permissions')) ? 'active' : '' }}"
                                     href="{{route('permissions.index')}}">Danh sách</a></li>
                         @endcan
                         @can('create', \App\Models\Permission::class)
                             <li class="nav-item"><a
-                                    class="nav-link {{ request()->is('permissions/create') ? 'active' : '' }}"
+                                    class="nav-link {{ request()->is('admin/permissions/create') ? 'active' : '' }}"
                                     href="{{route('permissions.create')}}">Thêm mới</a></li>
                         @endcan
-                        <li class="nav-item"><a class="nav-link {{ request()->is('type-permissions') ? 'active' : '' }}"
+                        <li class="nav-item"><a class="nav-link {{ request()->is('admin/type-permissions') ? 'active' : '' }}"
                                                 href="{{route('type-permissions.index')}}">Loại quyền</a></li>
                     </ul>
                 </div>
             </li>
         @endcanany
-        <li class="nav-item nav-category  pb-0">
-            <span class="nav-link">Cài đặt</span>
-        </li>
-        <li class="nav-item menu-items {{ (request()->is('categories')||request()->is('categories/*')) ? 'active' : '' }}">
+        @canany(['create', 'viewAny'], \App\Models\Category::class)
+        <li class="nav-item menu-items {{ (request()->is('admin/categories')||request()->is('admin/categories/*')) ? 'active' : '' }}">
             <a class="nav-link" data-bs-toggle="collapse" href="#categories" aria-expanded="false"
                aria-controls="categories">
               <span class="menu-icon">
@@ -122,52 +120,93 @@
                 <i class="menu-arrow"></i>
             </a>
             <div
-                class="collapse {{ (request()->is('categories') || request()->is('categories/create') ||request()->is('categories/*')) ? 'show' : ''}}"
+                class="collapse {{ (request()->is('admin/categories') || request()->is('admin/categories/create') ||request()->is('admin/categories/*')) ? 'show' : ''}}"
                 id="categories">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link {{ (request()->is('categories')) ? 'active' : '' }}"
+                    @can( 'viewAny', \App\Models\Category::class)
+                    <li class="nav-item"><a class="nav-link {{ (request()->is('admin/categories')) ? 'active' : '' }}"
                                             href="{{route('categories.index')}}"> Danh sách </a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->is('categories/create') ? 'active' : '' }}"
+                    @endcan
+                    @can( 'create', \App\Models\Category::class)
+                    <li class="nav-item"><a class="nav-link {{ request()->is('admin/categories/create') ? 'active' : '' }}"
                                             href="{{route('categories.create')}}"> Thêm mới </a></li>
+                    @endcan
                 </ul>
             </div>
         </li>
-        <li class="nav-item menu-items {{ (request()->is('menus')||request()->is('menus/*')) ? 'active' : '' }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#menus" aria-expanded="false" aria-controls="menus">
-              <span class="menu-icon">
-                <i class="mdi mdi-dns"></i>
-              </span>
-                <span class="menu-title">Menu</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div
-                class="collapse {{ (request()->is('menus') || request()->is('menus/create') ||request()->is('menus/*')) ? 'show' : ''}}"
-                id="menus">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link {{ (request()->is('menus')) ? 'active' : '' }}"
-                                            href="{{route('menus.index')}}"> Danh sách </a></li>
-                    <li class="nav-item"><a class="nav-link {{ request()->is('menus/create') ? 'active' : '' }}"
-                                            href="{{route('menus.create')}}"> Thêm mới </a></li>
-                </ul>
-            </div>
-        </li>
-        @canany(['create', 'viewAny'], \App\Models\News::class)
+        @endcanany
+        @canany(['create', 'viewAny'], \App\Models\Destination::class)
+            <li class="nav-item nav-category  pb-0">
+                <span class="nav-link">Điểm đến</span>
+            </li>
+            @can( 'viewAny', \App\Models\Destination::class)
+                <li class="nav-item menu-items {{ (request()->is('admin/destinations')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('destinations.index')}}">
+                          <span class="menu-icon">
+                            <i class="mdi mdi-playlist-play"></i>
+                          </span>
+                        <span class="menu-title">Danh sách</span>
+                    </a>
+                </li>
+            @endcan
+            @can( 'create', \App\Models\Destination::class)
+                <li class="nav-item menu-items {{ (request()->is('admin/destinations/create')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('destinations.create')}}">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-library-plus"></i>
+                        </span>
+                        <span class="menu-title">Thêm mới</span>
+                    </a>
+                </li>
+            @endcan
+        @endcanany
+        @canany(['create', 'viewAny'], \App\Models\Post::class)
             <li class="nav-item nav-category  pb-0">
                 <span class="nav-link">Tin tức</span>
             </li>
-            @can( 'viewAny', \App\Models\News::class)
-                <li class="nav-item menu-items {{ (request()->is('news')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('news.index')}}">
+            @can( 'viewAny', \App\Models\Post::class)
+                <li class="nav-item menu-items {{ (request()->is('admin/posts')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('posts.index')}}">
                           <span class="menu-icon">
-                            <i class="mdi mdi-playlist-play"></i>
+                            <i class="mdi mdi-format-list-bulleted-type"></i>
                           </span>
-                        <span class="menu-title">Danh sách</span>
+                        <span class="menu-title">Tin tức của tôi</span>
                     </a>
                 </li>
             @endcan
-            @can( 'create', \App\Models\News::class)
-                <li class="nav-item menu-items {{ (request()->is('news/create')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('news.create')}}">
+            @can( 'viewAny', \App\Models\Post::class)
+                <li class="nav-item menu-items {{ (request()->is('admin/posts')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('posts.index')}}">
+                          <span class="menu-icon">
+                            <i class="mdi mdi-format-list-bulleted-type"></i>
+                          </span>
+                        <span class="menu-title">Tin tức Chờ xuất bản</span>
+                    </a>
+                </li>
+            @endcan
+            @can( 'viewAny', \App\Models\Post::class)
+                <li class="nav-item menu-items {{ (request()->is('admin/posts')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('posts.index')}}">
+                          <span class="menu-icon">
+                            <i class="mdi mdi-format-list-bulleted-type"></i>
+                          </span>
+                        <span class="menu-title">Tin tức Không xuất bản</span>
+                    </a>
+                </li>
+            @endcan
+            @can( 'viewAny', \App\Models\Post::class)
+                <li class="nav-item menu-items {{ (request()->is('admin/posts')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('posts.index')}}">
+                          <span class="menu-icon">
+                            <i class="mdi mdi-format-list-bulleted-type"></i>
+                          </span>
+                        <span class="menu-title">Tin tức Đã xuất bản</span>
+                    </a>
+                </li>
+            @endcan
+            @can( 'create', \App\Models\Post::class)
+                <li class="nav-item menu-items {{ (request()->is('admin/posts/create')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('posts.create')}}">
                         <span class="menu-icon">
                             <i class="mdi mdi-library-plus"></i>
                         </span>
@@ -176,91 +215,7 @@
                 </li>
             @endcan
         @endcanany
-        @canany(['create', 'viewAny'], \App\Models\Journal::class)
-            <li class="nav-item nav-category  pb-0">
-                <span class="nav-link">Tạp chí</span>
-            </li>
-            @can( 'viewAny', \App\Models\Journal::class)
-                <li class="nav-item menu-items {{ (request()->is('journals')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('journals.index')}}">
-                          <span class="menu-icon">
-                            <i class="mdi mdi-playlist-play"></i>
-                          </span>
-                        <span class="menu-title">Danh sách</span>
-                    </a>
-                </li>
-            @endcan
-            @can( 'create', \App\Models\Journal::class)
-                <li class="nav-item menu-items {{ (request()->is('journals/create')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('journals.create')}}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-library-plus"></i>
-                        </span>
-                        <span class="menu-title">Thêm mới</span>
-                    </a>
-                </li>
-            @endcan
-        @endcanany
-        @canany(['create', 'viewAny'], \App\Models\System::class)
-            <li class="nav-item nav-category  pb-0">
-                <span class="nav-link">Hệ thống Hải Phát Land</span>
-            </li>
-            @can( 'viewAny', \App\Models\System::class)
-                <li class="nav-item menu-items {{ (request()->is('systems')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('systems.index')}}">
-                          <span class="menu-icon">
-                            <i class="mdi mdi-playlist-play"></i>
-                          </span>
-                        <span class="menu-title">Danh sách</span>
-                    </a>
-                </li>
-            @endcan
-            @can( 'create', \App\Models\System::class)
-                <li class="nav-item menu-items {{ (request()->is('systems/create')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('systems.create')}}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-library-plus"></i>
-                        </span>
-                        <span class="menu-title">Thêm mới</span>
-                    </a>
-                </li>
-            @endcan
-        @endcanany
-        @canany(['create', 'viewAny'], \App\Models\Recruit::class)
-            <li class="nav-item nav-category  pb-0">
-                <span class="nav-link">Tuyển dụng</span>
-            </li>
-            @can( 'viewAny', \App\Models\Recruit::class)
-                <li class="nav-item menu-items {{ (request()->is('recruits')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('recruits.index')}}">
-                          <span class="menu-icon">
-                            <i class="mdi mdi-playlist-play"></i>
-                          </span>
-                        <span class="menu-title">Danh sách</span>
-                    </a>
-                </li>
-            @endcan
-            @can( 'create', \App\Models\Recruit::class)
-                <li class="nav-item menu-items {{ (request()->is('recruits/create')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('recruits.create')}}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-library-plus"></i>
-                        </span>
-                        <span class="menu-title">Thêm mới</span>
-                    </a>
-                </li>
-            @endcan
-            @can( 'viewAny', \App\Models\Candidate::class)
-                <li class="nav-item menu-items {{ (request()->is('candidates')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('candidates.index')}}">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-account-multiple"></i>
-                        </span>
-                        <span class="menu-title">Ứng viên ứng tuyển</span>
-                    </a>
-                </li>
-            @endcan
-        @endcanany
+
         @canany(['create', 'viewAny'], \App\Models\Contact::class)
             <li class="nav-item nav-category  pb-0">
                 <span class="nav-link">Liên hệ</span>

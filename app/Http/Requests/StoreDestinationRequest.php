@@ -13,7 +13,7 @@ class StoreDestinationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreDestinationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:destinations|max:255',
         ];
     }
 }

@@ -169,6 +169,8 @@ return [
         'current_password' => 'Mật khẩu hiện tại',
         'password' => 'Mật khẩu mới',
         'confirm_password' => 'Nhập lại mật khẩu mới',
+        'categories' => 'Danh mục',
+        'destinations' => 'Điểm đến',
     ],
 
 ];

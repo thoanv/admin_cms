@@ -10640,7 +10640,7 @@ textarea.is-invalid.tt-hint {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center; }
-  
+
   .btn-group-vertical > .btn,
   .fc .btn-group-vertical > button,
   .ajax-upload-dragdrop .btn-group-vertical > .ajax-file-upload,
@@ -15836,16 +15836,39 @@ input:focus {
   /* IE9 Compat Modes */ }
 
 @font-face {
-  font-family: 'Rubik';
+  font-family: 'Roboto';
   font-weight: 500;
-  src: url("../fonts/Rubik/Rubik-Medium.ttf");
+  src: url("../fonts/Roboto/Roboto-Medium.ttf");
   /* IE9 Compat Modes */ }
 
 @font-face {
-  font-family: 'Rubik';
+  font-family: 'Roboto';
   font-weight: 700;
-  src: url("../fonts/Rubik/Rubik-Bold.ttf");
+  src: url("../fonts/Roboto/Roboto-Bold.ttf");
   /* IE9 Compat Modes */ }
+@font-face {
+    font-family: 'Rubik';
+    font-weight: 300;
+    src: url("../fonts/Roboto/Roboto-Light.ttf");
+    /* IE9 Compat Modes */ }
+
+@font-face {
+    font-family: 'Rubik';
+    font-weight: 400;
+    src: url("../fonts/Roboto/Roboto-Regular.ttf");
+    /* IE9 Compat Modes */ }
+
+@font-face {
+    font-family: 'Rubik';
+    font-weight: 500;
+    src: url("../fonts/Roboto/Roboto-Medium.ttf");
+    /* IE9 Compat Modes */ }
+
+@font-face {
+    font-family: 'Roboto';
+    font-weight: 700;
+    src: url("../fonts/Roboto/Roboto-Bold.ttf");
+    /* IE9 Compat Modes */ }
 
 /* Backgrounds  */
 .bg-gradient-primary {
@@ -15889,7 +15912,7 @@ body {
   font-weight: normal;
   font-weight: initial;
   line-height: 1.5;
-  font-family: "Rubik", sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased; }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,
@@ -19559,7 +19582,7 @@ body.avgrund-active {
   border: 0;
   border-radius: 3px;
   padding: 6px;
-  font-size: .625rem;
+  font-size: .8rem;
   font-family: inherit;
   line-height: 1; }
   .select2-container--default .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {

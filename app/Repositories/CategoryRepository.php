@@ -24,8 +24,12 @@ class CategoryRepository extends AbstractRepository
         endforeach;
         return $data;
     }
-    public function getCategoriesStatus()
+    public function getCategoriesStatus($status = false)
     {
-        return $this->model->where('status', true)->orderBy('ID', 'DESC')->get();
+        $query = $this->model;
+        if($status)
+            $query = $query->where('status', true);
+
+        return $query->orderBy('ID', 'DESC')->get();
     }
 }

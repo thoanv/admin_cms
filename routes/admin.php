@@ -6,13 +6,13 @@ use App\Http\Controllers\Admin\DasboadController;
 use App\Http\Controllers\Admin\TypePermissionController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AboutUController;
-use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\DestinationController;
+use App\Http\Controllers\Admin\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,11 +33,11 @@ Route::middleware('auth:admin')->group(function (){
         'type-permissions'  => TypePermissionController::class,
         'permissions'       => PermissionController::class,
         'categories'        => CategoryController::class,
-        'menus'             => MenuController::class,
         'aboutUs'           => AboutUController::class,
-        'news'              => NewsController::class,
         'contacts'          => ContactController::class,
         'employees'         => EmployeeController::class,
+        'destinations'      => DestinationController::class,
+        'posts'             => PostController::class,
     ]);
     //Phân quyền cho nhân viên
     Route::get('/role/authorization/{employee_id}', [RoleController::class, 'authorization'])->name('authorization-employee');

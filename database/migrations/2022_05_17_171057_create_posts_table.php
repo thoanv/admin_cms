@@ -24,11 +24,11 @@ class CreatePostsTable extends Migration
             $table->tinyInteger('view')->default(0);
             $table->tinyInteger('featured')->default(0);
             $table->tinyInteger('start')->default(0);
-            $table->tinyInteger('status')->default(0);
-            $table->tinyInteger('published')->default(0);
-            $table->date('time_published')->nullable();
+            $table->enum('published', ['draft', 'pending', 'unpublished', 'published'])->default('draft');
+            $table->dateTime('time_published')->nullable();
 
             $table->unsignedInteger('created_by');
+            $table->unsignedInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

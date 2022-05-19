@@ -3,13 +3,13 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Destination;
 use App\Models\Employee;
-use App\Models\Menu;
-use App\Models\News;
+use App\Models\Post;
 use App\Policies\CategoryPolicy;
+use App\Policies\DestinationPolicy;
 use App\Policies\EmployeePolicy;
-use App\Policies\MenuPolicy;
-use App\Policies\NewsPolicy;
+use App\Policies\PostPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -22,10 +22,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
-        News::class => NewsPolicy::class,
-        Menu::class => MenuPolicy::class,
+        Post::class => PostPolicy::class,
         Category::class => CategoryPolicy::class,
         Employee::class => EmployeePolicy::class,
+        Destination::class => DestinationPolicy::class
     ];
 
     /**
