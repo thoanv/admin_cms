@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
-@section('title', 'Tin tức')
+@section('title', 'Tin tức Chớ xuất bản')
 @section('content')
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title">Tin tức của tôi</h3>
+            <h3 class="page-title">Tin tức Chờ xuất bản</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
@@ -28,7 +28,7 @@
                             </h4>
                             <hr>
                         </div>
-                        <form class="forms-sample" action="{{route('posts.index')}}">
+                        <form class="forms-sample" action="{{route('posts.pending')}}">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -38,23 +38,11 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="publisher">Trạng thái</label>
-                                        <select name="publisher" id="" class="form-control">
-                                            <option value="">Tất cả</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_DRAFT)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_DRAFT}}">Bản Nháp</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_PENDING)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_PENDING}}">Chờ Xuất Bản</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_PUBLISHED)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_PUBLISHED}}">Đã Xuất Bản</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_UNPUBLISHED)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_UNPUBLISHED}}">Không Xuất Bản</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
                                         <label for="category">Danh mục</label>
                                         <select name="category" id="category" class="form-control">
                                             <option value="">Tất cả</option>
                                             @foreach($categories as $cate)
-                                            <option {{(isset($request->category) && $request->category == $cate['id']) ? 'selected' : ''}} value="{{$cate['id']}}">{{$cate['name']}}</option>
+                                                <option {{(isset($request->category) && $request->category == $cate['id']) ? 'selected' : ''}} value="{{$cate['id']}}">{{$cate['name']}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -74,7 +62,7 @@
                             <div class="row mt-2">
                                 <div class="col-md-3">
                                     <button type="submit" class="btn btn-primary me-2">Tìm kiếm</button>
-                                    <a href="{{route('posts.index')}}" class="btn btn-dark">Làm mới</a>
+                                    <a href="{{route('posts.pending')}}" class="btn btn-dark">Làm mới</a>
                                 </div>
 
                             </div>
@@ -88,9 +76,6 @@
                         <div>
                             <h4 class="card-title">
                                 Danh sách
-                                @can('create', \App\Models\Post::class)
-                                <a href="{{route('posts.create')}}" class="btn btn-primary btn-fw float-end">Thêm mới</a>
-                                @endcan
                             </h4>
 
                         </div>
@@ -105,7 +90,7 @@
                                     <th scope="col" class="text-center">Điểm đến</th>
                                     <th scope="col" class="text-center">Lượt xem</th>
                                     <th scope="col" class="text-center">Ngày tạo</th>
-                                    <th scope="col" class="text-center">Trạng thái</th>
+                                    <th scope="col" class="text-center">Tạo bởi</th>
                                     <th scope="col" class="text-center">Hành động</th>
                                 </tr>
                                 </thead>
@@ -120,45 +105,22 @@
                                             <img class="img-dev-custom" src="{{$item['avatar'] ? $item['avatar'] : '/assets/images/no-image.png'}}" alt="{{$item->name}}">
                                         </td>
                                         <td class="text-center">
-                                            <div>
-                                                @foreach($item->categories as $category)
-                                                    <span class="badge badge-outline-primary badge-pill">{{$category['name']}}</span>
-                                                @endforeach
-                                            </div>
+                                            @foreach($item->categories as $category)
+                                                <span class="badge badge-outline-primary badge-pill">{{$category['name']}}</span>
+                                            @endforeach
                                         </td>
                                         <td class="text-center">
-                                            <div>
-                                                @foreach($item->destinations as $destination)
-                                                    <span class="badge badge-outline-success badge-pill">{{$destination['name']}}</span>
-                                                @endforeach
-                                            </div>
+                                            @foreach($item->destinations as $destination)
+                                                <span class="badge badge-outline-success badge-pill">{{$destination['name']}}</span>
+                                            @endforeach
                                         </td>
                                         <td class="text-center">
                                             {{$item->view}}
                                         </td>
                                         <td role="cell" class="text-center">{{date('H:i d/m/Y', strtotime($item->created_at))}}</td>
-                                        <td role="cell" class="text-center">
-                                            @php
-                                                $status = $item->getPublisher();
-                                            @endphp
-                                            <span class="badge {{$status['color_status']}}">{{$status['name_status']}}</span>
-
-                                        </td>
+                                        <td role="cell" class="text-center">{{$item->owner->name}}</td>
                                         <td class="text-center">
-                                            @if($item['published'] === \App\Models\Post::STATUS_DRAFT || $item['published'] === \App\Models\Post::STATUS_UNPUBLISHED)
-                                                @can('update', $item)
-                                                    <a href="{{route('posts.edit', $item['id'])}}" class="btn btn-primary btn-icon-text btn-sm"><i class="mdi mdi-file-check btn-icon-prepend icon-mr"></i> Sửa</a>
-                                                @endcan
-                                                @can('delete', $item)
-                                                    <form class="d-inline-block" action="{{ route('posts.destroy', $item['id']) }}" method="POST" >
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
-                                                </form>
-                                                @endcan
-                                            @endif
-                                            <a href="{{route('posts.showDetail', ['post' => $item['id'], 'type' => 'index'])}}" class="btn btn-primary btn-icon-text btn-sm"><i class="mdi mdi-eye btn-icon-prepend icon-mr"></i> Xem</a>
-
+                                            <a href="{{route('posts.showDetail', ['post' => $item['id'], 'type' => 'pending'])}}" class="btn btn-primary btn-icon-text btn-sm"><i class="mdi mdi-eye btn-icon-prepend icon-mr"></i> Xem</a>
                                         </td>
                                     </tr>
                                 @endforeach

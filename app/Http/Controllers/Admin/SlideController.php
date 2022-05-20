@@ -14,7 +14,7 @@ class SlideController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Slide $slide)
     {
         //
     }
@@ -24,7 +24,7 @@ class SlideController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Slide $slide)
     {
         //
     }

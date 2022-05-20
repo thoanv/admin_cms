@@ -17,7 +17,7 @@ class CreatePostHistoriesTable extends Migration
             $table->id();
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('created_by');
-            $table->enum('published', ['draft', 'unpublished', 'published'])->default('draft');
+            $table->enum('published', ['draft', 'pending', 'unpublished', 'published'])->default('draft');
             $table->string('note')->nullable();
             $table->timestamps();
         });

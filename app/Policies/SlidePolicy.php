@@ -3,20 +3,25 @@
 namespace App\Policies;
 
 use App\Models\Slide;
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SlidePolicy
 {
     use HandlesAuthorization;
-
+    public function before($employee, $ability)
+    {
+        if ($employee->isSuperAdmin()) {
+            return true;
+        }
+    }
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(Employee $employee)
     {
         //
     }
@@ -24,11 +29,11 @@ class SlidePolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee $employee
      * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Slide $slide)
+    public function view(Employee $employee, Slide $slide)
     {
         //
     }
@@ -36,10 +41,10 @@ class SlidePolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(Employee $employee)
     {
         //
     }
@@ -47,11 +52,11 @@ class SlidePolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee $employee
      * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Slide $slide)
+    public function update(Employee $employee, Slide $slide)
     {
         //
     }
@@ -59,11 +64,11 @@ class SlidePolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee $employee
      * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Slide $slide)
+    public function delete(Employee $employee, Slide $slide)
     {
         //
     }
@@ -71,11 +76,11 @@ class SlidePolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee $employee
      * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Slide $slide)
+    public function restore(Employee $employee, Slide $slide)
     {
         //
     }
@@ -83,11 +88,11 @@ class SlidePolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Slide $slide)
+    public function forceDelete(Employee $employee, Slide $slide)
     {
         //
     }

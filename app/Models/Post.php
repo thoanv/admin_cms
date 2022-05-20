@@ -63,4 +63,12 @@ class Post extends Model
         $data['color_status'] = $color_status;
         return $data;
     }
+    public function postHistories()
+    {
+        return $this->hasMany(PostHistory::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

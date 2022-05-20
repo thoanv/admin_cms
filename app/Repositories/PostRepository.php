@@ -17,8 +17,23 @@ class PostRepository extends AbstractRepository
     {
         $user_id = Auth::id();
         $query = $this->model->where('created_by', $user_id);
+        if($request->category){
+            $cate_id = $request->category;
+            $query = $query->WhereHas('categories',  function ($query) use ($cate_id) {
+                $query->where('id', $cate_id);
+            });
+        }
+        if($request->destination){
+            $des_id = $request->destination;
+            $query = $query->WhereHas('destinations',  function ($query) use ($des_id) {
+                $query->where('id', $des_id);
+            });
+        }
         if($request->name){
             $query = $query->where('name', 'like', '%' . $request->name . '%');
+        }
+        if($request->publisher){
+            $query = $query->where('published', $request->publisher);
         }
 
         return $query->orderBy('id', 'DESC')->paginate();
@@ -40,12 +55,12 @@ class PostRepository extends AbstractRepository
         return $query->orderBy('id', 'DESC')->paginate();
 
     }
-    public function getPostByStatus($status = false)
+    public function getPostByPublisher($publisher = 'pending')
     {
         $query = $this->model;
-        if($status)
-            $query = $query->where('status', true);
+        if($publisher)
+            $query = $query->where('published', $publisher);
 
-        return $query->orderBy('ID', 'DESC')->get();
+        return $query->orderBy('ID', 'DESC')->paginate();
     }
 }

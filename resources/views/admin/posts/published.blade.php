@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
-@section('title', 'Tin tức')
+@section('title', 'Tin tức Chớ xuất bản')
 @section('content')
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title">Tin tức của tôi</h3>
+            <h3 class="page-title">Tin tức Đã xuất bản</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
@@ -28,7 +28,7 @@
                             </h4>
                             <hr>
                         </div>
-                        <form class="forms-sample" action="{{route('posts.index')}}">
+                        <form class="forms-sample" action="{{route('posts.published')}}">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -38,28 +38,16 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="publisher">Trạng thái</label>
-                                        <select name="publisher" id="" class="form-control">
-                                            <option value="">Tất cả</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_DRAFT)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_DRAFT}}">Bản Nháp</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_PENDING)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_PENDING}}">Chờ Xuất Bản</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_PUBLISHED)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_PUBLISHED}}">Đã Xuất Bản</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_UNPUBLISHED)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_UNPUBLISHED}}">Không Xuất Bản</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
                                         <label for="category">Danh mục</label>
                                         <select name="category" id="category" class="form-control">
                                             <option value="">Tất cả</option>
                                             @foreach($categories as $cate)
-                                            <option {{(isset($request->category) && $request->category == $cate['id']) ? 'selected' : ''}} value="{{$cate['id']}}">{{$cate['name']}}</option>
+                                                <option {{(isset($request->category) && $request->category == $cate['id']) ? 'selected' : ''}} value="{{$cate['id']}}">{{$cate['name']}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="destination">Điểm đến</label>
                                         <select name="destination" id="destination" class="form-control">
@@ -70,11 +58,31 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="status">Hiển Thị</label>
+                                        <select name="status" id="destination" class="form-control">
+                                            <option value="">Tất cả</option>
+                                            <option {{(isset($request->status) && $request->status == 'YES') ? 'selected' : ''}} value="YES">Có</option>
+                                            <option {{(isset($request->status) && $request->status == 'NO') ? 'selected' : ''}} value="NO">Không</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="featured">Nổi bật</label>
+                                        <select name="featured" id="destination" class="form-control">
+                                            <option value="">Tất cả</option>
+                                            <option {{(isset($request->featured) && $request->destination == 'YES') ? 'selected' : ''}} value="YES">Có</option>
+                                            <option {{(isset($request->featured) && $request->destination == 'NO') ? 'selected' : ''}} value="NO">Không</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-3">
                                     <button type="submit" class="btn btn-primary me-2">Tìm kiếm</button>
-                                    <a href="{{route('posts.index')}}" class="btn btn-dark">Làm mới</a>
+                                    <a href="{{route('posts.published')}}" class="btn btn-dark">Làm mới</a>
                                 </div>
 
                             </div>
@@ -88,9 +96,6 @@
                         <div>
                             <h4 class="card-title">
                                 Danh sách
-                                @can('create', \App\Models\Post::class)
-                                <a href="{{route('posts.create')}}" class="btn btn-primary btn-fw float-end">Thêm mới</a>
-                                @endcan
                             </h4>
 
                         </div>
@@ -101,11 +106,14 @@
                                     <th scope="col" class="text-center">STT</th>
                                     <th scope="col" >Tên bài viết</th>
                                     <th scope="col" class="text-center">Hình ảnh</th>
+                                    <th scope="col" class="text-center">Hiển thị</th>
                                     <th scope="col" class="text-center">Danh mục</th>
                                     <th scope="col" class="text-center">Điểm đến</th>
                                     <th scope="col" class="text-center">Lượt xem</th>
                                     <th scope="col" class="text-center">Ngày tạo</th>
-                                    <th scope="col" class="text-center">Trạng thái</th>
+                                    <th scope="col" class="text-center">Tạo bởi</th>
+                                    <th scope="col" class="text-center">Nổi bật</th>
+
                                     <th scope="col" class="text-center">Hành động</th>
                                 </tr>
                                 </thead>
@@ -119,46 +127,43 @@
                                         <td>
                                             <img class="img-dev-custom" src="{{$item['avatar'] ? $item['avatar'] : '/assets/images/no-image.png'}}" alt="{{$item->name}}">
                                         </td>
-                                        <td class="text-center">
-                                            <div>
-                                                @foreach($item->categories as $category)
-                                                    <span class="badge badge-outline-primary badge-pill">{{$category['name']}}</span>
-                                                @endforeach
+                                        <td role="cell" class="text-center">
+                                            <div class="form-check form-switch" style="display: inline-block">
+                                                <input name="my-checkbox" type="checkbox" class="form-check-input css-switch" data-id="{{$item['id']}}"
+                                                       data-api="{{route('enable-column-text')}}" data-table="posts" data-column="status"
+                                                    {{ $item['status'] == 'YES' ? 'checked="checked"' : '' }}>
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <div>
-                                                @foreach($item->destinations as $destination)
-                                                    <span class="badge badge-outline-success badge-pill">{{$destination['name']}}</span>
-                                                @endforeach
-                                            </div>
+                                            @foreach($item->categories as $category)
+                                                <span class="badge badge-outline-primary badge-pill">{{$category['name']}}</span>
+                                            @endforeach
+                                        </td>
+                                        <td class="text-center">
+                                            @foreach($item->destinations as $destination)
+                                                <span class="badge badge-outline-success badge-pill">{{$destination['name']}}</span>
+                                            @endforeach
                                         </td>
                                         <td class="text-center">
                                             {{$item->view}}
                                         </td>
                                         <td role="cell" class="text-center">{{date('H:i d/m/Y', strtotime($item->created_at))}}</td>
+                                        <td role="cell" class="text-center">{{$item->owner->name}}</td>
                                         <td role="cell" class="text-center">
-                                            @php
-                                                $status = $item->getPublisher();
-                                            @endphp
-                                            <span class="badge {{$status['color_status']}}">{{$status['name_status']}}</span>
-
+                                            <div class="form-check form-switch" style="display: inline-block">
+                                                <input name="my-checkbox" type="checkbox" class="form-check-input css-switch" data-id="{{$item['id']}}"
+                                                       data-api="{{route('enable-column-text')}}" data-table="posts" data-column="featured"
+                                                    {{ $item['featured'] == 'YES' ? 'checked="checked"' : '' }}>
+                                            </div>
                                         </td>
-                                        <td class="text-center">
-                                            @if($item['published'] === \App\Models\Post::STATUS_DRAFT || $item['published'] === \App\Models\Post::STATUS_UNPUBLISHED)
-                                                @can('update', $item)
-                                                    <a href="{{route('posts.edit', $item['id'])}}" class="btn btn-primary btn-icon-text btn-sm"><i class="mdi mdi-file-check btn-icon-prepend icon-mr"></i> Sửa</a>
-                                                @endcan
-                                                @can('delete', $item)
-                                                    <form class="d-inline-block" action="{{ route('posts.destroy', $item['id']) }}" method="POST" >
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
-                                                </form>
-                                                @endcan
-                                            @endif
-                                            <a href="{{route('posts.showDetail', ['post' => $item['id'], 'type' => 'index'])}}" class="btn btn-primary btn-icon-text btn-sm"><i class="mdi mdi-eye btn-icon-prepend icon-mr"></i> Xem</a>
 
+                                        <td class="text-center">
+                                            <div>
+                                                <a href="{{route('posts.edit', $item['id'])}}" class="btn btn-info btn-icon-text btn-sm"><i class="mdi mdi-history btn-icon-prepend icon-mr"></i> Lịch sử</a>
+                                            </div>
+                                           <div class="mt-2">
+                                               <a href="{{route('posts.showDetail', ['post' => $item['id'], 'type' => 'published'])}}" class="btn btn-primary btn-icon-text btn-sm"><i class="mdi mdi-eye btn-icon-prepend icon-mr"></i> Xem</a>
+                                           </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -172,6 +177,34 @@
                             {{ $posts->links() }}
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal-4" tabindex="-1" aria-labelledby="ModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">New message to @mdo</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Send message</button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

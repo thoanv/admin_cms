@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Ajax;
 use App\Models\Category;
 use App\Models\Destination;
 use App\Models\Permission;
+use App\Models\Post;
 use App\Models\TypePermission;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -59,6 +60,31 @@ class AjaxController extends BaseController
         }
 
         return $this->sendResponse(false, 'successfully.');
+    }
+    public function enableColumnText(Request $request){
+        Validator::make($request->all(), [
+            'id' => 'required',
+            'table' => 'required',
+            'column' => 'required',
+        ])->validate();
+        $id = $request->get('id');
+        $column = $request->get('column');
+        $model = null;
+        switch ($request->get('table')) {
+            case 'posts':
+                $model = Post::find($id);
+                break;
+            default:
+                break;
+        }
+
+        if ($model) {
+            $result = $model->update([
+                $column => $model[$column] == 'YES' ? 'NO' : 'YES'
+            ]);
+
+            return $this->sendResponse($result, 'successfully.');
+        }
     }
 
 }

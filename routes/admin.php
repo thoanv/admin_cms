@@ -13,6 +13,8 @@ use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\DestinationController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SlideController;
+use App\Http\Controllers\Admin\BannerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +31,10 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/', [DasboadController::class, 'index'])->name('dashboard');
     Route::get('/thay-doi-mat-khau',[DasboadController::class, 'showChangePasswordGet'])->name('changePasswordGet');
     Route::post('/changePassword',[DasboadController::class, 'changePasswordPost'])->name('changePasswordPost');
+    Route::get('/posts/pending',[PostController::class, 'pending'])->name('posts.pending');
+    Route::get('/posts/unpublished',[PostController::class, 'unpublished'])->name('posts.unpublished');
+    Route::get('/posts/published',[PostController::class, 'published'])->name('posts.published');
+
     Route::resources([
         'type-permissions'  => TypePermissionController::class,
         'permissions'       => PermissionController::class,
@@ -38,7 +44,11 @@ Route::middleware('auth:admin')->group(function (){
         'employees'         => EmployeeController::class,
         'destinations'      => DestinationController::class,
         'posts'             => PostController::class,
+        'slides'            => SlideController::class,
+        'banners'           => BannerController::class,
     ]);
+    Route::get('/posts/{post}/{type}',[PostController::class, 'show'])->name('posts.showDetail');
+    Route::post('/post/change/published',[PostController::class, 'changePublished'])->name('post.change.published');
     //Phân quyền cho nhân viên
     Route::get('/role/authorization/{employee_id}', [RoleController::class, 'authorization'])->name('authorization-employee');
     Route::post('/role/authorization-post', [RoleController::class, 'authorizationPost'])->name('authorization-employee-post');
@@ -46,6 +56,7 @@ Route::middleware('auth:admin')->group(function (){
     Route::post('/role/authorization-update-post', [RoleController::class, 'authorizationUpdatePost'])->name('authorization-employee-role-update-post');
     //Ajax
     Route::post('enable-column', [AjaxController::class, 'enableColumn'])->name('enable-column');
+    Route::post('enable-column-text', [AjaxController::class, 'enableColumnText'])->name('enable-column-text');
 //    Route::any('/ckfinder/connector', 'CKSource\CKFinderBridge\Controller\CKFinderController@requestAction') ->name('ckfinder_connector');
 //    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
 });
