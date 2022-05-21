@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\DestinationController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BannerDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +58,11 @@ Route::middleware('auth:admin')->group(function (){
     //Ajax
     Route::post('enable-column', [AjaxController::class, 'enableColumn'])->name('enable-column');
     Route::post('enable-column-text', [AjaxController::class, 'enableColumnText'])->name('enable-column-text');
+
+    //Banner Detail
+    Route::get('/banners-detail/{banner}', [BannerDetailController::class, 'index'])->name('banners_detail_list');
+    Route::get('/banners-detail/create/{banner}', [BannerDetailController::class, 'create'])->name('banners_detail_create');
+    Route::post('/banners-detail/create', [BannerDetailController::class, 'store'])->name('banners_detail_store');
 //    Route::any('/ckfinder/connector', 'CKSource\CKFinderBridge\Controller\CKFinderController@requestAction') ->name('ckfinder_connector');
 //    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
 });

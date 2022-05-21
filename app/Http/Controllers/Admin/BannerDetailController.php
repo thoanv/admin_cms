@@ -6,17 +6,33 @@ use App\Models\BannerDetail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBannerDetailRequest;
 use App\Http\Requests\UpdateBannerDetailRequest;
+use App\Repositories\BannerDetailRepository as BannerDetailRepo;
+use App\Repositories\BannerRepository as BannerRepo;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
+use App\Models\Banner;
 
 class BannerDetailController extends Controller
 {
+    protected $view = 'admin.banner-details';
+    protected $bannerDetailRepo;
+    public function __construct(BannerDetailRepo $bannerDetailRepo)
+    {
+        $this->bannerDetailRepo = $bannerDetailRepo;
+
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $banner)
     {
-        //
+        $bannerDetails = $this->bannerDetailRepo->getData($banner);
+        return view($this->view.'.index',[
+            'bannerDetails' => $bannerDetails,
+            'banner' => $banner
+        ]);
     }
 
     /**
@@ -24,9 +40,15 @@ class BannerDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Banner $banner)
     {
-        //
+        if(!$banner) return abort(404);
+        $bannerDetail = new BannerDetail();
+        return view($this->view.'.create',[
+            'banner'        => $banner,
+            'bannerDetail'  => $bannerDetail,
+            'view'          => $this->view,
+        ]);
     }
 
     /**
@@ -37,7 +59,11 @@ class BannerDetailController extends Controller
      */
     public function store(StoreBannerDetailRequest $request)
     {
-        //
+        $data = $request->only('name', 'image', 'url');
+        $data['status'] = isset($request['status']) ? 1 : 0;
+        $data['created_by'] = Auth::id();
+        $this->bannerDetailRepo->create($data);
+        return redirect(route('slides.index'))->with('success',  'Thêm mới thành công');
     }
 
     /**

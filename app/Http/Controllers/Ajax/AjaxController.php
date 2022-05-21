@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Ajax;
 
 use App\Models\Category;
 use App\Models\Destination;
+use App\Models\Employee;
 use App\Models\Permission;
 use App\Models\Post;
+use App\Models\Slide;
 use App\Models\TypePermission;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,7 +28,6 @@ class AjaxController extends BaseController
             'table' => 'required',
             'column' => 'required',
         ])->validate();
-
         $id = $request->get('id');
         $column = $request->get('column');
 
@@ -44,13 +45,15 @@ class AjaxController extends BaseController
             case 'permissions':
                 $model = Permission::find($id);
                 break;
-            case 'users':
-                $model = User::find($id);
+            case 'employees':
+                $model = Employee::find($id);
+                break;
+            case 'slides':
+                $model = Slide::find($id);
                 break;
             default:
                 break;
         }
-
         if ($model) {
             $result = $model->update([
                 $column => $model[$column] ? 0 : 1

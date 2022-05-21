@@ -20,6 +20,7 @@ class CreateBannerDetailsTable extends Migration
             $table->string('url')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->unsignedInteger('created_by');
+            $table->unsignedInteger('banner_id');
             $table->timestamps();
         });
     }

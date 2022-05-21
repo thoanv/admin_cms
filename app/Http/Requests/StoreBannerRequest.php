@@ -13,7 +13,7 @@ class StoreBannerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreBannerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'key' => 'required|unique:banners|max:255',
         ];
     }
 }

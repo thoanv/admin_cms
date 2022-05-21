@@ -158,6 +158,7 @@ return [
         'status_project_id' => 'Trạng thái dự án',
         'description' => 'Mô tả',
         'avatar' => 'Ảnh đại diện',
+        'image' => 'Hình ảnh',
         'cover'  => 'Ảnh bìa',
         'url'  => 'Đường dẫn',
         'address' => 'Địa chỉ',

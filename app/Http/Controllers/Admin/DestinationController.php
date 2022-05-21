@@ -118,6 +118,8 @@ class DestinationController extends Controller
      */
     public function destroy(Destination $destination)
     {
-        //
+        $this->authorize('delete', $destination);
+        $destination->delete();
+        return redirect()->route('destinations.index')->with('success','Xóa thành công');
     }
 }

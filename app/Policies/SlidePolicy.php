@@ -23,7 +23,7 @@ class SlidePolicy
      */
     public function viewAny(Employee $employee)
     {
-        //
+        return $employee->hasPermission('slide-views');
     }
 
     /**
@@ -35,7 +35,7 @@ class SlidePolicy
      */
     public function view(Employee $employee, Slide $slide)
     {
-        //
+
     }
 
     /**
@@ -46,7 +46,7 @@ class SlidePolicy
      */
     public function create(Employee $employee)
     {
-        //
+        return $employee->hasPermission('slide-add');
     }
 
     /**
@@ -58,7 +58,8 @@ class SlidePolicy
      */
     public function update(Employee $employee, Slide $slide)
     {
-        //
+        return $employee->hasPermission('slide-edit');
+
     }
 
     /**
@@ -70,7 +71,7 @@ class SlidePolicy
      */
     public function delete(Employee $employee, Slide $slide)
     {
-        //
+        return $employee->hasPermission('slide-delete');
     }
 
     /**
