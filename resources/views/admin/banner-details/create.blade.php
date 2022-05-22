@@ -18,9 +18,9 @@
     </div>
         <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <form class="theme-form" method="POST" action="{{route('slides.store')}}">
+        <form class="theme-form" method="POST" action="{{route('banners_detail_store', $banner)}}">
             @csrf
-            <input type="hidden" name="banner_id" value="{{}}">
+            <input type="hidden" name="banner_id" value="{{$banner}}">
             @include($view.'._form')
         </form>
     </div>

@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Ajax\BaseController as BaseController;
+use App\Models\BannerDetail;
 
 class AjaxController extends BaseController
 {
@@ -50,6 +51,9 @@ class AjaxController extends BaseController
                 break;
             case 'slides':
                 $model = Slide::find($id);
+                break;
+            case 'banner_details':
+                $model = BannerDetail::find($id);
                 break;
             default:
                 break;

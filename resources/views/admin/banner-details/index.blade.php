@@ -56,21 +56,18 @@
                                         <td role="cell" class="text-center">
                                             <div class="form-check form-switch" style="display: inline-block">
                                                 <input name="my-checkbox" type="checkbox" class="form-check-input css-switch" data-id="{{$item['id']}}"
-                                                       data-api="{{route('enable-column')}}" data-table="slides" data-column="status"
+                                                       data-api="{{route('enable-column')}}" data-table="banner_details" data-column="status"
                                                     {{ $item['status'] ? 'checked="checked"' : '' }}>
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            @can('update', $item)
-                                                <a href="{{route('slides.edit', $item['id'])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend icon-mr"></i> Sửa</a>
-                                            @endcan
-                                            @can('delete', $item)
-                                                <form class="d-inline-block" action="{{ route('slides.destroy', $item['id']) }}" method="POST" >
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
-                                                </form>
-                                            @endcan
+                                            <a href="{{route('banners_detail_edit', ['banner' => $banner,'bannerDetail' => $item])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend icon-mr"></i> Sửa</a>
+                                            <form class="d-inline-block" action="{{ route('banners_detail_destroy', ['banner' => $banner,'bannerDetail' => $item]) }}" method="POST" >
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
+                                            </form>
+                                        
                                         </td>
                                     </tr>
                                 @endforeach

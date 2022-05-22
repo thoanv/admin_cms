@@ -18,7 +18,7 @@
         </div>
         <!-- Container-fluid starts-->
         <div class="container-fluid">
-            <form class="theme-form" method="POST" action="{{route('slides.update', $bannerDetail['id'])}}">
+            <form class="theme-form" method="POST" action="{{route('banners_detail_update', ['banner' => $banner, 'bannerDetail' => $bannerDetail])}}">
                 @csrf
                 @method('PATCH')
                 @include($view.'._form')
