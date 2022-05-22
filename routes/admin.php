@@ -12,13 +12,10 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\DestinationController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BannerDetailController;
->>>>>>> 6c736d1a064c5c331627a5f2c4040115525284ab
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,12 +44,9 @@ Route::middleware('auth:admin')->group(function (){
         'contacts'          => ContactController::class,
         'employees'         => EmployeeController::class,
         'destinations'      => DestinationController::class,
-<<<<<<< HEAD
-=======
         'posts'             => PostController::class,
         'slides'            => SlideController::class,
         'banners'           => BannerController::class,
->>>>>>> 6c736d1a064c5c331627a5f2c4040115525284ab
     ]);
     Route::get('/posts/{post}/{type}',[PostController::class, 'show'])->name('posts.showDetail');
     Route::post('/post/change/published',[PostController::class, 'changePublished'])->name('post.change.published');
