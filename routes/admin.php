@@ -6,14 +6,19 @@ use App\Http\Controllers\Admin\DasboadController;
 use App\Http\Controllers\Admin\TypePermissionController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AboutUController;
-use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\DestinationController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SlideController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BannerDetailController;
+>>>>>>> 6c736d1a064c5c331627a5f2c4040115525284ab
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,17 +35,27 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/', [DasboadController::class, 'index'])->name('dashboard');
     Route::get('/thay-doi-mat-khau',[DasboadController::class, 'showChangePasswordGet'])->name('changePasswordGet');
     Route::post('/changePassword',[DasboadController::class, 'changePasswordPost'])->name('changePasswordPost');
+    Route::get('/posts/pending',[PostController::class, 'pending'])->name('posts.pending');
+    Route::get('/posts/unpublished',[PostController::class, 'unpublished'])->name('posts.unpublished');
+    Route::get('/posts/published',[PostController::class, 'published'])->name('posts.published');
+
     Route::resources([
         'type-permissions'  => TypePermissionController::class,
         'permissions'       => PermissionController::class,
         'categories'        => CategoryController::class,
-        'menus'             => MenuController::class,
         'aboutUs'           => AboutUController::class,
-        'news'              => NewsController::class,
         'contacts'          => ContactController::class,
         'employees'         => EmployeeController::class,
         'destinations'      => DestinationController::class,
+<<<<<<< HEAD
+=======
+        'posts'             => PostController::class,
+        'slides'            => SlideController::class,
+        'banners'           => BannerController::class,
+>>>>>>> 6c736d1a064c5c331627a5f2c4040115525284ab
     ]);
+    Route::get('/posts/{post}/{type}',[PostController::class, 'show'])->name('posts.showDetail');
+    Route::post('/post/change/published',[PostController::class, 'changePublished'])->name('post.change.published');
     //Phân quyền cho nhân viên
     Route::get('/role/authorization/{employee_id}', [RoleController::class, 'authorization'])->name('authorization-employee');
     Route::post('/role/authorization-post', [RoleController::class, 'authorizationPost'])->name('authorization-employee-post');
@@ -48,6 +63,12 @@ Route::middleware('auth:admin')->group(function (){
     Route::post('/role/authorization-update-post', [RoleController::class, 'authorizationUpdatePost'])->name('authorization-employee-role-update-post');
     //Ajax
     Route::post('enable-column', [AjaxController::class, 'enableColumn'])->name('enable-column');
+    Route::post('enable-column-text', [AjaxController::class, 'enableColumnText'])->name('enable-column-text');
+
+    //Banner Detail
+    Route::get('/banners-detail/{banner}', [BannerDetailController::class, 'index'])->name('banners_detail_list');
+    Route::get('/banners-detail/create/{banner}', [BannerDetailController::class, 'create'])->name('banners_detail_create');
+    Route::post('/banners-detail/create', [BannerDetailController::class, 'store'])->name('banners_detail_store');
 //    Route::any('/ckfinder/connector', 'CKSource\CKFinderBridge\Controller\CKFinderController@requestAction') ->name('ckfinder_connector');
 //    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
 });

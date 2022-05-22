@@ -158,6 +158,7 @@ return [
         'status_project_id' => 'Trạng thái dự án',
         'description' => 'Mô tả',
         'avatar' => 'Ảnh đại diện',
+        'image' => 'Hình ảnh',
         'cover'  => 'Ảnh bìa',
         'url'  => 'Đường dẫn',
         'address' => 'Địa chỉ',
@@ -169,6 +170,8 @@ return [
         'current_password' => 'Mật khẩu hiện tại',
         'password' => 'Mật khẩu mới',
         'confirm_password' => 'Nhập lại mật khẩu mới',
+        'categories' => 'Danh mục',
+        'destinations' => 'Điểm đến',
     ],
 
 ];

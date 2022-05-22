@@ -21,7 +21,7 @@
             <form class="theme-form" method="POST" action="{{route('categories.update', $category['id'])}}">
                 @csrf
                 @method('PATCH')
-                @include('categories._form')
+                @include($view.'._form')
             </form>
         </div>
     </div>

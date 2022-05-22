@@ -18,7 +18,7 @@ class Category extends Model
         'serial',
         'type',
         'status',
-        'noi_bat',
+        'featured',
         'created_by'
     ];
     public function parent()
@@ -49,5 +49,9 @@ class Category extends Model
     public function createdBy()
     {
         return $this->belongsTo(Employee::class, 'created_by', 'id');
+    }
+    public function posts()
+    {
+        return $this->morphToMany(Post::class, 'category_posts');
     }
 }

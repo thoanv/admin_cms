@@ -15836,15 +15836,15 @@ input:focus {
   /* IE9 Compat Modes */ }
 
 @font-face {
-  font-family: 'Rubik';
+  font-family: 'Roboto';
   font-weight: 500;
-  src: url("../fonts/Rubik/Rubik-Medium.ttf");
+  src: url("../fonts/Roboto/Roboto-Medium.ttf");
   /* IE9 Compat Modes */ }
 
 @font-face {
-  font-family: 'Rubik';
+  font-family: 'Roboto';
   font-weight: 700;
-  src: url("../fonts/Rubik/Rubik-Bold.ttf");
+  src: url("../fonts/Roboto/Roboto-Bold.ttf");
   /* IE9 Compat Modes */ }
 @font-face {
     font-family: 'Rubik';
@@ -19582,7 +19582,7 @@ body.avgrund-active {
   border: 0;
   border-radius: 3px;
   padding: 6px;
-  font-size: .625rem;
+  font-size: .8rem;
   font-family: inherit;
   line-height: 1; }
   .select2-container--default .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {

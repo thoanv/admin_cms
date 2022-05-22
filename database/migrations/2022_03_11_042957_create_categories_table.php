@@ -23,7 +23,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('parent_id')->nullable();
             $table->tinyInteger('serial')->nullable();
 
-            $table->enum('type', ['news', 'product', 'policy', 'contact','tutorial','introduce'])->default('product');
+            $table->enum('type', ['posts', 'product', 'policy', 'contact','tutorial','introduce'])->default('posts');
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('featured')->default(0);
             $table->unsignedInteger('created_by');

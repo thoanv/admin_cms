@@ -23,7 +23,7 @@
                             <select name="parent_id" id="parent_id" class="form-control">
                                 <option value="">--Root--</option>
                                 @foreach($categories as $key => $value)
-                                    <option value="{{$value['id']}}">
+                                    <option value="{{$value['id']}}" {{$value['id'] == $category['parent_id'] ? 'selected': ''}}>
                                     @php
                                     $str = '';
                                     for($i = 0; $i< $value->level; $i++){

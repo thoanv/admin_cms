@@ -32,4 +32,5 @@ class CategoryRepository extends AbstractRepository
 
         return $query->orderBy('ID', 'DESC')->get();
     }
+
 }

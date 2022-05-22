@@ -3,55 +3,97 @@
 namespace App\Policies;
 
 use App\Models\Post;
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
 {
     use HandlesAuthorization;
 
+    public function before($employee, $ability)
+    {
+        if ($employee->isSuperAdmin()) {
+            return true;
+        }
+    }
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(Employee $employee)
     {
-        //
+        return $employee->hasPermission('post-views');
     }
 
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Post $post)
+    public function view(Employee $employee, Post $post)
     {
-        //
+        return ($employee->id == $post->created_by || $employee->hasPermission('post-view-detail'));
     }
 
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(Employee $employee)
     {
-        //
+        return $employee->hasPermission('post-add');
     }
 
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Post $post)
+    public function update(Employee $employee, Post $post)
+    {
+        return ($employee->id == $post->created_by || $employee->hasPermission('post-edit'));
+    }
+
+    /**
+     * Determine whether the user can delete the model.
+     *
+     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function delete(Employee $employee, Post $post)
+    {
+        return ($employee->id == $post->created_by || $employee->hasPermission('post-delete'));
+    }
+
+    /**
+     * Determine whether the user can restore the model.
+     *
+     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function restore(Employee $employee, Post $post)
+    {
+        return $employee->hasPermission('post-pending');
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     *
+     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function forceDelete(Employee $employee, Post $post)
     {
         //
     }
@@ -59,36 +101,31 @@ class PostPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Post $post)
+    public function pending(Employee $employee)
     {
-        //
+        return $employee->hasPermission('post-pending');
     }
-
     /**
-     * Determine whether the user can restore the model.
+     * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Post $post)
+    public function published(Employee $employee)
     {
-        //
+        return $employee->hasPermission('post-published');
     }
-
     /**
-     * Determine whether the user can permanently delete the model.
+     * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Post $post)
+    public function unpublished(Employee $employee)
     {
-        //
+        return $employee->hasPermission('post-unpublished');
     }
 }

@@ -72,7 +72,7 @@
                                         <td role="cell" class="text-center">
                                             <div class="form-check form-switch" style="display: inline-block">
                                                 <input name="my-checkbox" type="checkbox" class="form-check-input css-switch" data-id="{{$item['id']}}"
-                                                       data-api="{{route('enable-column')}}" data-table="users" data-column="status"
+                                                       data-api="{{route('enable-column')}}" data-table="employees" data-column="status"
                                                     {{ $item['status'] ? 'checked="checked"' : '' }}>
                                             </div>
                                         </td>

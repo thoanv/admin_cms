@@ -3,21 +3,13 @@
 namespace App\Http\Controllers\Ajax;
 
 use App\Models\Category;
-use App\Models\Event;
-use App\Models\Introduce;
-use App\Models\IntroduceDetail;
-use App\Models\Investor;
-use App\Models\Menu;
+use App\Models\Destination;
+use App\Models\Employee;
 use App\Models\Permission;
-use App\Models\News;
-use App\Models\Project;
-use App\Models\Recruit;
-use App\Models\statusProject;
-use App\Models\System;
+use App\Models\Post;
+use App\Models\Slide;
 use App\Models\TypePermission;
-use App\Models\TypeProject;
 use App\Models\User;
-use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
@@ -36,7 +28,6 @@ class AjaxController extends BaseController
             'table' => 'required',
             'column' => 'required',
         ])->validate();
-
         $id = $request->get('id');
         $column = $request->get('column');
 
@@ -45,8 +36,8 @@ class AjaxController extends BaseController
             case 'categories':
                 $model = Category::find($id);
                 break;
-            case 'news':
-                $model = News::find($id);
+            case 'destinations':
+                $model = Destination::find($id);
                 break;
             case 'type_permissions':
                 $model = TypePermission::find($id);
@@ -54,46 +45,15 @@ class AjaxController extends BaseController
             case 'permissions':
                 $model = Permission::find($id);
                 break;
-            case 'users':
-                $model = User::find($id);
+            case 'employees':
+                $model = Employee::find($id);
                 break;
-            case 'videos':
-                $model = Video::find($id);
-                break;
-            case 'menus':
-                $model = Menu::find($id);
-                break;
-            case 'investors':
-                $model = Investor::find($id);
-                break;
-            case 'status_projects':
-                $model = statusProject::find($id);
-                break;
-            case 'type_projects':
-                $model = TypeProject::find($id);
-                break;
-            case 'projects':
-                $model = Project::find($id);
-                break;
-            case 'events':
-                $model = Event::find($id);
-                break;
-            case 'systems':
-                $model = System::find($id);
-                break;
-            case 'recruits':
-                $model = Recruit::find($id);
-                break;
-            case 'introduces':
-                $model = Introduce::find($id);
-                break;
-            case 'introduce_details':
-                $model = IntroduceDetail::find($id);
+            case 'slides':
+                $model = Slide::find($id);
                 break;
             default:
                 break;
         }
-
         if ($model) {
             $result = $model->update([
                 $column => $model[$column] ? 0 : 1
@@ -103,6 +63,31 @@ class AjaxController extends BaseController
         }
 
         return $this->sendResponse(false, 'successfully.');
+    }
+    public function enableColumnText(Request $request){
+        Validator::make($request->all(), [
+            'id' => 'required',
+            'table' => 'required',
+            'column' => 'required',
+        ])->validate();
+        $id = $request->get('id');
+        $column = $request->get('column');
+        $model = null;
+        switch ($request->get('table')) {
+            case 'posts':
+                $model = Post::find($id);
+                break;
+            default:
+                break;
+        }
+
+        if ($model) {
+            $result = $model->update([
+                $column => $model[$column] == 'YES' ? 'NO' : 'YES'
+            ]);
+
+            return $this->sendResponse($result, 'successfully.');
+        }
     }
 
 }

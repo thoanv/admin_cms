@@ -21,7 +21,7 @@ class DestinationPolicy
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(Employee $employee)
+    public function viewAny(Employee  $employee)
     {
         return $employee->hasPermission('destination-views');
     }
@@ -29,11 +29,11 @@ class DestinationPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Destination  $destination
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Employee $employee, Destination $destination)
+    public function view(Employee  $employee, Destination $destination)
     {
         //
     }
@@ -41,10 +41,10 @@ class DestinationPolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(Employee $employee)
+    public function create(Employee  $employee)
     {
         return $employee->hasPermission('destination-add');
     }
@@ -52,11 +52,11 @@ class DestinationPolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Destination  $destination
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Employee $employee, Destination $destination)
+    public function update(Employee  $employee, Destination $destination)
     {
         return $employee->hasPermission('destination-edit');
     }
@@ -64,11 +64,11 @@ class DestinationPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Destination  $destination
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Employee $employee, Destination $destination)
+    public function delete(Employee  $employee, Destination $destination)
     {
         return $employee->hasPermission('destination-delete');
     }
@@ -76,11 +76,11 @@ class DestinationPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Destination  $destination
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Employee $employee, Destination $destination)
+    public function restore(Employee  $employee, Destination $destination)
     {
         //
     }
@@ -88,11 +88,11 @@ class DestinationPolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Employee  $employee
      * @param  \App\Models\Destination  $destination
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Employee $employee, Destination $destination)
+    public function forceDelete(Employee  $employee, Destination $destination)
     {
         //
     }
