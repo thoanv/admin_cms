@@ -1,6 +1,6 @@
 <nav class="navbar p-0 fixed-top d-flex flex-row">
     <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo-mini" href="index.html">
+        <a class="navbar-brand brand-logo-mini" href="{{route('dashboard')}}">
             <img src="/assets/images/logo-mini.png" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -14,7 +14,7 @@
 {{--                </form>--}}
 {{--            </li>--}}
             <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-info create-new-button" id="createbuttonDropdown" target="_blank" href="https://haiphatland.com.vn/"><i style="font-size: 15px" class="mdi mdi-cast" aria-hidden="true"></i> <span>Xem Website</span></a>
+                <a class="nav-link btn btn-info create-new-button" id="createbuttonDropdown" target="_blank" href="{{route('home')}}"><i style="font-size: 15px" class="mdi mdi-cast" aria-hidden="true"></i> <span>Xem Website</span></a>
 
             </li>
         </ul>
