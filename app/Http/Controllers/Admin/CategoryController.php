@@ -101,16 +101,11 @@ class CategoryController extends Controller
     {
         $this->authorize('update', $category);
         if(!$category) return abort(404);
-        $category_parent_lang = 0;
-        $images = $this->imageRepo->getImageByCategoryId($category['id']);
-        $lang = $category['lang'];
-        $categories = $this->categoryRepo->getAllCategories($lang);
-        return view('categories.update', [
+        $categories = $this->getCategories(true);
+        return view($this->view.'.update', [
             'category' => $category,
             'categories' => $categories,
-            'images' => $images,
-            'lang'     => $lang,
-            'category_parent_lang' => $category_parent_lang
+            'view' => $this->view
         ]);
 
 
@@ -125,19 +120,11 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $data = $request->only('name', 'parent_id', 'type', 'cover', 'description', 'lang');
+        $data = $request->only('name', 'parent_id', 'type', 'avatar', 'description');
         $data['slug'] = Str::slug($request->get('name'), '-');
         $data['status'] = isset($request['status']) ? 1 : 0;
-        $data['noi_bat'] = isset($request['noi_bat']) ? 1 : 0;
+        $data['featured'] = isset($request['featured']) ? 1 : 0;
         $this->categoryRepo->update($data, $category['id']);
-        Image::where('category_id', $category['id'])->delete();
-        if($request->gallery && !empty($request->gallery)):
-            foreach ($request->gallery as $v_image):
-                $image['url'] = $v_image;
-                $image['category_id'] = $category['id'];
-                $this->imageRepo->create($image);
-            endforeach;
-        endif;
         return redirect(route('categories.index'))->with('success',  'Cập nhật thành công');
     }
 

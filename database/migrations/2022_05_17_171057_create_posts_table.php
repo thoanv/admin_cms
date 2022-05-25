@@ -16,20 +16,20 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug')->unique()->nullable();
             $table->string('avatar')->nullable();
             $table->text('description')->nullable();
             $table->text('content')->nullable();
 
             $table->tinyInteger('view')->default(0);
             $table->tinyInteger('featured')->default(0);
-            $table->tinyInteger('display_home')->default(0);
             $table->tinyInteger('start')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('published')->default(0);
             $table->date('time_published')->nullable();
 
             $table->unsignedInteger('created_by');
+            $table->unsignedInteger('category_id');
             $table->timestamps();
         });
     }

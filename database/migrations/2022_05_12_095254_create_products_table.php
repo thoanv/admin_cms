@@ -22,15 +22,15 @@ class CreateProductsTable extends Migration
             $table->text('content')->nullable();
             $table->text('specification')->nullable();//Thông số kỹ thuật
             $table->integer('star')->default(5);
-            $table->tinyInteger('display_home')->default(0);
             $table->tinyInteger('favourite')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->decimal('price', 12, 2)->nullable()->default(0);
             $table->decimal('discount', 12, 2)->nullable()->default(0);
             $table->integer('quantity')->default(0);
-            $table->unsignedInteger('employee_id')->nullable();
+            $table->unsignedInteger('employee_id');
             $table->unsignedInteger('trademark_id')->nullable();
             $table->unsignedInteger('origin_id')->nullable();
+            $table->unsignedInteger('category_id');
             $table->timestamps();
         });
     }

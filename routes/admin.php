@@ -13,7 +13,8 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Admin\EmployeeController;
-use App\Http\Controllers\Admin\DestinationController;
+use App\Http\Controllers\Admin\SlideController;
+use App\Http\Controllers\Admin\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,9 @@ Route::middleware('auth:admin')->group(function (){
         'news'              => NewsController::class,
         'contacts'          => ContactController::class,
         'employees'         => EmployeeController::class,
-        'destinations'      => DestinationController::class,
+        'posts'             => PostController::class,
+        'slides'            => SlideController::class,
+        'banners'           => BannerController::class,
     ]);
     //Phân quyền cho nhân viên
     Route::get('/role/authorization/{employee_id}', [RoleController::class, 'authorization'])->name('authorization-employee');
@@ -48,6 +51,14 @@ Route::middleware('auth:admin')->group(function (){
     Route::post('/role/authorization-update-post', [RoleController::class, 'authorizationUpdatePost'])->name('authorization-employee-role-update-post');
     //Ajax
     Route::post('enable-column', [AjaxController::class, 'enableColumn'])->name('enable-column');
+
+    //Banner Detail
+    Route::get('/banners-detail/{banner}', [BannerDetailController::class, 'index'])->name('banners_detail_list');
+    Route::get('/banners-detail/create/{banner}', [BannerDetailController::class, 'create'])->name('banners_detail_create');
+    Route::post('/banners-detail/create/{banner}', [BannerDetailController::class, 'store'])->name('banners_detail_store');
+    Route::get('/banners-detail/edit/{banner}/{bannerDetail}', [BannerDetailController::class, 'edit'])->name('banners_detail_edit');
+    Route::patch('/banners-detail/edit/{banner}/{bannerDetail}', [BannerDetailController::class, 'update'])->name('banners_detail_update');
+    Route::delete('/banners-detail/{banner}/{bannerDetail}', [BannerDetailController::class, 'destroy'])->name('banners_detail_destroy');
 //    Route::any('/ckfinder/connector', 'CKSource\CKFinderBridge\Controller\CKFinderController@requestAction') ->name('ckfinder_connector');
 //    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
 });

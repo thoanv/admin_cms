@@ -2,14 +2,13 @@
 
 namespace App\Policies;
 
-use App\Models\Post;
+use App\Models\Slide;
 use App\Models\Employee;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy
+class SlidePolicy
 {
     use HandlesAuthorization;
-
     public function before($employee, $ability)
     {
         if ($employee->isSuperAdmin()) {
@@ -19,81 +18,82 @@ class PostPolicy
     /**
      * Determine whether the user can view any models.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Employee $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(Employee $employee)
     {
-        return $employee->hasPermission('post-views');
+        return $employee->hasPermission('slide-views');
     }
 
     /**
      * Determine whether the user can view the model.
      *
-     * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Employee $employee, Post $post)
+    public function view(Employee $employee, Slide $slide)
     {
-        return ($employee->id == $post->created_by || $employee->hasPermission('post-view-detail'));
+
     }
 
     /**
      * Determine whether the user can create models.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Employee $employee
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(Employee $employee)
     {
-        return $employee->hasPermission('post-add');
+        return $employee->hasPermission('slide-add');
     }
 
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Employee $employee, Post $post)
+    public function update(Employee $employee, Slide $slide)
     {
-        return ($employee->id == $post->created_by || $employee->hasPermission('post-edit'));
+        return $employee->hasPermission('slide-edit');
+
     }
 
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Employee $employee, Post $post)
+    public function delete(Employee $employee, Slide $slide)
     {
-        return ($employee->id == $post->created_by || $employee->hasPermission('post-delete'));
+        return $employee->hasPermission('slide-delete');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
-     * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Employee $employee
+     * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Employee $employee, Post $post)
+    public function restore(Employee $employee, Slide $slide)
     {
-        return $employee->hasPermission('post-pending');
+        //
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Employee $employee, Post $post)
+    public function forceDelete(Employee $employee, Slide $slide)
     {
         //
     }

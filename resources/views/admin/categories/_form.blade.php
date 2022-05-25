@@ -23,7 +23,7 @@
                             <select name="parent_id" id="parent_id" class="form-control">
                                 <option value="">--Root--</option>
                                 @foreach($categories as $key => $value)
-                                    <option value="{{$value['id']}}">
+                                    <option {{$value['id'] === old('parent_id', $category['parent_id']) ? 'selected="selected"' : ''}} ? 'selected' : '' }} value="{{$value['id']}}">
                                     @php
                                     $str = '';
                                     for($i = 0; $i< $value->level; $i++){
@@ -40,8 +40,8 @@
                         <label for="type" class="col-sm-3 col-form-label">Thể loại</label>
                         <div class="col-sm-9">
                             <select name="type" id="type" class="form-control">
-                                <option {{$category['type'] == 'posts' ? 'selected' : ''}} value="posts">Tin tức</option>
                                 <option {{$category['type'] == 'product' ? 'selected' : ''}} value="product">Sản phẩm</option>
+                                <option {{$category['type'] == 'posts' ? 'selected' : ''}} value="posts">Tin tức</option>
                                 <option {{$category['type'] == 'policy' ? 'selected' : ''}} value="policy">Chính sách
                                 </option>
                                 <option {{$category['type'] == 'contact' ? 'selected' : ''}} value="contact">Liên hệ</option>

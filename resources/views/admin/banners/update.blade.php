@@ -10,7 +10,7 @@
                         <a href="{{route('dashboard')}}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{route('news.index')}}">Danh sách</a>
+                        <a href="{{route('banners.index')}}">Danh sách</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Cập nhật</li>
                 </ol>
@@ -18,10 +18,10 @@
         </div>
         <!-- Container-fluid starts-->
         <div class="container-fluid">
-            <form class="theme-form" method="POST" action="{{route('news.update', $news['id'])}}">
+            <form class="theme-form" method="POST" action="{{route('banners.update', $banner['id'])}}">
                 @csrf
                 @method('PATCH')
-                @include($view.'._form',['news'=> $news])
+                @include($view.'._form')
             </form>
         </div>
     </div>

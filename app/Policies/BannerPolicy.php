@@ -2,16 +2,21 @@
 
 namespace App\Policies;
 
-use App\Models\Staff;
+use App\Models\Banner;
 use App\Models\Employee;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class StaffPolicy
+class BannerPolicy
 {
     use HandlesAuthorization;
-
+    public function before($employee, $ability)
+    {
+        if ($employee->isSuperAdmin()) {
+            return true;
+        }
+    }
     /**
-     * Determine whether the Employee can view any models.
+     * Determine whether the user can view any models.
      *
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
@@ -22,19 +27,19 @@ class StaffPolicy
     }
 
     /**
-     * Determine whether the Employee can view the model.
+     * Determine whether the user can view the model.
      *
      * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Employee $employee, Staff $staff)
+    public function view(Employee $employee, Banner $banner)
     {
         //
     }
 
     /**
-     * Determine whether the Employee can create models.
+     * Determine whether the user can create models.
      *
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Auth\Access\Response|bool
@@ -45,49 +50,49 @@ class StaffPolicy
     }
 
     /**
-     * Determine whether the Employee can update the model.
+     * Determine whether the user can update the model.
      *
      * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Employee $employee, Staff $staff)
+    public function update(Employee $employee, Banner $banner)
     {
         //
     }
 
     /**
-     * Determine whether the Employee can delete the model.
+     * Determine whether the user can delete the model.
      *
      * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Employee $employee, Staff $staff)
+    public function delete(Employee $employee, Banner $banner)
     {
         //
     }
 
     /**
-     * Determine whether the Employee can restore the model.
+     * Determine whether the user can restore the model.
      *
      * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Employee $employee, Staff $staff)
+    public function restore(Employee $employee, Banner $banner)
     {
         //
     }
 
     /**
-     * Determine whether the Employee can permanently delete the model.
+     * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\Employee  $employee
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Banner  $banner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Employee $employee, Staff $staff)
+    public function forceDelete(Employee $employee, Banner $banner)
     {
         //
     }

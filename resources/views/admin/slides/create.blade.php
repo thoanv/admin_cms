@@ -10,24 +10,19 @@
                     <a href="{{route('dashboard')}}">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{route('news.index')}}">Danh sách</a>
+                    <a href="{{route('slides.index')}}">Danh sách</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
             </ol>
         </nav>
     </div>
+        <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <div class="col-lg-12">
-            @if (session('success'))
-                <div class="alert alert-success notification-submit">
-                    {{ session('success') }}
-                </div>
-            @endif
-        </div>
-        <form class="theme-form" method="POST" action="{{route('news.store')}}">
+        <form class="theme-form" method="POST" action="{{route('slides.store')}}">
             @csrf
-            @include($view.'._form',['news'=> $news])
+            @include($view.'._form')
         </form>
     </div>
     </div>
+        <!-- Container-fluid Ends-->
 @endsection

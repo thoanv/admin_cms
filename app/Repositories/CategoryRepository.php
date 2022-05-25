@@ -32,4 +32,9 @@ class CategoryRepository extends AbstractRepository
 
         return $query->orderBy('ID', 'DESC')->get();
     }
+    public function getCategoryByType($type = 'posts')
+    {
+        return $this->model->where([['status', true], ['type', $type], ['parent_id', '<>', NULL]])->orderBy('ID', 'DESC')->get();
+    }
+
 }
