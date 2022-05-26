@@ -29,8 +29,10 @@ class CategoryRepository extends AbstractRepository
         $query = $this->model;
         if($status)
             $query = $query->where('status', true);
-
         return $query->orderBy('ID', 'DESC')->get();
     }
-
+    public function getLists()
+    {
+        return $this->model->where('status', true)->get();
+    }
 }

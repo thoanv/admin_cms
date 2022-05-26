@@ -38,7 +38,7 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/posts/published',[PostController::class, 'published'])->name('posts.published');
 
     Route::get('menus/{menu}/setup', [MenuController::class, 'setup'])->name('menus.setup');
-    Route::post('menus/{menu}/setup', [MenuController::class, 'setup'])->name('menus.setup');
+    Route::post('menus/{menu}/setup', [MenuController::class, 'setupStore'])->name('menus.setup-store');
     Route::resources([
         'type-permissions'  => TypePermissionController::class,
         'permissions'       => PermissionController::class,

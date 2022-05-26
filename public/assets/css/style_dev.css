@@ -84,3 +84,8 @@ textarea.form-control{
     font-size: 12px;
     margin-bottom: 5px;
 }
+.box-check-cate{
+    border: 1px solid rgb(0 144 231 / 48%);
+    padding: 0 10px;
+    margin-bottom: 15px;
+}

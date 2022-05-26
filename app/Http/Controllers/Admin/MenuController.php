@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use App\Models\Menu;
 use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\MenuRepository as MenuRepo;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\CategoryRepository as CategoryRepo;
 
 class MenuController extends Controller
 {
     protected $view = 'admin.menus';
     protected $menuRepo;
+    protected $categoryRepo;
 
-    public function __construct(MenuRepo $menuRepo)
+    public function __construct(MenuRepo $menuRepo, CategoryRepo $categoryRepo)
     {
         $this->menuRepo = $menuRepo;
+        $this->categoryRepo = $categoryRepo;
     }
     /**
      * Display a listing of the resource.
@@ -53,10 +58,41 @@ class MenuController extends Controller
      */
     public function setup(Menu $menu)
     {
+        $menuSetup = [];
+        if($menu['data']){
+            $menuSetup = unserialize($menu['data']);
+        }
+        $list_categories = [];
+        if($menu['list_id_category']){
+            $list_categories =  explode(',', $menu['list_id_category']);
+        }
+        $categories = $this->getCategories(true);
         return view($this->view.'.setup', [
             'menu' => $menu,
+            'categories' => $categories,
+            'menuSetup' => $menuSetup,
+            'list_categories' => $list_categories,
             'view' => $this->view
         ]);
+    }
+    public function setupStore(Request $request, Menu $menu)
+    {
+        $data['list_id_category'] =  $request['list_id_cate_checked'];
+        $data['created_by'] = Auth::id();
+        $array_menus = [];
+        foreach (json_decode($request['data']) as $dat){
+            $array_menus[] = json_decode(json_encode($dat),true);
+        }
+        $data['data'] = serialize($array_menus);
+        $this->menuRepo->update($data, $menu['id']);
+    }
+
+    private function getCategories($status)
+    {
+        $categories = $this->categoryRepo->getLists(    );
+        $listCategory = [];
+        Category::recursive($categories, $parents = 0, $level = 1, $listCategory);
+        return $listCategory;
     }
     /**
      * Store a newly created resource in storage.
