@@ -113,7 +113,7 @@
                                                                     @endif
                                                                 </li>
                                                             @endforeach
-                                                            <input type="hidden" value="{{$stt}}" class="sttt">
+                                                            <input type="hidden" value="{{$stt}}" class="stt">
                                                         </ol>
                                                         <textarea style="display: none" id="nestable-output"
                                                                   name="data"></textarea>
@@ -463,7 +463,9 @@
                 var val = [];
                 var txt = '';
                 var list_id_cate = '';
+                var stt = $('.stt').val();
                 $(':checkbox:checked').each(function(i){
+
                     let object = {};
                     let slug = $(this).data("slug");
                     object['slug'] = slug;
@@ -472,9 +474,10 @@
                     let id = $(this).data("id");
                     object['id'] = id;
                     if($('.cate-'+id).attr('disabled') === undefined){
+                        stt++;
                         $('.cate-'+id).prop('disabled', true);
                         let txt_ = `
-                        <li class="dd-item"
+                        <li class="dd-item" data-stt="${Number(stt)}"
                             data-id="${id}" data-name="${name}"
                             data-slug="${slug}">
                                 <div class="dd-handle">${name}</div>
@@ -482,6 +485,7 @@
                     `;
                         txt = txt+txt_;
                         list_id_cate =list_id_cate+id+',';
+                        $('.stt').val(stt);
                     }
                     val.push(object)
                 });
