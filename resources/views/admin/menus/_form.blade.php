@@ -5,12 +5,10 @@
             <div class="card-body">
                 <h5 class="card-title">Thông tin chung</h5>
                 <hr>
-                <input type="hidden" name="lang" value="{{$lang}}">
-                <input type="hidden" name="parent_lang" value="{{$parent_lang}}">
                 <div class="form-group row">
                     <label for="name" class="col-sm-3 col-form-label">Tên</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="name" placeholder="Tên quyền" name="name"
+                        <input type="text" class="form-control" id="name" placeholder="Vui lòng nhập tên..." name="name"
                                value="{{old('name', $menu['name'])}}">
                         @if ($errors->has('name'))
                             <div class="mt-1 notification-error">
@@ -23,7 +21,7 @@
                     <label for="title" class="col-sm-3 col-form-label">Mã</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="key" name="key" value="{{old('key', $menu['key'])}}"
-                               placeholder="Mã quyền (news-post)" {{isset($menu['id']) ? 'disabled' : ''}}>
+                               placeholder="Mã menu (menu-header)" {{isset($menu['id']) ? 'disabled' : ''}}>
                         @if ($errors->has('key'))
                             <div class="mt-1 notification-error">
                                 {{$errors->first('key')}}
@@ -44,50 +42,49 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row mb-3">
-                    <label for="parent_id" class="col-sm-3 col-form-label">Ngôn ngữ</label>
-                    <div class="col-sm-9">
-                        <img width="30px" src="{{$lang == 'en' ? '/assets/images/English.png' : '/assets/images/vietnam.png'}}" alt="">
-                    </div>
-                </div>
             </div>
         </div>
+        @if(isset($menu['id']))
         <div class="card mt-4">
             <div class="card-body">
-                <h5 class="card-title">Cài đăt</h5>
+                <h5 class="card-title">Cài đặt Menu</h5>
                 <hr>
-                <div class="cf nestable-lists">
-                    <div class="dd" id="nestable">
-                        <ol class="dd-list">
-                            @foreach($categories as $cate)
-                                <li class="dd-item" data-id="{{$cate['id']}}" data-name="{{$cate['name']}}" data-slug="{{$cate['slug']}}">
-                                    <div class="dd-handle">{{$cate['name']}}</div>
-                                    @if(isset($cate['children']) && !empty($cate['children']))
-                                        <ol class="dd-list">
-                                        @foreach($cate['children'] as $cate_child)
-                                            <li class="dd-item" data-id="{{$cate_child['id']}}" data-name="{{$cate['name']}}" data-slug="{{$cate['slug']}}">
-                                                <div class="dd-handle">{{$cate_child['name']}}</div>
-                                                    @if(isset($cate_child['children']) && !empty($cate_child['children']))
-                                                        <ol class="dd-list">
-                                                            @foreach($cate_child['children'] as $grandchildren)
-                                                                <li class="dd-item" data-id="{{$grandchildren['id']}}" data-name="{{$grandchildren['name']}}" data-slug="{{$grandchildren['slug']}}">
-                                                                    <div class="dd-handle">{{$grandchildren['name']}}</div>
-                                                                </li>
-                                                            @endforeach
-                                                        </ol>
-                                                    @endif
-                                            </li>
-                                        @endforeach
-                                        </ol>
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ol>
-                        <textarea style="display: none" id="nestable-output" name="data"></textarea>
+                <div class="form-group row">
+                    <div class="col-sm-6 col-form-label">
+                        1
+                    </div>
+                    <div class="col-sm-6 col-form-label">
+                        2
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="title" class="col-sm-3 col-form-label">Mã</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="key" name="key" value="{{old('key', $menu['key'])}}"
+                               placeholder="Mã menu (menu-header)" {{isset($menu['id']) ? 'disabled' : ''}}>
+                        @if ($errors->has('key'))
+                            <div class="mt-1 notification-error">
+                                {{$errors->first('key')}}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 pt-2 col-form-label">Trạng thái</label>
+                    <div class="col-sm-9">
+                        <div class="form-check" style="margin-top: 5px;">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input"
+                                       {{$menu['status'] ? "checked" : ''}} value="{{$menu['status']}}" name="status">
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endif
         <div class="card mt-4">
             <div class="card-body">
                 <div class="text-center">

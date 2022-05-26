@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <form class="theme-form" method="POST" action="{{route('menus.store')}}">
                 @csrf
-                @include('menus._form',['menu'=> $menu])
+                @include($view.'._form',['menu'=> $menu])
             </form>
         </div>
     </div>

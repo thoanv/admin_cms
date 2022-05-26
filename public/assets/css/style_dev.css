@@ -3,6 +3,7 @@
 }
 .form-control:disabled{
     background-color: #2A3038!important;
+    color: #ccc;
 }
 textarea.form-control{
     height: unset!important;

@@ -39,7 +39,6 @@
                                     <th scope="col" class="text-center">Tên</th>
                                     <th scope="col" class="text-center">Mã</th>
                                     <th scope="col" class="text-center">Ngày tạo</th>
-                                    <th scope="col" class="text-center">Ngôn ngữ</th>
                                     <th scope="col" class="text-center">Trạng thái</th>
                                     <th scope="col" class="text-center">Hành động</th>
                                 </tr>
@@ -51,7 +50,6 @@
                                         <td role="cell" class="">{{$menu->name}}</td>
                                         <td role="cell" class="">{{$menu->key}}</td>
                                         <td role="cell">{{date('H:i d/m/Y', strtotime($menu->created_at))}}</td>
-                                        <td role="cell"><img src="{{$menu->langs->icon}}" alt="icon"></td>
                                         <td role="cell" class="">
                                             <div class="form-check form-switch" style="display: inline-block">
                                                 <input name="my-checkbox" type="checkbox" class="form-check-input css-switch" data-id="{{$menu['id']}}"
@@ -64,17 +62,13 @@
                                             @can('update', $menu)
                                                 <a href="{{route('menus.edit', $menu['id'])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend icon-mr"></i> Sửa</a>
                                             @endcan
-                                                <form class="d-inline-block" action="{{ route('menus.destroy', $menu['id']) }}" method="POST" >
+                                            <a href="{{route('menus.setup', $menu['id'])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-wrench btn-icon-prepend icon-mr"></i> Cài đặt</a>
+
+                                            <form class="d-inline-block" action="{{ route('menus.destroy', $menu['id']) }}" method="POST" >
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
                                             </form>
-                                            @if(!$menu['parent_lang'])
-                                                @if(\App\Helpers\FunctionHelpers::checkLangMenuExist('en', $menu['id']))
-                                                    <a href="{{route('menus-create.lang',['lang'=> 'en', 'menu_id' => $menu['id']])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-flag icon-mr"></i> Ngôn ngữ</a>
-                                                @endif
-                                            @endif
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -84,9 +78,7 @@
                         @if(!count($menus))
                             @include('admin.components.data-empty')
                         @endif
-                        <div class="text-center mt-3 float-end">
-                            {{ $menus->links() }}
-                        </div>
+
                     </div>
                 </div>
             </div>

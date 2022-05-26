@@ -13,19 +13,11 @@ class MenuRepository extends AbstractRepository
     }
     public function getMenus()
     {
-        return $this->model->orderBy('ID', 'DESC')->paginate();
+        return $this->model->orderBy('ID', 'DESC')->get();
     }
     public function getMenuByStatus($status)
     {
-        return $query = $this->model->where('status', $status)->get();
+        return $this->model->where('status', $status)->get();
 
-    }
-    public function getMenuByLang($lang)
-    {
-        return $this->model->where([['status', true],['lang', $lang]])->first();
-    }
-    public function checkLangExist($lang, $menu_id)
-    {
-        return $this->model->where([['lang', $lang], ['parent_lang', $menu_id]])->first();
     }
 }
