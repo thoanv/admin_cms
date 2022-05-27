@@ -1,0 +1,167 @@
+/*Font face*/
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-Black.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-BlackItalic.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-Bold.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-BoldItalic.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-Extrabold.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-ExtraboldItalic.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCy-Extrathin.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCy-ExtrathinItalic.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-Light.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-LightItalic.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-Regular.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-RegularItalic.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-Semibold.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-SemiboldItalic.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-Thin.otf');
+}
+
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-ThinItalic.otf');
+}
+
+@font-face {
+    font-family: 'YesevaOne';
+    src: url('../fonts/YesevaOne-Regular.ttf');
+}
+@font-face {
+    font-family: 'AvertaStdCY';
+    src: url('../fonts/AvertaStdCY-Regular.otf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #FFF;
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: none
+}
+
+/*img{*/
+/*    max-width: 100%;*/
+/*}*/
+:root {
+    --color-violet: #67328C;
+    --color-red: #D4145A;
+    --color-pink: #E2217A;
+    --color-yellow: #F49022;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+
+}
+body {
+    font-family: "AvertaStdCY", sans-serif;
+    line-height: 1.6;
+    font-size: 14px;
+    color: var(--color-black);
+}
+.header {
+    padding: 15px 0;
+    transition: all 0.5s;
+    z-index: 997;
+    background-image: linear-gradient(rgb(0 0 0 / 80%), rgb(255 255 255 / 0%));
+}
+.header .d-header{
+    margin-top: 20px;
+}
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.header .navbar .nav-item{
+    padding: 0 5px;
+}
+.header .navbar .nav-item .nav-link{
+    color: var(--color-white);
+}
+.header .navbar form{
+    margin-left: 15px;
+}
+.header .navbar form input{
+    border-radius: 25px;
+    background: rgb(255 255 255 / 45%);
+    border: 1px solid var(--color-yellow);
+    min-width: 250px;
+    padding-left: 2.5rem;
+}
+.header .navbar form .search img{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.nav-menu{
+    margin-left: auto;
+}
+.slide img{
+    width: 100%;
+    height: 636px;
+    object-fit: cover;
+}

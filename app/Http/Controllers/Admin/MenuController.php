@@ -85,6 +85,7 @@ class MenuController extends Controller
         }
         $data['data'] = serialize($array_menus);
         $this->menuRepo->update($data, $menu['id']);
+        return back()->with('success',  'Cài đặt thành công');
     }
 
     private function getCategories($status)

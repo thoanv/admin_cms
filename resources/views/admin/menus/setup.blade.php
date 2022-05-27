@@ -20,124 +20,155 @@
         <div class="container-fluid">
             <form class="theme-form" method="POST" action="{{route('menus.setup-store', $menu)}}">
                 @csrf
-                <input type="hidden" name="list_id_cate_checked" class="list_id_cate_checked">
+                <input type="hidden" name="list_id_cate_checked" class="list_id_cate_checked" value="{{$menu['list_id_category']}}">
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10">
-                        <div class="card mt-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Cài đặt Menu</h5>
-                                <hr>
-                                <div class="form-group row">
-                                    <div class="col-sm-5 col-form-label">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                @foreach($categories as $cate)
-                                                    <div class="box-check-cate">
-                                                        <div class="form-check form-check-flat form-check-primary">
-                                                            <label class="form-check-label">
-                                                                <input type="checkbox" {{in_array($cate['id'], $list_categories) ? 'checked="checked" disabled' : ''}}
-                                                                       class="form-check-input cate-{{$cate['id']}}" data-slug="{{$cate['slug']}}"  data-name="{{$cate['name']}}" data-id="{{$cate['id']}}" value="{{$cate['id']}}">
-                                                                @php
-                                                                    $str = '';
-                                                                    for($i = 0; $i< $cate->level; $i++){
-                                                                        echo $str;
-                                                                        $str.='-- ';
-                                                                    }
-                                                                @endphp
-                                                                {{$cate['name']}}
-                                                                <i class="input-helper"></i></label>
+                    <div class="col-lg-12">
+                        @if (session('success'))
+                            <div class="alert alert-success notification-submit">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Cài đặt Menu</h5>
+                                    <hr>
+                                    <div class="form-group row">
+                                        <div class="col-sm-5 col-form-label">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    @foreach($categories as $cate)
+                                                        <div class="box-check-cate">
+                                                            <div class="form-check form-check-flat form-check-primary">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" {{in_array($cate['id'], $list_categories) ? 'checked="checked" disabled' : ''}}
+                                                                    class="form-check-input cate-{{$cate['id']}}" data-slug="{{$cate['slug']}}"  data-name="{{$cate['name']}}" data-id="{{$cate['id']}}" value="{{$cate['id']}}">
+                                                                    @php
+                                                                        $str = '';
+                                                                        for($i = 0; $i< $cate->level; $i++){
+                                                                            echo $str;
+                                                                            $str.='-- ';
+                                                                        }
+                                                                    @endphp
+                                                                    {{$cate['name']}}
+                                                                    <i class="input-helper"></i></label>
+                                                            </div>
+                                                        </div>
+
+                                                    @endforeach
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 col-form-label">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="text-center">
+                                                        <div>
+                                                            <button type="button" class="btn btn-primary btn-icon-text" id="save_value">
+                                                                <i class="mdi mdi-arrow-collapse-right btn-icon-prepend"></i> </button>
                                                         </div>
                                                     </div>
-
-                                                @endforeach
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 col-form-label">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="text-center">
-                                                    <div>
-                                                        <button type="button" class="btn btn-primary btn-icon-text" id="save_value">
-                                                            <i class="mdi mdi-arrow-collapse-right btn-icon-prepend"></i> </button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-5 col-form-label">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="cf nestable-lists">
-                                                    <div class="dd" id="nestable">
-                                                        <ol class="dd-list">
-                                                            @php $stt = 0; @endphp
-                                                            @foreach($menuSetup as $set)
-                                                                <li class="dd-item" data-stt="{{$stt++}}" data-id="{{$set['id']}}"
-                                                                    data-name="{{$set['name']}}"
-                                                                    data-name="{{$set['name']}}"
-                                                                    data-url="{{isset($set['url']) ? $set['url']: ''}}"
-                                                                    data-slug="{{isset($set['slug']) ? $set['slug']: ''}}">
-                                                                    <div class="dd-handle">{{$set['name']}}</div>
-                                                                    @if(isset($set['children']) && !empty($set['children']))
-                                                                        <ol class="dd-list">
-                                                                            @foreach($set['children'] as $set_child)
-                                                                                <li class="dd-item" data-stt="{{$stt++}}"
-                                                                                    data-id="{{$set_child['id']}}"
-                                                                                    data-name="{{$set_child['name']}}"
-                                                                                    data-slug="{{isset($set['slug']) ? $set['slug']: ''}}
-                                                                                    data-url="{{isset($set['url']) ? $set['url']: ''}}
-                                                                                >
-                                                                                    <div
-                                                                                        class="dd-handle">{{$set_child['name']}}</div>
-                                                                                    @if(isset($set_child['children']) && !empty($set_child['children']))
-                                                                                        <ol class="dd-list">
-                                                                                            @foreach($set_child['children'] as $grandchildren)
-                                                                                                <li class="dd-item" data-stt="{{$stt++}}"
-                                                                                                    data-id="{{$grandchildren['id']}}"
-                                                                                                    data-name="{{$grandchildren['name']}}"
-                                                                                                    data-slug="{{isset($grandchildren['slug']) ? $grandchildren['slug'] : ''}}"
-                                                                                                    data-url="{{isset($grandchildren['url']) ? $grandchildren['url'] : ''}}"
-                                                                                                >
-                                                                                                    <div
-                                                                                                        class="dd-handle">{{$grandchildren['name']}}</div>
-                                                                                                </li>
-                                                                                            @endforeach
-                                                                                        </ol>
-                                                                                    @endif
-                                                                                </li>
-                                                                            @endforeach
-                                                                        </ol>
-                                                                    @endif
-                                                                </li>
-                                                            @endforeach
-                                                            <input type="hidden" value="{{$stt}}" class="stt">
-                                                        </ol>
-                                                        <textarea style="display: none" id="nestable-output"
-                                                                  name="data"></textarea>
+                                        <div class="col-sm-5 col-form-label">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="cf nestable-lists">
+                                                        <div class="dd" id="nestable">
+                                                            <ol class="dd-list">
+                                                                @php $stt = 0; @endphp
+                                                                @foreach($menuSetup as $set)
+                                                                    <li class="dd-item" data-id="{{$set['id']}}"
+                                                                        data-name="{{$set['name']}}"
+                                                                        data-url="{{isset($set['url']) ? $set['url']: ''}}"
+                                                                        data-slug="{{isset($set['slug']) ? $set['slug']: ''}}">
+                                                                        <div class="dd-handle">{{$set['name']}}</div>
+                                                                        <div class="remove-menu" title="Xóa menu" data-id="{{$set['id']}}"><i class="mdi mdi-window-close"></i></div>
+                                                                        @if(isset($set['children']) && !empty($set['children']))
+                                                                            <ol class="dd-list">
+                                                                                @foreach($set['children'] as $set_child)
+                                                                                    <li class="dd-item"
+                                                                                        data-id="{{$set_child['id']}}"
+                                                                                        data-name="{{$set_child['name']}}"
+                                                                                        data-slug="{{isset($set['slug']) ? $set['slug']: ''}}
+                                                                                            data-url="{{isset($set['url']) ? $set['url']: ''}}
+                                                                                    >
+                                                                                        <div class="dd-handle">{{$set_child['name']}}</div>
+                                                                                        <div class="remove-menu" title="Xóa menu" data-id="{{$set_child['id']}}"><i class="mdi mdi-window-close"></i></div>
+                                                                                        @if(isset($set_child['children']) && !empty($set_child['children']))
+                                                                                            <ol class="dd-list">
+                                                                                                @foreach($set_child['children'] as $grandchildren)
+                                                                                                    <li class="dd-item" data-id="{{$grandchildren['id']}}"
+                                                                                                        data-name="{{$grandchildren['name']}}"
+                                                                                                        data-slug="{{isset($grandchildren['slug']) ? $grandchildren['slug'] : ''}}"
+                                                                                                        data-url="{{isset($grandchildren['url']) ? $grandchildren['url'] : ''}}"
+                                                                                                    >
+                                                                                                        <div class="dd-handle">{{$grandchildren['name']}}</div>
+                                                                                                        <div class="remove-menu" title="Xóa menu" data-id="{{$grandchildren['id']}}"><i class="mdi mdi-window-close"></i></div>
+
+                                                                                                    </li>
+                                                                                                @endforeach
+                                                                                            </ol>
+                                                                                        @endif
+                                                                                    </li>
+                                                                                @endforeach
+                                                                            </ol>
+                                                                        @endif
+                                                                    </li>
+                                                                @endforeach
+                                                            </ol>
+                                                            <input type="hidden" value="{{$menu['stt']}}" name="stt" class="stt">
+                                                            <textarea style="display: none" id="nestable-output"
+                                                                      name="data"></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div style="text-align: center; margin-bottom: 15px">
-                                                <button type="button" class="btn btn-primary me-2 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="mdi mdi-plus" style="margin-right: 0"></i></button>
+                                                <div style="text-align: center; margin-bottom: 15px">
+                                                    <button type="button" class="btn btn-primary me-2 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="mdi mdi-plus" style="margin-right: 0"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card mt-4">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
                             <div class="card-body">
+                                <h5 class="card-title">Chức năng</h5>
+                                <hr>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary me-2">Lưu</button>
                                     <a href="{{route('menus.index')}}" class="btn btn-dark">Quay lại</a>
                                 </div>
                             </div>
                         </div>
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Thông tin chung</h5>
+                                <hr>
+                                <div class="form-group row">
+                                    <label for="title" class="col-sm-3 col-form-label">Tên Menu</label>
+                                    <div class="col-sm-9" style="padding-top: 5px">
+                                        {{$menu['name']}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="title" class="col-sm-3 col-form-label">Key</label>
+                                    <div class="col-sm-9" style="padding-top: 5px">
+                                        {{$menu['key']}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -453,6 +484,16 @@
             float: left;
             height: 35px;
         }
+        .remove-menu{
+            position: absolute;
+            top: 0px;
+            right: -20px;
+            cursor: pointer;
+            background: rgb(0 144 231 / 48%);
+            height: 19px;
+            width: 19px;
+            text-align: center;
+        }
     </style>
     <!-- Container-fluid Ends-->
 @endsection
@@ -460,12 +501,10 @@
     <script>
         $(function(){
             $('#save_value').click(function(){
-                var val = [];
+                var arrMenus = JSON.parse($('#nestable-output').val());
                 var txt = '';
-                var list_id_cate = '';
-                var stt = $('.stt').val();
+                var list_id_cate = $('.list_id_cate_checked').val();
                 $(':checkbox:checked').each(function(i){
-
                     let object = {};
                     let slug = $(this).data("slug");
                     object['slug'] = slug;
@@ -473,52 +512,96 @@
                     object['name'] = name;
                     let id = $(this).data("id");
                     object['id'] = id;
+                    console.log($('.cate-'+id).attr('disabled'))
                     if($('.cate-'+id).attr('disabled') === undefined){
-                        stt++;
+                        console.log(id)
                         $('.cate-'+id).prop('disabled', true);
                         let txt_ = `
-                        <li class="dd-item" data-stt="${Number(stt)}"
+                        <li class="dd-item"
                             data-id="${id}" data-name="${name}"
                             data-slug="${slug}">
                                 <div class="dd-handle">${name}</div>
+                                <div class="remove-menu" data-id="${id}" title="Xóa menu"><i class="mdi mdi-window-close"></i></div>
                         </li>
                     `;
                         txt = txt+txt_;
                         list_id_cate =list_id_cate+id+',';
-                        $('.stt').val(stt);
+                        arrMenus.push(object)
                     }
-                    val.push(object)
                 });
                 $('.dd-list').append(txt);
                 $('.list_id_cate_checked').val(list_id_cate);
-                $('#nestable-output').val(JSON.stringify(val));
+                $('#nestable-output').val(JSON.stringify(arrMenus));
             });
             $('#addMenu').click(function (){
                 var arrMenus = JSON.parse($('#nestable-output').val());
                 var name = $('#name_menu').val();
-                console.log(name);
                 var url = $('#url_menu').val();
                 var check = true;
+                var stt = $('.stt').val();
                 if(name === '' && url === '') check = false;
                 if(check){
+                    stt++;
                     let object = {};
-                    let slug = '';
-                    let id = 0;
-                    object['slug'] = '';
+                    let id = 'c'+stt;
                     object['name'] = name;
-                    object['id'] = 0;
+                    object['id'] = id;
                     object['url'] = url;
                     let txt = `
                         <li class="dd-item"
                             data-id="${id}" data-name="${name}"
-                            data-slug="${slug}" data-url="${url}">
+                            data-slug="" data-url="${url}">
                                 <div class="dd-handle">${name}</div>
+                                <div class="remove-menu" data-id="${id}" title="Xóa menu"><i class="mdi mdi-window-close"></i></div>
                         </li>`;
                     arrMenus.push(object);
                     $('.dd-list').append(txt);
                     $('#nestable-output').val(JSON.stringify(arrMenus));
+                    $('#exampleModal').modal('hide');
+                    $('#name_menu').val('');
+                    $('#url_menu').val('');
+                    $('.stt').val(stt);
+                }else{
+                    alert('Vui lòng nhập đầy đủ thông tin')
                 }
             })
+            $(document).on('click', '.remove-menu', function (e) {
+                let r = confirm('Bạn có muốn xóa không')
+                if(r){
+                    var $this = $(this);
+                    var id = $this.data('id');
+                    var $parent = $this.parent('.dd-item');
+                    $parent.remove();
+                    var arrMenus = JSON.parse($('#nestable-output').val());
+                    console.log(arrMenus)
+                    arrMenus.forEach((val, index) => {
+                        if(val['id'] === id){
+                            arrMenus.splice(index, 1)
+                        }
+                    });
+                    console.log(arrMenus)
+                    $('#nestable-output').val(JSON.stringify(arrMenus));
+                    if(Number.isInteger(id)){
+                        let list_cate_id = $('.list_id_cate_checked').val();
+                        const arrNew = list_cate_id.split(",");
+                        arrNew.forEach((value, ind) => {
+                            if(value && Number(value) == id){
+                                arrNew.splice(ind, 1)
+                            }
+                        });
+                        let list_id = '';
+                        arrNew.forEach((value, ind) => {
+                            if(value){
+                                list_id = list_id+value+',';
+                            }
+                        });
+                        $('.list_id_cate_checked').val(list_id);
+                        $('.cate-'+id).removeAttr("disabled")
+                        $('.cate-'+id).prop("checked", false);
+                    }
+                }
+            });
         });
+
     </script>
 @endpush

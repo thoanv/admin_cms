@@ -1,0 +1,5 @@
+<link rel="stylesheet" href="{{asset('front-end/vendor/bootstrap/css/bootstrap.css')}}">
+<link rel="stylesheet" href="{{asset('front-end/vendor/OwlCarousel/assets/owl.carousel.css')}}">
+<link rel="stylesheet" href="{{asset('front-end/vendor/OwlCarousel/assets/owl.theme.default.css')}}">
+<link rel="stylesheet" href="{{asset('front-end/css/style.css')}}">
+@stack('link-css')

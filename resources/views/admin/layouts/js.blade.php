@@ -31,18 +31,10 @@
         // activate Nestable for list 1
         $('#nestable').nestable({
             group: 1
-        })
-            .on('change', updateOutput);
-
-        // activate Nestable for list 2
-        $('#nestable2').nestable({
-            group: 1
-        })
-            .on('change', updateOutput);
+        }).on('change', updateOutput);
 
         // output initial serialised data
         updateOutput($('#nestable').data('output', $('#nestable-output')));
-        updateOutput($('#nestable2').data('output', $('#nestable2-output')));
 
         $('#nestable-menu').on('click', function (e) {
             var target = $(e.target),
@@ -54,8 +46,6 @@
                 $('.dd').nestable('collapseAll');
             }
         });
-
-        $('#nestable3').nestable();
 
     });
 </script>
