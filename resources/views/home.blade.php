@@ -44,14 +44,47 @@
 
         </div>
     </header>
-    <section id="slide" class="hero-animated d-flex align-items-center">
+    <section id="slide" class="hero-animated d-flex align-items-center specialBlock_1">
         <div class="slide owl-carousel owl-theme">
             <div class="item">
-                <img src="/front-end/images/slide.jpg" alt="slide">
+                <div class="wrapBox">
+                    <div class="imgBanner">
+                        <picture>
+                            <source media="(min-width:768px)" srcset="/front-end/images/slide.jpg">
+                            <img alt="khách sạn tình yêu" loading="lazy" src="/front-end/images/slide.jpg">
+
+                        </picture>
+                    </div>
+                </div>
             </div>
             <div class="item">
-                <img src="/front-end/images/slide1.jpg" alt="slide">
+                <div class="wrapBox">
+                    <div class="imgBanner">
+                        <picture>
+                            <source media="(min-width:768px)" srcset="/front-end/images/slide1.jpg">
+                            <img alt="khách sạn tình yêu" loading="lazy" src="/front-end/images/slide1.jpg">
+
+                        </picture>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    <style>
+        .specialBlock_1 .wrapBox {
+            position: relative;
+        }
+        .specialBlock_1 .wrapBox .imgBanner {
+            padding-bottom: 40.6%;
+            position: relative;
+        }
+        .specialBlock_1 .wrapBox .imgBanner img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 @endsection
