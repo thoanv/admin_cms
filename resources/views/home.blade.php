@@ -3,10 +3,12 @@
 @section('content')
     <header id="header" class="header fixed-top" data-scrollto-offset="0">
         <div class="container d-flex align-items-center position-relative d-header">
-            <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
-                <img src="/front-end/images/logo2stay.png" alt="" width="120px">
+            <a href="{{route('home')}}" class="logo align-items-center scrollto me-auto me-lg-0 white">
+                <img src="/front-end/images/logo2stay.png" alt="logo" width="120px">
             </a>
-
+            <a href="{{route('home')}}" class="logo align-items-center scrollto me-auto me-lg-0 violet">
+                <img src="/front-end/images/logo2stay1.png" alt="logo" width="120px">
+            </a>
             <nav class="navbar nav-menu navbar-expand-lg navbar-light ml-0">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -40,8 +42,6 @@
                     </div>
                 </div>
             </nav>
-
-
         </div>
     </header>
     <section id="slide" class="hero-animated d-flex align-items-center specialBlock_1">
@@ -70,21 +70,34 @@
             </div>
         </div>
     </section>
-    <style>
-        .specialBlock_1 .wrapBox {
-            position: relative;
-        }
-        .specialBlock_1 .wrapBox .imgBanner {
-            padding-bottom: 40.6%;
-            position: relative;
-        }
-        .specialBlock_1 .wrapBox .imgBanner img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+    <section id="destination">
+        <div class="container">
+            <div class="destination owl-carousel owl-theme">
+                <div class="item">
+                    <a href="">
+                        <div class="box-destination bg-violet">
+                            <div class="description">
+                                <picture>
+                                    <img class="img" alt="khách sạn tình yêu" loading="lazy" src="/front-end/images/diemden.jpg">
+                                </picture>
+                                <p class="title">Hội An</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="">
+                        <div class="box-destination bg-pink">
+                            <div class="description">
+                                <picture>
+                                    <img class="img" alt="khách sạn tình yêu" loading="lazy" src="/front-end/images/diemden1.jpg">
+                                </picture>
+                                <p class="title">Hội An</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
