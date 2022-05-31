@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Blog - 2stay')
 @section('content')
-    @include('layouts.header')
     <section id="slide" class="hero-animated d-flex align-items-center specialBlock_1">
         <div class="slide owl-carousel owl-theme">
             <div class="item">
@@ -21,7 +20,6 @@
                         <picture>
                             <source media="(min-width:768px)" srcset="/front-end/images/slide1.jpg">
                             <img alt="khách sạn tình yêu" loading="lazy" src="/front-end/images/slide1.jpg">
-
                         </picture>
                     </div>
                 </div>
@@ -310,19 +308,6 @@
             </div>
         </div>
     </section>
+
 @endsection
-@push('scripts')
-    <script>
-        $(document).ready(function () {
-            /**
-             * Sticky header on scroll
-             */
-            const selectHeader = document.querySelector('#header');
-            if (selectHeader) {
-                document.addEventListener('scroll', () => {
-                    window.scrollY > 100 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
-                });
-            }
-        });
-    </script>
-@endpush
+

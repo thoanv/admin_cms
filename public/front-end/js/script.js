@@ -1,14 +1,4 @@
 $(document).ready(function () {
-    /**
-     * Sticky header on scroll
-     */
-    const selectHeader = document.querySelector('#header');
-    if (selectHeader) {
-        document.addEventListener('scroll', () => {
-            window.scrollY > 100 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
-        });
-    }
-
     $('.slide').owlCarousel({
         loop: true,
         nav: true,
@@ -38,14 +28,13 @@ $(document).ready(function () {
         navText: ["<img src='/front-end/icons/icon-0-left.png'>","<img src='/front-end/icons/icon-0-right.png'>"],
         autoPlay: 5000,
         margin: 5,
-        stopOnHover: true,
-        singleItem: true,
+        dots: false,
         responsive: {
             0: {
                 items: 1,
             },
             600: {
-                items: 1,
+                items: 2,
             },
             1000: {
                 items: 5,
