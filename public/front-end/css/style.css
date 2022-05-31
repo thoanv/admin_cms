@@ -886,6 +886,9 @@ article {
 [tooltip][flow^="right"]:hover::after {
     animation: tooltips-horz 300ms ease-out forwards;
 }
+.list-comments{
+    margin-top: 20px;
+}
 .avatar-user-comment img{
     width: 70px;
 }

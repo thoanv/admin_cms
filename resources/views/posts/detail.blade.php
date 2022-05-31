@@ -95,9 +95,9 @@
                                             </div>
                                             <div class="col-lg-8">
                                                 <div class="float-end d-flex list-input">
-                                                    <input type="text" class="form-control" placeholder="Họ và tên *">
-                                                    <input type="text" class="form-control" placeholder="Email *">
-                                                    <input type="text" class="form-control" placeholder="Số điện thoại *">
+                                                    <input type="text" class="form-control" placeholder="Họ & tên*">
+                                                    <input type="text" class="form-control" placeholder="Email*">
+                                                    <input type="text" class="form-control" placeholder="Số điện thoại*">
                                                 </div>
 
                                             </div>
