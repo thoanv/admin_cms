@@ -12,7 +12,7 @@
             </div>
         </div>
     </section>
-    <section class="post-detail">
+    <section class="post-detail box-post-detail">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-8">
@@ -54,13 +54,13 @@
                                         <div class="comment">
                                             <ul>
                                                 <li>
-                                                    <span tooltip="102" flow="down">
+                                                    <span tooltip="102 Thích" flow="down">
                                                         <img src="/front-end/icons/icon-like.png" alt="like">
                                                     </span>
                                                 </li>
                                                 <li>
-                                                    <a href="">
-                                                        <span tooltip="32" flow="down">
+                                                    <a href="#listComment">
+                                                        <span tooltip="32 Bình luận" flow="down">
                                                             <img src="/front-end/icons/icon-comment.png" alt="comment">
                                                         </span>
                                                     </a>
@@ -84,7 +84,7 @@
                                     <br>Không chỉ dừng lại ở việc kiến tạo một công trình điểm nhấn, chủ đầu tư cũng sẽ tổ chức những lễ hội về tình yêu, tình bạn với quy mô lên tới hàng nghìn người tại đây
                                 </div>
                                 <div class="border-horizontal"></div>
-                                <div class="form-comment">
+                                <div class="form-comment" id="listComment">
                                     <form action="">
                                         <div class="row">
                                             <div class="col-lg-4">
@@ -104,23 +104,48 @@
                                         </div>
                                         <div  class="row mt-2">
                                             <div class="col-lg-12">
-                                                <textarea id="w3review" name="w3review" rows="4" cols="10" style="width: 100%;; border-radius: 7px;border: 1px solid #D4145A;"></textarea>
+                                                <textarea id="w3review" name="w3review" rows="3" cols="10" style="width: 100%;; border-radius: 7px; border: 1px solid #D4145A; padding: 10px"></textarea>
                                                 <div class="d-flex mt-2">
                                                     <label class="container-input">Lưu tên, email và số điện thoại cho các lần bình luận sau
                                                         <input type="checkbox">
                                                         <span class="checkmark"></span>
                                                     </label>
                                                     <div class="btn-comment">
-                                                        <button class="btn">Đăng bình luận</button>
+                                                        <button class="btn raise">Đăng bình luận</button>
                                                     </div>
                                                 </div>
-
+                                                <div class="list-comments">
+                                                    @for($i=0; $i<2; $i++)
+                                                    <div class="box-content-comment d-flex">
+                                                        <div class="avatar-user-comment">
+                                                            <img src="/front-end/icons/twitter.png" alt="">
+                                                        </div>
+                                                        <div class="comment-detail">
+                                                            <h5 class="name-user-comment">Thỏa Nguyễn</h5>
+                                                            <p>ĐT Thái Lan có trận giao hữu thứ hai trong tháng 5 và đối thủ là ĐT Bahrain. HLV Polking có một vài sự thay đổi trong đội hình xuất phát để tiếp những vị khách tới từ Tây Á. Ngay ở phút thứ tư, đội chủ nhà đã có bàn mở tỉ số. </p>
+                                                        </div>
+                                                    </div>
+                                                    @endfor
+                                                </div>
+                                                <div class="text-center mt-1">
+                                                    <button class="btn btn-more-comment raise">Xem thêm</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="list-post-relate owl-carousel owl-theme">
+                                    @for($i=0; $i<3; $i++)
+                                    <div class="item">
+                                        @include('components.post_relate_item')
+                                    </div>
+                                    @endfor
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -289,23 +289,24 @@ body {
     font-weight: bold;
     font-family: "AvertaStdCY-Bold";
 }
-.destination .owl-nav{
+.destination .owl-nav, .list-post-relate .owl-nav{
     display: block!important;
 }
-.destination .owl-nav button{
+.destination .owl-nav button, .list-post-relate .owl-nav button{
     position: absolute;
     top: 67px;
 }
-.destination .owl-nav button img{
+.destination .owl-nav button img, .list-post-relate .owl-nav button img{
     width: 30px;
 }
-.destination .owl-nav button.owl-prev{
+.destination .owl-nav button.owl-prev, .list-post-relate .owl-nav button.owl-prev{
     left: -20px;
 }
-.destination .owl-nav button.owl-next{
+.destination .owl-nav button.owl-next, .list-post-relate .owl-nav button.owl-next{
     right: -20px;
 }
-.destination.owl-theme .owl-nav [class*='owl-']:hover{
+.destination.owl-theme .owl-nav [class*='owl-']:hover,
+.list-post-relate.owl-theme .owl-nav [class*='owl-']:hover{
     background: rgb(255 255 255 / 0%)!important;
     box-shadow: 0px 1px 5px #88888873;
     width: 30px;
@@ -625,10 +626,11 @@ article {
     box-shadow: 0 0.5em 0.5em -0.4em var(--color-yellow);
     transform: translateY(-0.1em);
     background-image: linear-gradient(to right, #F17127, var(--color-yellow))!important;
+    color: var(--color-white);
 }
 
 /*Bài viết chi tiết*/
-.post-detail{
+.box-post-detail{
     margin-top: 40px;
 }
 .post-detail .post-inner{
@@ -883,4 +885,39 @@ article {
 [tooltip][flow^="right"]:hover::before,
 [tooltip][flow^="right"]:hover::after {
     animation: tooltips-horz 300ms ease-out forwards;
+}
+.avatar-user-comment img{
+    width: 70px;
+}
+.comment-detail{
+    margin-left: 20px;
+}
+.comment-detail .name-user-comment{
+    margin-bottom: 0;
+    font-size: 18px;
+    font-family: 'AvertaStdCY-Bold';
+    color: var(--color-yellow);
+}
+.btn-more-comment{
+    border: 1px solid #D4145A;
+    color: #D4145A;
+}
+.btn-more-comment:hover{
+    border: 1px solid var(--color-white);
+}
+.list-post-relate{
+    margin: 40px 0 20px;
+}
+.list-post-relate .box-post{
+    margin: 5px;
+    box-shadow: 0px 2px 3px rgb(0 0 0 / 45%);
+}
+.list-post-relate .box-post .post-avatar{
+    box-shadow: 0px 2px 3px rgb(0 0 0 / 45%);
+}
+.list-post-relate .box-post .post-detail .post-button{
+    margin: 20px 0 0;
+}
+.list-post-relate .owl-nav button{
+    top: 50%!important;
 }

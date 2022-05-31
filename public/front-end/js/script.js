@@ -41,5 +41,26 @@ $(document).ready(function () {
             },
 
         }
-    })
+    });
+    $('.list-post-relate').owlCarousel({
+        loop: true,
+        nav: true,
+        navText: ["<img src='/front-end/icons/icon-0-left.png'>","<img src='/front-end/icons/icon-0-right.png'>"],
+        autoPlay: 5000,
+        margin: 0,
+        dots: false,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            1000: {
+                items: 3,
+            },
+
+        }
+    });
+    
 });
