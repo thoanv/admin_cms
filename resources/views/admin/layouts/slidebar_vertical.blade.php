@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="{{route('dashboard')}}"><img
-                style="width: calc(244px - 85px);  height: 50px" src="/assets/images/logo.png" alt="logo"/></a>
+                style="width: calc(244px - 85px);  height: 50px" src="{{$info_web['logo_admin']}}" alt="logo"/></a>
         <a class="sidebar-brand brand-logo-mini" href="{{route('dashboard')}}"><img
                 style="width: calc(244px - 120px); width: 90%; height: 40px" src="/assets/images/logo-mini.png"
                 alt="logo"/></a>
@@ -134,6 +134,32 @@
                 </ul>
             </div>
         </li>
+        @endcanany
+        @canany(['create', 'viewAny'], \App\Models\Menu::class)
+            <li class="nav-item menu-items {{ (request()->is('admin/menus')||request()->is('admin/menus/*')) ? 'active' : '' }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#menus" aria-expanded="false"
+                   aria-controls="categories">
+              <span class="menu-icon">
+                <i class="mdi mdi-dns"></i>
+              </span>
+                    <span class="menu-title">Menu</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div
+                    class="collapse {{ (request()->is('admin/menus') || request()->is('admin/menus/create') ||request()->is('admin/menus/*')) ? 'show' : ''}}"
+                    id="menus">
+                    <ul class="nav flex-column sub-menu">
+                        @can( 'viewAny', \App\Models\Menu::class)
+                            <li class="nav-item"><a class="nav-link {{ (request()->is('admin/menus')) ? 'active' : '' }}"
+                                                    href="{{route('menus.index')}}"> Danh sách </a></li>
+                        @endcan
+                        @can( 'create', \App\Models\Menu::class)
+                            <li class="nav-item"><a class="nav-link {{ request()->is('admin/menus/create') ? 'active' : '' }}"
+                                                    href="{{route('menus.create')}}"> Thêm mới </a></li>
+                        @endcan
+                    </ul>
+                </div>
+            </li>
         @endcanany
         @canany(['create', 'viewAny'], \App\Models\Destination::class)
             <li class="nav-item nav-category  pb-0">

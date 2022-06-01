@@ -21,7 +21,7 @@
             <form class="theme-form" method="POST" action="{{route('menus.update', $menu['id'])}}">
                 @csrf
                 @method('PATCH')
-                @include('menus._form',['menu'=> $menu])
+                @include($view.'._form',['menu'=> $menu])
             </form>
         </div>
     </div>

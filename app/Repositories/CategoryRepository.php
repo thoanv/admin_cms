@@ -32,5 +32,9 @@ class CategoryRepository extends AbstractRepository
 
         return $query->orderBy('ID', 'DESC')->get();
     }
+    public function getLists()
+    {
+        return $this->model->where('status', true)->get();
+    }
 
 }

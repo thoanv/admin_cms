@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BannerDetailController;
+use App\Http\Controllers\Admin\MenuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +36,8 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/posts/pending',[PostController::class, 'pending'])->name('posts.pending');
     Route::get('/posts/unpublished',[PostController::class, 'unpublished'])->name('posts.unpublished');
     Route::get('/posts/published',[PostController::class, 'published'])->name('posts.published');
-
+    Route::get('menus/{menu}/setup', [MenuController::class, 'setup'])->name('menus.setup');
+    Route::post('menus/{menu}/setup', [MenuController::class, 'setupStore'])->name('menus.setup-store');
     Route::resources([
         'type-permissions'  => TypePermissionController::class,
         'permissions'       => PermissionController::class,
@@ -47,6 +49,7 @@ Route::middleware('auth:admin')->group(function (){
         'posts'             => PostController::class,
         'slides'            => SlideController::class,
         'banners'           => BannerController::class,
+        'menus'             => MenuController::class,
     ]);
     Route::get('/posts/{post}/{type}',[PostController::class, 'show'])->name('posts.showDetail');
     Route::post('/post/change/published',[PostController::class, 'changePublished'])->name('post.change.published');

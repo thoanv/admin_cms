@@ -8,8 +8,8 @@
                     <div class='container'>
                         <div class='row'>
                             <div class='logoPart'>
-                                <a class='imgPart' href='index.html'>
-                                    <img alt='' src='uploads/images/5fbe27e1a79a0d5e7942c393/mix-boutique-logo.webp'>
+                                <a class='imgPart' href='{{route('home')}}'>
+                                    <img alt='logo' src='{{$aboutUs['logo']}}'>
                                 </a>
                             </div>
                             <div class='menuPart'>
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class='menuItem'>
                                     <a class='link1' href='khach-san-tinh-yeu/index.html'>
-                                        <p class='text'>MinHoltel</p>
+                                        <p class='text'>MIN HOTEL</p>
                                     </a>
                                 </div>
                                 <div class='menuItem'>
@@ -67,32 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div id='contactBtnBlock'>
-                <div class='smallBlock messengerBlock'>
-                    <a class='imgPart callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                       styleContact='chatFacebook'>
-                        <img alt='messenger' class='messFacePartImg' src='uploads/img/24-icon-2.webp'>
-                    </a>
-                    <p class='textPart'>Chat face</p>
-                </div>
-                <div class='smallBlock zaloBlock'>
-                    <a class='imgPart callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                       styleContact='chatZalo'>
-                        <img alt='zalo' class='zaloPartImg' src='uploads/img/24-icon-3.webp'>
-                    </a>
-                    <p class='textPart'>Chat Zalo</p>
-                </div>
-                <div class='smallBlock phoneBlock'>
-                    <a class='imgPart callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                       styleContact='callPhone'>
-                        <img alt='phone' class='phonePartImg' src='uploads/img/phone_item_2.svg'>
-                    </a>
-                    <p class='textPart'>Phone</p>
-                </div>
-                <div class='smallBlock pageUp'>
-                    <i aria-hidden='true' class='pageUpImg fa fa-angle-double-up' title='Về đầu trang'></i>
-                </div>
-            </div>
+
         </div>
         <div id='menuNKTA_MOBILE'>
             <div class='blockUnderMenuTopPage'></div>
@@ -106,7 +81,7 @@
                         </div>
                         <div class='barsPart'>
                             <a class='aTag aTagBars'>
-                                <img alt='danh_muc' class='barsPartImg' src='uploads/img/bars_item.svg'>
+                                <img alt='danh_muc' class='barsPartImg' src='/uploads/img/bars_item.svg'>
                             </a>
                         </div>
                     </div>
@@ -160,29 +135,10 @@
                         <div class='catePart'>
                             <a class='link1' href='gioi-thieu/index.html'>GIỚI THIỆU</a>
                         </div>
-                        <div class='catePart dropMore active'>
-                            <a class='link1' href='khach-san-tinh-yeu/index.html'>KHÁCH SẠN TÌNH YÊU</a>
-                            <i aria-hidden='true' class='fa fa-angle-right faFix'></i>
-                            <i aria-hidden='true' class='fa fa-angle-down faFix'></i>
-                            <ul class='blockLevel2'>
-                                <li>
-                                    <a class='link2' href='mix-boutique-hotel-186-hoang-ngan/index.html'>MIX BOUTIQUE HOTEL
-                                        186 HOÀNG NGÂN </a>
-                                </li>
-                                <li>
-                                    <a class='link2' href='mix-boutique-hotel-256b-dang-tien-dong/index.html'>MIX BOUTIQUE
-                                        HOTEL 256B ĐẶNG TIẾN ĐÔNG </a>
-                                </li>
-                                <li>
-                                    <a class='link2' href='mix-boutique-hotel-104b-nguyen-khuyen/index.html'>MIX BOUTIQUE
-                                        HOTEL 104B NGUYỄN KHUYẾN </a>
-                                </li>
-                                <li>
-                                    <a class='link2' href='mix-boutique-hotel-20-phuc-la-ha-dong/index.html'>MIX BOUTIQUE
-                                        HOTEL 20 PHÚC LA HÀ ĐÔNG </a>
-                                </li>
-                            </ul>
+                        <div class='catePart'>
+                            <a class='link1' href='gioi-thieu/index.html'>MINHOTEL</a>
                         </div>
+
                         <div class='catePart'>
                             <a class='link1' href='gallery/index.html'>GALLERY</a>
                         </div>
@@ -255,19 +211,19 @@
     </div>
     <main id='homeMixHotel'>
         <div class='specialBlock_1'>
-            <h1 style='display: none'>Hệ Thống Khách Sạn Tình Yêu Tại Hà Nội - Mix Boutique Hotel</h1>
+            <h1 style='display: none'>Hệ Thống Khách Sạn Tình Yêu Tại Hà Nội - Min Hotel</h1>
             <div class='owl-carousel owl-theme slide'>
                 <div class='wrapBox'>
                     <div class='imgBanner'>
                         <picture>
-                            <source media='(min-width:768px)' srcset='/uploads/img/bannerDesk_1.webp'>
-                            <img alt='khách sạn tình yêu' src='uploads/img/bannerMobile_1.webp'>
+                            <source media='(min-width:768px)' srcset='/uploads/img/bannerMobile_1.webp'>
+                            <img alt='khách sạn tình yêu' src='/uploads/img/bannerMobile_1.webp'>
                             </source>
                         </picture>
                     </div>
                     <div class='textPart'>
-                        <p class='text_1'>Hệ Thống Khách Sạn Tình Yêu Tại Hà Nội - Mix Boutique Hotel</p>
-                        <p class='text_2'>Ở Mix Boutique Hotel, chúng tôi giúp bạn vẽ bức tranh tình yêu của chính mình bằng
+                        <p class='text_1'>Hệ Thống Khách Sạn Tình Yêu Tại Hà Nội - Min Hotel</p>
+                        <p class='text_2'>Ở Min Hotel, chúng tôi giúp bạn vẽ bức tranh tình yêu của chính mình bằng
                             những sắc màu tươi mới, để mỗi phút giây bên nhau đều như "Phút yêu đầu"</p>
                         <div class='btnFindMore marTop_30'>
                             <a class='btnType_1 callContactLocate' data-target='#popupContact_1' data-toggle='modal'
@@ -278,8 +234,8 @@
                 <div class='wrapBox'>
                     <div class='imgBanner'>
                         <picture>
-                            <source media='(min-width:768px)' srcset='/uploads/img/bannerDesk_2.webp'>
-                            <img alt='khách sạn tình yêu' loading='lazy' src='uploads/img/bannerMobile_2.webp'>
+                            <source media='(min-width:768px)' srcset='/uploads/img/bannerMobile_2.webp'>
+                                <img alt='khách sạn tình yêu' loading='lazy' src='/uploads/img/bannerMobile_2.webp'>
                             </source>
                         </picture>
                     </div>
@@ -296,8 +252,8 @@
                 <div class='wrapBox'>
                     <div class='imgBanner'>
                         <picture>
-                            <source media='(min-width:768px)' srcset='/uploads/img/bannerDesk_3.webp'>
-                            <img alt='khách sạn tình yêu' loading='lazy' src='uploads/img/bannerMobile_3.webp'>
+                            <source media='(min-width:768px)' srcset='/uploads/img/bannerMobile_3.webp'>
+                            <img alt='khách sạn tình yêu' loading='lazy' src='/uploads/img/bannerMobile_3.webp'>
                             </source>
                         </picture>
                     </div>
@@ -322,7 +278,7 @@
                 <aside class='col-md-5 d-flex align-items-center py-3'>
                     <div class='pt-md-3 px-md-5 background-white-smoke-md pb-md-3'>
                         <p class='mb-0 size-2vw'>
-                            <b style='font-size: 25px;'>ĐỪNG ĐỂ TÌNH YÊU CỦA BẠN</b>
+                            <b style='font-size: 25px; color: #000'>ĐỪNG ĐỂ TÌNH YÊU CỦA BẠN</b>
                         </p>
                         <p class='underline-theme-1 size-2vw mb-md-4 mb-4'>
                             <b>
@@ -330,7 +286,7 @@
                             </b>
                         </p>
                         <p class='mb-1 size-1vw text-justify mb-md-4' style='font-size: 20px;'>
-                            Ở Mix Boutique Hotel, chúng tôi giúp bạn vẽ bức tranh tình
+                            Ở Min Hotel, chúng tôi giúp bạn vẽ bức tranh tình
                             yêu của chính mình bằng những sắc màu
                             tươi mới, để mỗi phút giây bên nhau đều như "Phút yêu đầu"
                         </p>
@@ -342,7 +298,7 @@
         <article class='container py-3 text-center'>
             <div class='specialBlock_8'>
                 <div class='titleBlock_1'>
-                    <h2 class='titleText'>TRẢI NGHIỆM MIX HOTEL</h2>
+                    <h2 class='titleText'>TRẢI NGHIỆM TẠI MIN HOTEL</h2>
                 </div>
                 <p class='text-justify text-md-center'>
                     Đồng hành giữ gìn NGỌN LỬA TÌNH YÊU của các cặp đôi. Một chốn riêng tư, một nơi nghỉ ngơi, một điểm đến
@@ -403,531 +359,8 @@
         <div class='specialBlock_5'>
             <div class='container'>
                 <div class='titleBlock_1'>
-                    <a href='mix-boutique-hotel-186-hoang-ngan/index.html'>
-                        <h2 class='titleText'>Mix Boutique Hotel 186 Hoàng Ngân </h2>
-                    </a>
-                </div>
-                <div class='owl-carousel owl-theme owlSpecialBlock_5'>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/so-close/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bccbf8a159118a146eb27/so-close.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/so-close/index.html'>
-                                    <p class='titleNews'>So Close</p>
-                                </a>
-                                <p class='description'>Căn phòng So Close sẽ là nơi sưởi ấm mối tình của bạn. Ở căn phòng
-                                    tuyệt vời này, không gian rộng rãi và riêng tư sẽ là nơi cho đôi trẻ thoã sức mà vui vẻ
-                                    bên nhau. Những ánh đèn vàng bên cạnh bachground xung quang là gỗ tạo cảm giác ấm cúng
-                                    và đơn gia  cùng với giường King Size trắng tinh khôi là nơi giây phút thăng hoa của đôi
-                                    trẻ được dâng trào. Nến cùng hoa lãng mạn là chất xúc tác nhẹ nhàng cho cuộc yêu bùng
-                                    cháy.Tại So Close, chúng tôi sẽ trân trọng từng giây từng phút ngọt ngào của bạn cùng
-                                    người ấy.</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/so-close/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/wild-n-free/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bcb6c8a159118a146eb1a/wild-n-free.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/wild-n-free/index.html'>
-                                    <p class='titleNews'>Wild n Free</p>
-                                </a>
-                                <p class='description'>Wild n Free với sắc trắng nhẹ nhàng cho tình thêm thơ. Căn phòng được
-                                    trang bị đầy đủ những thiết bị hiện đại để phục vụ tận tình cho đôi trẻ. Giường trắng
-                                    tinh khôi sẽ có cảm giác lơ lửng như cho cuộc yêu của bạn cùng người ấy đang bay trên
-                                    thiên đường. Không gian trắng không chỉ có cảm giác thơ mộng mà còn tạo cảm giác nhẹ
-                                    nhàng như ở chính căn phòng ở nhà của bạn. Bạn có thể làm mọi thứ trong chính căn phòng
-                                    ấy mà không phải ngần ngại điều gì. Rèm trắng cùng dây treo dành cho bạn cùng người ấy
-                                    thoả sức nô đùa trong cơn men say tình. Đến với Wild n Free, chúng tôi sẽ trân trọng mọi
-                                    khoảng khắc thăng hoa và hạnh phúc của hai trai tim đang rực cháy yêu nhau</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/wild-n-free/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/pure/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bc9b68a159118a146eb0f/pure.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/pure/index.html'>
-                                    <p class='titleNews'>Pure</p>
-                                </a>
-                                <p class='description'>Căn phòng nhẹ nhàng nhưng cũng đầy chất hư hỏng mang tên Pure sẽ mang
-                                    đến cho bạn nhiều cảm giác thú vị. Khi đến với Pure, bạn hãy tâm quên chiếc giường kiểu
-                                    cũ quen thuộc đi mà thay vào đó là chiếc giường treo trần nhà vô cùng độc đáo. Chiếc
-                                    giường thú vị ấy sẽ tạo cho bạn cảm giác lơ lững, đu đưa theo từng nhịp yêu của bạn cùng
-                                    người ấy. Ngoài ra, đen led trang trí càng làm căn phòng trở nên ấm cúng và lãng mạn hơn
-                                    bao giờ hết. Hãy đến với Pure để khoảng khắc hư hỏng nhất của bạn cùng người trở nên
-                                    hoàn hảo hơn</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/pure/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/casanova/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bc8918a159118a146eb06/casanova.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>400.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/casanova/index.html'>
-                                    <p class='titleNews'>Casanova</p>
-                                </a>
-                                <p class='description'>Casanova với một chút bí ẩn, một chút quyến rũ, sự tinh tế nhưng lại
-                                    rất bản năng. Casanova chính là nơi bạn khám phá ra mình có thể đam mê tới mức nào.</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/casanova/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/fire/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bc7bd8a159118a146eafe/fire.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/fire/index.html'>
-                                    <p class='titleNews'>Fire</p>
-                                </a>
-                                <p class='description'>Rực rỡ và búng cháy là cảm giác có được khi đến với căn phòng Fire.
-                                    Không gian căn phong tràn ngập sắc đỏ sẽ làm cho cảm xúc trở nên bùng cháy rực rỡ hơn
-                                    khi yêu. Thiết kế mới lạ của chiếc giường sẽ cho bạn biết cảm giác hư hỏng đến vui vẻ là
-                                    như thế nào. Dụng cụ yêu và ghế tình yêu là điểm nhấn cho cuộc vui của bạn trở nên càng
-                                    rực cháy hơn. Đến với Fire, phút giây rực rỡ nhất của hai trai tim chung một dập sẽ được
-                                    lưu giữ một cách trân quý nhất</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/fire/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/hoi-an/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bc7148a159118a146eaf6/hoi-an.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>400.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/hoi-an/index.html'>
-                                    <p class='titleNews'>Hội An</p>
-                                </a>
-                                <p class='description'>Hội An là căn phòng mang âm hưởng nhẹ nhàng và đầy nét trữ tình. Đến
-                                    với Hội An, bạn sẽ được trải nghiệm phong cách hơi thở của phố Cổ. Cuộc vui sẽ trở nên
-                                    đặc biệt hơn khi ở trong không gian cổ xưa đầy nét mộng mơ. Giường King Size chăn ấm -
-                                    nệm êm là nơi sưởi ấm hai trái tim vàng. Bồn tắm gỗ bên khung cửa sổ vừa vặn cho hai
-                                    người sẽ là nơi vừa thư giãn vừa chơi đùa bên nhau. Không gian xanh bên ngoài phòng là
-                                    nơi yên bình tươi mát. Bên trong là tông trắng chủ đạo, điểm thêm vào là những chiếc đèn
-                                    vàng làm nổi bật nét lãng mạn và nên thơ đầy chất tình của căn phòng. Tại Hội An, chúng
-                                    tôi sẽ tận tâm phục vụ để bạn cùng người ấy có được khoảng khắc đáng nhớ nhất</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/hoi-an/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/lullaby/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bc6348a159118a146eaed/lullaby.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/lullaby/index.html'>
-                                    <p class='titleNews'>Lullaby</p>
-                                </a>
-                                <p class='description'>Ánh nến rực rỡ bên những chiếc bóng bay và những cánh hoa hồng đã tạo
-                                    nên không gian lãng mạn của phòng Lullbaby. Giường King Size êm ấm là nơi khơi màu cho
-                                    cuộc vui bùng cháy. Không gian siêu tình bên cùng với chiếc rèm mỏng tạo cảm giác mờ ảo
-                                    và quyến rũ cho cuộc vui thêm sắc thêm màu. Ghế tình yêu sẵn sàng với mọi sắc thái trong
-                                    cuộc vui của bạn. Đến với Lullbaby mọi khoảng khắc đều trở nên hoàn hảo và đặc sắc</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/lullaby/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/mia-cherry/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/6009fd8ea79a0d50e0830573/mia-cherry.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/mia-cherry/index.html'>
-                                    <p class='titleNews'>MIA CHERRY</p>
-                                </a>
-                                <p class='description'>Ấm áp không phải khi ngồi bên đống lửa mà là bên cạnh người bạn yêu
-                                    thương. Tại căn phòng Mia cherry , chúng tôi trân trọng giây phút ấm áp của hai tâm hồn
-                                    đồng điều.</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/mia-cherry/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='btnViewMore'>
-                    <a class='btnType_3 figure2' href='mix-boutique-hotel-186-hoang-ngan/index.html'>
-                        <p class='text'>Xem thêm</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class='specialBlock_5'>
-            <div class='container'>
-                <div class='titleBlock_1'>
-                    <a href='mix-boutique-hotel-256b-dang-tien-dong/index.html'>
-                        <h2 class='titleText'>Mix Boutique Hotel 256B Đặng Tiến Đông </h2>
-                    </a>
-                </div>
-                <div class='owl-carousel owl-theme owlSpecialBlock_5'>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/lalaland/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bd7168a159118a146eb71/lalaland.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/lalaland/index.html'>
-                                    <p class='titleNews'>Lalaland</p>
-                                </a>
-                                <p class='description'>Nơi chứa đựng những chuyện tình cảm ngọt ngào là lãng mạn chỉ có thể
-                                    là Lalaland. Không hào nhoáng và ồn ào, Lalaland mang lại cảm giác ấm cúng và ngọt ngào
-                                    của những câu chuyện tình yêu bình dị nhưng cũng đầy kích thích. Không gian sang chảnh
-                                    theo một cách rất riêng làm nên nét thơ mộng đặc sắc. Giường trái tim độc đáo ấm êm thoả
-                                    sức lặn lộn trong cuộc chiếc tình yêu. Rạp chiếu có ngay trong phòng vừa tiện lời giải
-                                    trí lại vừa tiện lợi mà hành động. Những bông hoa xinh được trang trí xung quang cùng
-                                    với chiếc đu xinh bên cửa sổ làm nên nét mộng mơ của những cuộc yêu nhẹ nhàng. Đến với
-                                    Lalaland, mọi cảm giác thăng hoa mà bạn có được sẽ tựa như trên chốn thiên đường mộng
-                                    mơ</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/lalaland/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/blowj-up/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bd5d88a159118a146eb67/blowj-up.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/blowj-up/index.html'>
-                                    <p class='titleNews'>Blowj Up</p>
-                                </a>
-                                <p class='description'>Blowj up là nơi chưa phong vị ngọt ngào cho cuộc tình thêm đổi gió.
-                                    Với thiết kế đơn giãn, tình tế cùng màu trắng là chủ đạo đã tạo nên sự đơn giãn nhưng
-                                    rất gợi tình. Giường treo lửng lơ mới lạ làm nên cảm giác thăng hoa và thách thức mọi sự
-                                    xập xình nhấp nhô khi yêu. Nhà tắm là những tấm kính trong suốt với nhưng chiếc rèm mỏng
-                                    gợi cảm giác vừa bí ẩn vừa chân thật thu hút mọi cảm xúc. Để có cảm xúc mãnh liệt nhất,
-                                    đến với Blowj up bạn cùng người ấy sẽ được trải nghiệm những phút giây lắng động hoàn
-                                    hảo như thể đang bay bổng trên mây</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/blowj-up/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/on-top/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bd4b68a159118a146eb5b/on-top.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>400.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/on-top/index.html'>
-                                    <p class='titleNews'>On Top</p>
-                                </a>
-                                <p class='description'>Tình như chốn thiêng đường chỉ có tại căn phòng mang tên On Top. Mang
-                                    phong cách của một Maldives thu nhỏ lãng mạn và phong tình. Chiếc giường với thiết kế
-                                    độc đáo là nơi chiến trường tình ái sẽ xảy ra. Bồn tăm hiện đại giúp thăng hoa mọi cảm
-                                    xúc bị kiềm nén. Một chiếc view đỉnh của căn phòng tạo cảm giác khoái lạc hơn khi yêu.
-                                    Không gian ấm cúng cho những trái tim cần được sưởi ấm tròn vẹn. Nến, hoa và rượu là
-                                    chất xúc tác hoàn hảo cho khung cảnh thêm đậm chấp tình. Đến với On Top, chúng tôi sẽ
-                                    cho bạn nhưng cảm giác mới lạ chỉ có ở căn phòng đặc biệt này</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/on-top/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/lollipop/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bd2fa8a159118a146eb51/lollipop.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/lollipop/index.html'>
-                                    <p class='titleNews'>Lollipop</p>
-                                </a>
-                                <p class='description'>Ngọt ngào và lãng mạn như nhưng bộ phim mỹ sẽ có ngay tại căn phòng
-                                    Lollipop. Căn phòng đáng yêu với điểm nhấn là chiếc giường hồng màu tím mộng mơ như
-                                    những nàng công chúa. Được vui đùa trên chiếc giường ngọt ngào ấy quả thật không còn gì
-                                    hoàn hảo hơn. Không gian như một chiếc lâu đài thu nhỏ sẽ tạo cho bạn như những hoàng tử
-                                    và công chúa được thoả mình yêu nhau. Gương áp trần soi sáng bóng dáng của hai người với
-                                    ngọn lựa đê mê. Mọi phút giây ngọt ngào và thăng hoa của bạn sẽ được lưu trữ tại căn
-                                    phòng mang tên Lollipop đáng yêu</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/lollipop/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/kissing/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bd1c98a159118a146eb45/kissing.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>400.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/kissing/index.html'>
-                                    <p class='titleNews'>Kissing</p>
-                                </a>
-                                <p class='description'>Sắc đỏ rức cháy là điểm thu hút mạnh mẽ của căn phòng mang tên
-                                    Kissing. Đến với Kissing, bạn sẽ được trải nghiệm những điều mới lạ và khoái cảm khi
-                                    yêu. Giường tròn độc đáo với phòng cách quí tộc là nơi bạn cùng người ấy thoả sức lăn
-                                    tròn ở một tầm cao mới. Bồn tắm sủi bọt bông mịn cùng với view ngắm toàn cảnh thành phố
-                                    thì chỉ có hai từ mê đắm. Ghế tình yêu cho bạn cùng người ấy thử độ dẻo dai trong mọi tư
-                                    thế. Không gian ấm cúng của Kissing sẽ bắt trọn từng nhịp đập của hai trái tim đang bùng
-                                    cháy bên nhau</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/kissing/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/after-sunset/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bd0208a159118a146eb3b/after-sunset.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/after-sunset/index.html'>
-                                    <p class='titleNews'>After Sunset</p>
-                                </a>
-                                <p class='description'>Sự trang trọng và quí tộc chỉ có thể ở căn phòng After Sunset. Tại
-                                    đây, bạn sẽ là những nhà thường lưu học cách ăn chơi theo kiểu xa hoa. Giường King Size
-                                    là mơi lý tưởng bắt đầu cho cuộc yêu đầy máu lửa. Ghế tình yêu thử thách độ dẻo dai của
-                                    các cặp đôi và gương áp trần soi sáng hai cá thể đang hoà thành một.  Với thiết kế cổ
-                                    điển sẽ làm cho cuộc vui của bạn thêm phần tuyệt sắc và hoa lệ. Background màu đỏ cháy
-                                    sẽ thêm phần kích thích và tạo cảm giác nóng và đầy máu lửa cho cuộc vui thêm phận thăng
-                                    hoa. Ở After Sunset, mọi cuộc vui của bạn sẽ là niềm vui của chúng tôi</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/after-sunset/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/lover/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bce438a159118a146eb32/lover.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>400.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/lover/index.html'>
-                                    <p class='titleNews'>Lover</p>
-                                </a>
-                                <p class='description'>Sự kiều diễm và xa hoa là hai từ miêu tả trọn vẹn vẻ đẹp của căn
-                                    phòng Lover. Lover có không gian mê hoặc tinh người với sắc đỏ xen lẫn vào đó là một
-                                    chút trắng mờ ảo. Giường King size là nơi đắm chìm của mọi cảm xúc rực cháy và thắng
-                                    hoa. Phòng tắm được trang bị vách ngắn trong suốt cung với đó là bồn tắm xa hoa sẽ cho
-                                    đôi bạn thêm gần nhau hơn. Ghế tình yêu và ghế sofa là nơi mọi tư thế khó được lên ngôi.
-                                    Cùng với đó căn phòng coa view nhìn thẳng ra hồ tạo cảm giác lãng mạn và gợi cảm hơn khi
-                                    yêu. Tại Lover, những phút giây xa ngã của bạn đều là sự kiều diễm, quyến rũ đến động
-                                    lòng người</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/lover/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/bad-boy/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600ac5388a159118a146eac9/bad-boy.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/bad-boy/index.html'>
-                                    <p class='titleNews'>Bad Boy</p>
-                                </a>
-                                <p class='description'>Nếu bạn muốn tìm một căn phòng với đầy sự hư hỏng nhưng lại rất sang
-                                    trọng thì hãy đến với Bad Boy. Căn phòng với nhiều hương vị tình ái và sự quyến rũ vô
-                                    hình làm cho bạn chỉ muốn yêu ngay khi vô phòng. Với thiết kế đặc biệt và tông đỏ chủ
-                                    đạo, căn phòng toát lên một vẻ bí ẩn nhưng đầy tính khiêu gợi đấy nhé.  Chiếc giường nằm
-                                    gọn trong chiếc lồng sắc tạo cảm giác táo bạo hơn khi yêu. Mọi dụng cụng yêu là điểm
-                                    nhấn cho cuộc vui thêm rực cháy, gương áp trần là nhân chứng vô hình khi hai trái tìm
-                                    hoà chung một nhịp đập. Sắc đỏ không chỉ mang lại sự bùng cháy là còn là không gian lãng
-                                    mạn tạo nên cuộc yêu hoàn hảo. Với Bad Boy, mọi khoảng khắc hư hỏng hay thơ dại của bạn
-                                    cùng được ghi dấu mạnh mẽ không phai</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/bad-boy/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='btnViewMore'>
-                    <a class='btnType_3 figure2' href='mix-boutique-hotel-256b-dang-tien-dong/index.html'>
-                        <p class='text'>Xem thêm</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class='specialBlock_5'>
-            <div class='container'>
-                <div class='titleBlock_1'>
                     <a href='mix-boutique-hotel-104b-nguyen-khuyen/index.html'>
-                        <h2 class='titleText'>Mix Boutique Hotel 104B Nguyễn Khuyến </h2>
+                        <h2 class='titleText'>Min Hotel </h2>
                     </a>
                 </div>
                 <div class='owl-carousel owl-theme owlSpecialBlock_5'>
@@ -1519,27 +952,6 @@
                                 style='border:0;' width='600'></iframe>
                     </div>
                 </div>
-                <div class='smallPart'>
-                    <div class='mapPart'>
-                        <iframe allowfullscreen='' height='450' loading='lazy'
-                                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.3969533111076!2d105.81664721493239!3d21.016797186004876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6a249877531b13f1!2zTWl4IGJvdXRpcXVlIGhvdGVsIDI1NmIgxJHhurduZyB0aeG6v24gxJHDtG5n!5e0!3m2!1svi!2s!4v1640439714536!5m2!1svi!2s'
-                                style='border:0;' width='600'></iframe>
-                    </div>
-                </div>
-                <div class='smallPart'>
-                    <div class='mapPart'>
-                        <iframe allowfullscreen='' height='450' loading='lazy'
-                                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.105242506444!2d105.83626931493265!3d21.028474585998563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x899c3191170df6c6!2sMix%20boutique%20hotel%20104B%20Nguy%E1%BB%85n%20Khuy%E1%BA%BFn!5e0!3m2!1svi!2s!4v1640439750381!5m2!1svi!2s'
-                                style='border:0;' width='600'></iframe>
-                    </div>
-                </div>
-                <div class='smallPart'>
-                    <div class='mapPart'>
-                        <iframe allowfullscreen='' height='450' loading='lazy'
-                                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.7483739009685!2d105.79262061493154!3d20.96261778603429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaee222abb43cba97!2zTWl4IEJvdXRpcXVlIEhvdGVsIDIwIFBow7pjIExhIEjDoCDEkMO0bmc!5e0!3m2!1svi!2s!4v1640439780711!5m2!1svi!2s'
-                                style='border:0;' width='600'></iframe>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1552,19 +964,13 @@
                     <div class='smallBlock_1'>
                         <p class='titleCol'>THÔNG TIN KHÁCH SẠN</p>
                         <div class='textPart'>
-                            <p class='text text_1 company'>CÔNG TY TNHH THƯƠNG MẠI VÀ DỊCH VỤ LINH KHÁNH</p>
-                            <p class='text text_1 location'>186 Phố Hoàng Ngân, Trung Hoà, Thanh Xuân, Hà Nội</p>
-                            <a class='text text_1 phone' href='tel:02432323307'>02432323307</a>
+                            <p class='text text_1 company'>MIN HOTEL</p>
+                            <p class='text text_1 location'>37N7B KĐT Trung Hòa, Trung Hòa, Cầu Giấy, Hà Nội</p>
+                            <a class='text text_1 phone' href='tel:0988506857'>0988506857</a>
                             <a class='text text_1 mail'
                                href="cdn-cgi/l/email-protection.html#2f7c7a7f7f607d7b6f62667767607b6a63017961"><span
-                                    class="__cf_email__" data-cfemail="60333530302f3234202d2938282f34252c4e362e">[email&#160;protected]</span></a>
-                            <a class='text text_1 chrome' href='index.html'>https://mixhotel.vn/</a>
-                            <a class='dmca-badge'
-                               href='http://www.dmca.com/Protection/Status.aspx?ID=4bfc3c19-8433-472d-9f3a-98a480e56499'
-                               title='DMCA.com Protection Status'>
-                                <img alt='DMCA.com Protection Status'
-                                     src='../images.dmca.com/Badges/dmca_protected_sml_120m2de2.png?ID=4bfc3c19-8433-472d-9f3a-98a480e56499'
-                                     style='width: 50%;'>
+                                    class="__cf_email__" data-cfemail="60333530302f3234202d2938282f34252c4e362e">info@minhotel.vn</span></a>
+                            <a class='text text_1 chrome' href='index.html'>https://minhotel.vn/</a>
                             </a>
                             <script data-cfasync="false"
                                     src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -1609,9 +1015,9 @@
                         <a class='text text_2' href='chinh-sach-dat-tra-phong/index.html'>CHÍNH SÁCH ĐẶT TRẢ PHÒNG</a>
                     </div>
                     <div class='smallBlock_3'>
-                        <p class='titleCol'>KẾT NỐI MIX BOUTIQUE</p>
+                        <p class='titleCol'>KẾT NỐI MIN HOTEL</p>
                         <div class='fanpagePart'>
-                            <a href='https://www.facebook.com/mixhotel.vn' rel='nofollow' target='_blank'>
+                            <a href='https://www.facebook.com/minhotel.vn' rel='nofollow' target='_blank'>
                                 <img src='uploads/img/fanpage.webp'>
                             </a>
                         </div>
@@ -1622,8 +1028,7 @@
         <div class='footerLineEnd'>
             <div class='container'>
                 <div class='pTagEnd'>
-                    Copyright © 2020 mixhotel.vn. All Rights Reserved. Design web and SEO by
-                    <a class='aTagLink' href='https://fagoagency.vn/' rel='nofollow' target='_blank'>FAGO AGENCY</a>
+                    Copyright © 2022 minhotel.vn. All Rights Reserved. Design web and SEO by Doan Gia Ltd.
                 </div>
             </div>
         </div>

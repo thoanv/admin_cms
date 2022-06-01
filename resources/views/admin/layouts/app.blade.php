@@ -1,3 +1,6 @@
+@php
+    $info_web = \App\Models\AboutU::find(1);
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -5,13 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
-        <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
+        <link rel="shortcut icon" href="{{$info_web['favicon']}}" />
         @include('admin.layouts.styles')
     </head>
     <body class="font-sans antialiased">
         <div class="container-scroller">
             <!-- partial:partials/_sidebar.html -->
-            @include('admin.layouts.slidebar_vertical')
+            @include('admin.layouts.slidebar_vertical', ['info_web' => $info_web])
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
                 <!-- partial:partials/_navbar.html -->
