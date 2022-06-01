@@ -97,231 +97,40 @@
                 </div>
             </div>
         </article>
+        @foreach($categories as $cate)
         <div class='specialBlock_5'>
             <div class='container'>
                 <div class='titleBlock_1'>
                     <a href='mix-boutique-hotel-104b-nguyen-khuyen/index.html'>
-                        <h2 class='titleText'>Min Hotel </h2>
+                        <h2 class='titleText'>{{$cate['name']}} </h2>
                     </a>
                 </div>
                 <div class='owl-carousel owl-theme owlSpecialBlock_5'>
+                    @foreach($cate['rooms'] as $room)
                     <div class='smallBlock'>
                         <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/room-601/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600be7e08a159118a146ebcb/room-601.webp'>
+                            <a class='imgPart figure2' href=''>
+                                <img alt='{{$room['name']}}' loading='lazy'
+                                     src='{{$room['avatar']}}'>
                             </a>
                             <div class='textPart'>
-                                <div class='part_1'>
+                                <div class='part_1' style="display: inline-block">
+                                    <div>
+                                        <a class='aTagTitle' href='khach-san-tinh-yeu/room-601/index.html'>
+                                            <h4 class='titleNews'>{{$room['name']}} </h4>
+                                        </a>
+                                    </div>
+
                                     <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
                                         <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>450.000VND/2h</a>
+                                        <a class='iTagText_2'>{{$room['price_h']}}</a>
                                     </div>
                                 </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/room-601/index.html'>
-                                    <p class='titleNews'>601 - Poppy </p>
-                                </a>
-                                <p class='description'>601 - Poppy - Mix 104B Nguyễn Khuyến là nơi mà ai từng đến sẽ sa vào
-                                    cuộc yêu cuồng nhiệt, quên lối về</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/room-601/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/room-502/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600be63f8a159118a146ebbb/room-502.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>380.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/room-502/index.html'>
-                                    <p class='titleNews'>502 - Gypsy</p>
-                                </a>
-                                <p class='description'>Căn phòng Gypsy khơi dậy những ảo mộng về một tình yêu phóng khoáng,
-                                    tự do, bản năng và hoang dại. Chỉ cần tình yêu là đủ và mỗi giây phút yêu đều là một
-                                    giây phút thăng hoa hạnh phúc.
-                                </p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/room-502/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/room-501/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600be0378a159118a146eb92/room-501.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/room-501/index.html'>
-                                    <p class='titleNews'>501 - Wonderland </p>
-                                </a>
-                                <p class='description'>Dưới ánh sao lung linh, còn gì tuyệt vời hơn được thưởng thức những
-                                    bộ phim mà chàng và nàng cùng yêu thích tại căn phòng Wonderland
-                                </p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/room-501/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/room-402/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bdf138a159118a146eb87/room-402.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/room-402/index.html'>
-                                    <p class='titleNews'>402 - Lalendi </p>
-                                </a>
-                                <p class='description'>Hãy quên đi mọi quy tắc, hãy quên đi thực tại, chỉ còn anh và em, tại
-                                    nơi đây, dành cho nhau từng phút giây yêu đương diệu kì.
-                                </p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/room-402/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/room-401/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600bdbec8a159118a146eb7d/room-401__1_.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/room-401/index.html'>
-                                    <p class='titleNews'>401 - Kama</p>
-                                </a>
-                                <p class='description'>Kama là tên vị thần tình yêu trong thần thoại Ấn Độ, luôn mang trong
-                                    mình một bộ cung tên, kẻ nào trúng tên của Kama, kẻ đó sa vào đam mê say đắm. Kama tại
-                                    Mix là nơi mà ai từng đến sẽ sa vào cuộc yêu cuồng nhiệt, quên lối về.</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/room-401/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/room-302/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600ac9e68a159118a146eae3/room-302.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/room-302/index.html'>
-                                    <p class='titleNews'>302 - Virgin </p>
-                                </a>
-                                <p class='description'>Điểm nhấn của 302 - Virgin - Mix 104B Nguyễn Khuyến chính là căn
-                                    phòng suite rộng rãi, màu trắng thoáng đãng để các cặp đôi có thể vừa thư giãn vừa ngắm
-                                    toàn cảnh thành phố từ trên cao</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/room-302/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/room-301/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600ac85d8a159118a146eada/room-301.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>300.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/room-301/index.html'>
-                                    <p class='titleNews'>301 - Aurora</p>
-                                </a>
-                                <p class='description'>Hãy đưa em đến Aurora, để em được làm nàng công chúa xinh đẹp đang
-                                    đợi chàng hoàng tử của đời mình. Hãy đánh thức em bằng nụ hôn của tình yêu đích thực.
-                                    Hãy đánh thức em như thể mặt trời của anh chỉ mọc nơi đôi mắt em!</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/room-301/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='smallBlock'>
-                        <div class='specialBlock_6'>
-                            <a class='imgPart figure2' href='khach-san-tinh-yeu/renai/index.html'>
-                                <img alt='khách sạn tình yêu' loading='lazy'
-                                     src='uploads/images/600ac66c8a159118a146ead2/renai.webp'>
-                            </a>
-                            <div class='textPart'>
-                                <div class='part_1'>
-                                    <div class='text'>
-                                        <i aria-hidden='true' class='fa fa-usd'></i>
-                                        <i class='iTagText'>Giá từ:</i>
-                                        <a class='iTagText_2'>380.000VND/2h</a>
-                                    </div>
-                                </div>
-                                <a class='aTagTitle' href='khach-san-tinh-yeu/renai/index.html'>
-                                    <p class='titleNews'>202 - Renai </p>
-                                </a>
-                                <p class='description'>Renai trong tiếng Nhật có nghĩa là một tình yêu chân chính, lãng mạn.
-                                    Chúng ta hay lãng phí thời gian để đi tìm một người yêu hoàn hảo, thay vì học cách làm
-                                    nên một tình yêu hoàn hảo. Hãy đến với Renai để có thể tọa nên câu chuyện tình yêu hoàn
-                                    hảo của chính bạn.</p>
-                                <div class='btnOrder'>
-                                    <a class='btnType_2' href='khach-san-tinh-yeu/renai/index.html' rel='nofollow'>đặt
-                                        phòng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class='btnViewMore'>
                     <a class='btnType_3 figure2' href='mix-boutique-hotel-104b-nguyen-khuyen/index.html'>
@@ -330,6 +139,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
         <div class='galleryBlock'>
             <p class='titleBlock'>THƯ VIỆN HÌNH ẢNH</p>
             <div class='owl-carousel owl-theme owlGallery'>

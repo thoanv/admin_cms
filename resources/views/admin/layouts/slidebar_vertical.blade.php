@@ -54,31 +54,31 @@
                 <span class="menu-title">Thông tin chung</span>
             </a>
         </li>
-        @canany(['create', 'viewAny'], \App\Models\Employee::class)
-        <li class="nav-item menu-items {{ (request()->is('admin/employees/*') || request()->is('admin/role/*')) ? 'active' : '' }}">
-            <a class="nav-link" data-bs-toggle="collapse" href="#employees" aria-expanded="false" aria-controls="employees">
-              <span class="menu-icon">
-                <i class="mdi mdi-account-multiple"></i>
-              </span>
-                <span class="menu-title">Nhân viên</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div
-                class="collapse {{ (request()->is('admin/employees') || request()->is('admin/employees/create') || request()->is('admin/role/*')) ? 'show' : '' }}"
-                id="employees">
-                <ul class="nav flex-column sub-menu">
-                    @can('viewAny', \App\Models\Employee::class)
-                    <li class="nav-item"><a class="nav-link {{ (request()->is('admin/employees')) ? 'active' : '' }}"
-                                            href="{{route('employees.index')}}">Danh sách</a></li>
-                    @endcan
-                    @can('create', \App\Models\Employee::class)
-                    <li class="nav-item"><a class="nav-link {{ request()->is('admin/employees/create') ? 'active' : '' }}"
-                                            href="{{route('employees.create')}}">Thêm mới</a></li>
-                    @endcan
-                </ul>
-            </div>
-        </li>
-        @endcanany
+{{--        @canany(['create', 'viewAny'], \App\Models\Employee::class)--}}
+{{--        <li class="nav-item menu-items {{ (request()->is('admin/employees/*') || request()->is('admin/role/*')) ? 'active' : '' }}">--}}
+{{--            <a class="nav-link" data-bs-toggle="collapse" href="#employees" aria-expanded="false" aria-controls="employees">--}}
+{{--              <span class="menu-icon">--}}
+{{--                <i class="mdi mdi-account-multiple"></i>--}}
+{{--              </span>--}}
+{{--                <span class="menu-title">Nhân viên</span>--}}
+{{--                <i class="menu-arrow"></i>--}}
+{{--            </a>--}}
+{{--            <div--}}
+{{--                class="collapse {{ (request()->is('admin/employees') || request()->is('admin/employees/create') || request()->is('admin/role/*')) ? 'show' : '' }}"--}}
+{{--                id="employees">--}}
+{{--                <ul class="nav flex-column sub-menu">--}}
+{{--                    @can('viewAny', \App\Models\Employee::class)--}}
+{{--                    <li class="nav-item"><a class="nav-link {{ (request()->is('admin/employees')) ? 'active' : '' }}"--}}
+{{--                                            href="{{route('employees.index')}}">Danh sách</a></li>--}}
+{{--                    @endcan--}}
+{{--                    @can('create', \App\Models\Employee::class)--}}
+{{--                    <li class="nav-item"><a class="nav-link {{ request()->is('admin/employees/create') ? 'active' : '' }}"--}}
+{{--                                            href="{{route('employees.create')}}">Thêm mới</a></li>--}}
+{{--                    @endcan--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        </li>--}}
+{{--        @endcanany--}}
 
         @canany(['create', 'viewAny'], \App\Models\Category::class)
         <li class="nav-item menu-items {{ (request()->is('admin/categories')||request()->is('admin/categories/*')) ? 'active' : '' }}">
@@ -147,17 +147,6 @@
                     </a>
                 </li>
             @endcan
-            @can( 'pending', \App\Models\Post::class)
-                <li class="nav-item menu-items {{ (request()->is('admin/posts/pending')) ? 'active' : '' }}">
-                    <a class="nav-link" href="{{route('posts.pending')}}">
-                          <span class="menu-icon">
-                            <i class="mdi mdi-format-list-bulleted-type"></i>
-                          </span>
-                        <span class="menu-title">Tin tức Chờ xuất bản</span>
-                    </a>
-                </li>
-            @endcan
-
             @can( 'create', \App\Models\Post::class)
                 <li class="nav-item menu-items {{ (request()->is('admin/posts/create')) ? 'active' : '' }}">
                     <a class="nav-link" href="{{route('posts.create')}}">
@@ -169,6 +158,25 @@
                 </li>
             @endcan
         @endcanany
+        <li class="nav-item nav-category  pb-0">
+            <span class="nav-link">Phòng</span>
+        </li>
+        <li class="nav-item menu-items {{ (request()->is('admin/rooms')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{route('rooms.index')}}">
+                  <span class="menu-icon">
+                    <i class="mdi mdi-format-list-bulleted-type"></i>
+                  </span>
+                <span class="menu-title">Danh sách</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items {{ (request()->is('admin/rooms/create')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{route('rooms.create')}}">
+                <span class="menu-icon">
+                    <i class="mdi mdi-library-plus"></i>
+                </span>
+                <span class="menu-title">Thêm mới</span>
+            </a>
+        </li>
         @canany(['create', 'viewAny'], \App\Models\Slide::class)
             <li class="nav-item nav-category  pb-0">
                 <span class="nav-link">Trình Slide</span>

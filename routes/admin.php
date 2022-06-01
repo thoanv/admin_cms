@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BannerDetailController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\RoomController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +46,7 @@ Route::middleware('auth:admin')->group(function (){
         'slides'            => SlideController::class,
         'banners'           => BannerController::class,
         'menus'             => MenuController::class,
+        'rooms'             => RoomController::class,
     ]);
     Route::get('/posts/{post}/{type}',[PostController::class, 'show'])->name('posts.showDetail');
     Route::post('/post/change/published',[PostController::class, 'changePublished'])->name('post.change.published');
@@ -62,6 +64,6 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/banners-detail/create/{banner}', [BannerDetailController::class, 'create'])->name('banners_detail_create');
     Route::post('/banners-detail/create', [BannerDetailController::class, 'store'])->name('banners_detail_store');
 //    Route::any('/ckfinder/connector', 'CKSource\CKFinderBridge\Controller\CKFinderController@requestAction') ->name('ckfinder_connector');
-    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
+//    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
 });
 

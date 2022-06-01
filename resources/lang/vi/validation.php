@@ -174,6 +174,8 @@ return [
         'destinations' => 'Điểm đến',
         'category_id' => 'Danh mục',
         'title' => 'Tiêu đề',
+        'price_h' => 'Giá ngày',
+        'price_d' => 'Giá qua đêm',
     ],
 
 ];

@@ -9,7 +9,7 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Họ tên</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="name" id="name" placeholder="vd: Hải Phát Land" value="{{old('name', $employee['name'])}}">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="vd: Nguyễn Văn Hải" value="{{old('name', $employee['name'])}}">
                             @if ($errors->has('name'))
                                 <div class="mt-1 notification-error">
                                     {{$errors->first('name')}}

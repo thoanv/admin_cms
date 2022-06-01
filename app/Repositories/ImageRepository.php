@@ -9,9 +9,9 @@ class ImageRepository extends AbstractRepository
     public function model(){
         return Image::class;
     }
-    public function getImageByCategoryId($cate_id)
+    public function getImageByRoomId($room_id)
     {
-        return $this->model->where('category_id', $cate_id)->orderBy('id', 'DESC')->get();
+        return $this->model->where('room_id', $room_id)->orderBy('id', 'DESC')->get();
     }
     public function getImagePageByJournalId($journal_id)
     {

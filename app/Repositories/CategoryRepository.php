@@ -11,18 +11,10 @@ class CategoryRepository extends AbstractRepository
     {
         return Category::class;
     }
-    public function getCategories()
+    public function getCategoriesByType($type= 'post')
     {
-        $data = [];
-        $query =  $this->model->whereNull('parent_id')->orderBy('ID', 'DESC')->get();
-        foreach ($query as $item):
-            $data[] = $item;
-            $que = $this->model->where('parent_id', $item['id'])->get();
-            foreach ($que as $it):
-                $data[] = $it;
-            endforeach;
-        endforeach;
-        return $data;
+        return $this->model->where([['status', true],['type', $type]])->whereNotNull('parent_id')->get();
+
     }
     public function getCategoriesStatus($status = false)
     {
