@@ -22,7 +22,6 @@ class CreatePostsTable extends Migration
             $table->text('content')->nullable();
 
             $table->tinyInteger('view')->default(0);
-            $table->tinyInteger('featured')->default(0);
             $table->enum('featured', ['YES', 'NO'])->default('NO');
             $table->enum('status', ['YES', 'NO'])->default('YES');
             $table->tinyInteger('start')->default(0);
@@ -30,6 +29,7 @@ class CreatePostsTable extends Migration
             $table->dateTime('time_published')->nullable();
 
             $table->unsignedInteger('created_by');
+            $table->unsignedInteger('category_id');
             $table->unsignedInteger('updated_by')->nullable();
             $table->timestamps();
         });

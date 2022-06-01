@@ -1,5 +1,10 @@
 @php
     $info_web = \App\Models\AboutU::find(1);
+    $menus =[];
+    $dataMenus = \App\Models\Menu::where('key', 'menu-header')->first();
+    if(count(unserialize($dataMenus['data'])))
+        $menus = unserialize($dataMenus['data']);
+
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -52,6 +57,7 @@
     <script src="{{asset('front-end/js/script.js')}}"></script>
 </head>
 <body>
+    @include('layouts.header', ['menus' => $menus])
     @yield('content')
 </body>
 </html>

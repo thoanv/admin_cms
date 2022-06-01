@@ -64,11 +64,11 @@
                                             @endcan
                                             <a href="{{route('menus.setup', $menu['id'])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-wrench btn-icon-prepend icon-mr"></i> Cài đặt</a>
 
-                                            <form class="d-inline-block" action="{{ route('menus.destroy', $menu['id']) }}" method="POST" >
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
-                                            </form>
+{{--                                            <form class="d-inline-block" action="{{ route('menus.destroy', $menu['id']) }}" method="POST" >--}}
+{{--                                                @csrf--}}
+{{--                                                @method('DELETE')--}}
+{{--                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>--}}
+{{--                                            </form>--}}
                                         </td>
                                     </tr>
                                 @endforeach

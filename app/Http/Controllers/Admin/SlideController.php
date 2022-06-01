@@ -56,7 +56,7 @@ class SlideController extends Controller
      */
     public function store(StoreSlideRequest $request)
     {
-        $data = $request->only('name', 'image', 'url');
+        $data = $request->only('title', 'image', 'url', 'description');
         $data['status'] = isset($request['status']) ? 1 : 0;
         $data['created_by'] = Auth::id();
         $this->slideRepo->create($data);
@@ -98,7 +98,7 @@ class SlideController extends Controller
      */
     public function update(UpdateSlideRequest $request, Slide $slide)
     {
-        $data = $request->only('name', 'image', 'url');
+        $data = $request->only('title', 'image', 'url', 'description');
         $data['status'] = isset($request['status']) ? 1 : 0;
         $this->slideRepo->update($data, $slide['id']);
         return redirect(route('slides.index'))->with('success',  'Cập nhật thành công');

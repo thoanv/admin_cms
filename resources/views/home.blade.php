@@ -1,272 +1,29 @@
 @extends('layouts.app')
 @section('title', 'MinHotel')
 @section('content')
-    <div id='menuNKTA'>
-        <div id='menuNKTA_DESKTOP'>
-            <div class='wrapMenuline_1_line_2'>
-                <div class='menuLine_2'>
-                    <div class='container'>
-                        <div class='row'>
-                            <div class='logoPart'>
-                                <a class='imgPart' href='{{route('home')}}'>
-                                    <img alt='logo' src='{{$aboutUs['logo']}}'>
-                                </a>
-                            </div>
-                            <div class='menuPart'>
-                                <div class='menuItem'>
-                                    <a class='link1' href='gioi-thieu/index.html'>
-                                        <p class='text'>GIỚI THIỆU</p>
-                                    </a>
-                                </div>
-                                <div class='menuItem'>
-                                    <a class='link1' href='khach-san-tinh-yeu/index.html'>
-                                        <p class='text'>MIN HOTEL</p>
-                                    </a>
-                                </div>
-                                <div class='menuItem'>
-                                    <a class='link1' href='gallery/index.html'>
-                                        <p class='text'>GALLERY</p>
-                                    </a>
-                                </div>
-                                <div class='menuItem'>
-                                    <a class='link1' href='tin-tuc/index.html'>
-                                        <p class='text'>TIN TỨC</p>
-                                    </a>
-                                </div>
-                                <div class='menuItem'>
-                                    <a class='link1' href='su-kien/index.html'>
-                                        <p class='text'>SỰ KIỆN</p>
-                                    </a>
-                                </div>
-                                <div class='menuItem dropDown'>
-                                    <a class='link1' href='#'>
-                                        <p class='text'>CHÍNH SÁCH</p>
-                                    </a>
-                                    <ul class='blockLevel2'>
-                                        <li>
-                                            <a class='link2' href='chinh-sach-thanh-toan/index.html'>CHÍNH SÁCH THANH
-                                                TOÁN</a>
-                                        </li>
-                                        <li>
-                                            <a class='link2' href='chinh-sach-bao-mat-thong-tin/index.html'>CHÍNH SÁCH BẢO
-                                                MẬT THÔNG TIN</a>
-                                        </li>
-                                        <li>
-                                            <a class='link2' href='chinh-sach-dat-tra-phong/index.html'>CHÍNH SÁCH ĐẶT TRẢ
-                                                PHÒNG</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class='menuItem'>
-                                    <a class='link1' href='lien-he/index.html'>
-                                        <p class='text'>LIÊN HỆ</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div id='menuNKTA_MOBILE'>
-            <div class='blockUnderMenuTopPage'></div>
-            <div class='menuTopPage'>
-                <div class='container'>
-                    <div class='row'>
-                        <div class='logoPart'>
-                            <a class='imgPart' href='index.html'>
-                                <img alt='logo' src='uploads/images/5fbe27e1a79a0d5e7942c393/mix-boutique-logo.webp'>
-                            </a>
-                        </div>
-                        <div class='barsPart'>
-                            <a class='aTag aTagBars'>
-                                <img alt='danh_muc' class='barsPartImg' src='/uploads/img/bars_item.svg'>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='menuEndPage'>
-                <div class='container'>
-                    <div class='row'>
-                        <div class='homePart smallPart'>
-                            <a class='aTag' href='index.html'>
-                                <img alt='homeItem' class='homePartImg' src='uploads/img/u1214.svg'>
-                            </a>
-                            <p class='textUnderItem'>Trang chủ</p>
-                        </div>
-                        <div class='messFacePart smallPart'>
-                            <a class='aTag callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                               styleContact='chatFacebook'>
-                                <img alt='messengerItem' class='messFacePartImg' src='uploads/img/messenger_2.svg'>
-                            </a>
-                            <p class='textUnderItem'>Messenger</p>
-                        </div>
-                        <div class='phonePart centerPart'>
-                            <a class='callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                               styleContact='callPhone'>
-                                <img alt='phoneItem' class='phonePartImg' src='uploads/img/phone_item.svg'>
-                            </a>
-                        </div>
-                        <div class='zaloPart smallPart'>
-                            <a class='aTag callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                               styleContact='chatZalo'>
-                                <img alt='Zalo' class='zaloPartImg' src='uploads/img/zalo_2.png'>
-                            </a>
-                            <p class='textUnderItem'>Zalo</p>
-                        </div>
-                        <div class='inboxPart smallPart'>
-                            <a class='aTag callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                               styleContact='chatMess'>
-                                <img alt='map' class='inboxPartImg' src='uploads/img/u1351.svg'>
-                            </a>
-                            <p class='textUnderItem'>Tin nhắn</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='blockCateMobile'>
-                <div class='container'>
-                    <div class='wrapCateParts'>
-                        <div class='catePart'>
-                            <a class='link1' href='index.html'>TRANG CHỦ</a>
-                        </div>
-                        <div class='catePart'>
-                            <a class='link1' href='gioi-thieu/index.html'>GIỚI THIỆU</a>
-                        </div>
-                        <div class='catePart'>
-                            <a class='link1' href='gioi-thieu/index.html'>MINHOTEL</a>
-                        </div>
-
-                        <div class='catePart'>
-                            <a class='link1' href='gallery/index.html'>GALLERY</a>
-                        </div>
-                        <div class='catePart'>
-                            <a class='link1' href='tin-tuc/index.html'>TIN TỨC</a>
-                        </div>
-                        <div class='catePart'>
-                            <a class='link1' href='su-kien/index.html'>SỰ KIỆN</a>
-                        </div>
-                        <div class='catePart dropMore'>
-                            <a class='link1' href='index.html#/'>CHÍNH SÁCH</a>
-                            <i aria-hidden='true' class='fa fa-angle-right faFix'></i>
-                            <i aria-hidden='true' class='fa fa-angle-down faFix'></i>
-                            <ul class='blockLevel2'>
-                                <li>
-                                    <a class='link2' href='chinh-sach-thanh-toan/index.html'>CHÍNH SÁCH THANH TOÁN</a>
-                                </li>
-                                <li>
-                                    <a class='link2' href='chinh-sach-bao-mat-thong-tin/index.html'>CHÍNH SÁCH BẢO MẬT THÔNG
-                                        TIN</a>
-                                </li>
-                                <li>
-                                    <a class='link2' href='chinh-sach-dat-tra-phong/index.html'>CHÍNH SÁCH ĐẶT TRẢ PHÒNG</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class='catePart'>
-                            <a class='link1' href='lien-he/index.html'>LIÊN HỆ</a>
-                        </div>
-                    </div>
-                    <div class='hideBlock'>
-                        <i aria-hidden='true' class='fa fa-times xItem'></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div aria-hidden='true' class='modal fade' id='popupContact_1' role='dialog' tabindex='-1'>
-        <div class='modal-dialog modal-dialog-centered' role='document'>
-            <div class='modal-content'>
-                <div class='titlePart'>
-                    <a class='close closeItem' data-dismiss='modal'>
-                        x
-                    </a>
-                </div>
-                <div class='SelectLocate'>
-                    <div class='smallPart'>
-                        <a callPhone='tel:0383104010' chatFacebook='https://www.messenger.com/t/602986296805550/'
-                           chatMess='sms:0383104010' chatZalo='https://zalo.me/0383104010' class='linkContact' href='#'
-                           rel='nofollow' target='_blank'>Mix Boutique Hotel 186 Hoàng Ngân</a>
-                    </div>
-                    <div class='smallPart'>
-                        <a callPhone='tel:0393307030' chatFacebook='https://www.messenger.com/t/111428390604292/'
-                           chatMess='sms:0393307030' chatZalo='https://zalo.me/0393307030' class='linkContact' href='#'
-                           rel='nofollow' target='_blank'>Mix Boutique Hotel 256B Đặng Tiến Đông</a>
-                    </div>
-                    <div class='smallPart'>
-                        <a callPhone='tel:0334060906' chatFacebook='https://www.messenger.com/t/111386644041404/'
-                           chatMess='sms:0334060906' chatZalo='https://zalo.me/0334060906' class='linkContact' href='#'
-                           rel='nofollow' target='_blank'>Mix Boutique Hotel 104B Nguyễn Khuyến</a>
-                    </div>
-                    <div class='smallPart'>
-                        <a callPhone='tel:0353660966' chatFacebook='https://www.facebook.com/messages/t/114361207416511'
-                           chatMess='sms:0353660966' chatZalo='https://zalo.me/0353660966' class='linkContact' href='#'
-                           rel='nofollow' target='_blank'>Mix Boutique Hotel 20 Phúc La Hà Đông</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <main id='homeMixHotel'>
+    <main id='homeMinHotel'>
         <div class='specialBlock_1'>
             <h1 style='display: none'>Hệ Thống Khách Sạn Tình Yêu Tại Hà Nội - Min Hotel</h1>
             <div class='owl-carousel owl-theme slide'>
+                @foreach($slides as $slide)
                 <div class='wrapBox'>
                     <div class='imgBanner'>
                         <picture>
-                            <source media='(min-width:768px)' srcset='/uploads/img/bannerMobile_1.webp'>
-                            <img alt='khách sạn tình yêu' src='/uploads/img/bannerMobile_1.webp'>
+                            <source media='(min-width:768px)' srcset='{{$slide['ima    ge']}}'>
+                            <img alt='khách sạn tình yêu' src='{{$slide['image']}}'>
                             </source>
                         </picture>
                     </div>
                     <div class='textPart'>
-                        <p class='text_1'>Hệ Thống Khách Sạn Tình Yêu Tại Hà Nội - Min Hotel</p>
-                        <p class='text_2'>Ở Min Hotel, chúng tôi giúp bạn vẽ bức tranh tình yêu của chính mình bằng
-                            những sắc màu tươi mới, để mỗi phút giây bên nhau đều như "Phút yêu đầu"</p>
+                        <p class='text_1'>{{$slide['title']}}</p>
+                        <p class='text_2'>{!! $slide['description'] !!}</p>
                         <div class='btnFindMore marTop_30'>
                             <a class='btnType_1 callContactLocate' data-target='#popupContact_1' data-toggle='modal'
                                styleContact='chatZalo'>Liên hệ</a>
                         </div>
                     </div>
                 </div>
-                <div class='wrapBox'>
-                    <div class='imgBanner'>
-                        <picture>
-                            <source media='(min-width:768px)' srcset='/uploads/img/bannerMobile_2.webp'>
-                                <img alt='khách sạn tình yêu' loading='lazy' src='/uploads/img/bannerMobile_2.webp'>
-                            </source>
-                        </picture>
-                    </div>
-                    <div class='textPart'>
-                        <p class='text_1'>Hệ Thống Khách Sạn Tình Yêu Tại Hà Nội - Mix Boutique Hotel</p>
-                        <p class='text_2'>Ở Mix Boutique Hotel, chúng tôi giúp bạn vẽ bức tranh tình yêu của chính mình bằng
-                            những sắc màu tươi mới, để mỗi phút giây bên nhau đều như "Phút yêu đầuu"</p>
-                        <div class='btnFindMore marTop_30'>
-                            <a class='btnType_1 callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                               styleContact='chatZalo'>Liên hệ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class='wrapBox'>
-                    <div class='imgBanner'>
-                        <picture>
-                            <source media='(min-width:768px)' srcset='/uploads/img/bannerMobile_3.webp'>
-                            <img alt='khách sạn tình yêu' loading='lazy' src='/uploads/img/bannerMobile_3.webp'>
-                            </source>
-                        </picture>
-                    </div>
-                    <div class='textPart'>
-                        <p class='text_1'>Hệ Thống Khách Sạn Tình Yêu Tại Hà Nội - Mix Boutique Hotel</p>
-                        <p class='text_2'>Ở Mix Boutique Hotel, chúng tôi giúp bạn vẽ bức tranh tình yêu của chính mình bằng
-                            những sắc màu tươi mới, để mỗi phút giây bên nhau đều như "Phút yêu đầu"</p>
-                        <div class='btnFindMore marTop_30'>
-                            <a class='btnType_1 callContactLocate' data-target='#popupContact_1' data-toggle='modal'
-                               styleContact='chatZalo'>Liên hệ</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <article class='container px-0 py-3 mt-md-3 mb-2'>
@@ -290,7 +47,7 @@
                             yêu của chính mình bằng những sắc màu
                             tươi mới, để mỗi phút giây bên nhau đều như "Phút yêu đầu"
                         </p>
-                        <a href='#' style='font-size: 20px;'>Xem thêm &gt;&gt;</a>
+{{--                        <a href='#' style='font-size: 20px;'>Xem thêm &gt;&gt;</a>--}}
                     </div>
                 </aside>
             </section>
@@ -304,8 +61,8 @@
                     Đồng hành giữ gìn NGỌN LỬA TÌNH YÊU của các cặp đôi. Một chốn riêng tư, một nơi nghỉ ngơi, một điểm đến
                     mới toanh với đa dạng phong cách tại Hà Nội
                 </p>
-                <div class='row'>
-                    <div class='col-4 col-md-2'>
+                <div class='row mt-3'>
+                    <div class='col-4 col-md-3'>
                         <figure class='square-img mb-md-1'>
                             <img alt='khách sạn tình yêu' src='uploads/img/24-icon.webp'>
                         </figure>
@@ -313,23 +70,7 @@
                             <b>Wifi nhanh</b>
                         </p>
                     </div>
-                    <div class='col-4 col-md-2'>
-                        <figure class='square-img mb-md-1'>
-                            <img alt='khách sạn tình yêu' loading='lazy' src='uploads/img/24-icon-4.webp'>
-                        </figure>
-                        <p class='upcase'>
-                            <b>Bồn tắm</b>
-                        </p>
-                    </div>
-                    <div class='col-4 col-md-2'>
-                        <figure class='square-img mb-md-1'>
-                            <img alt='khách sạn tình yêu' src='uploads/img/24-icon-6.webp'>
-                        </figure>
-                        <p class='upcase'>
-                            <b>cosplay</b>
-                        </p>
-                    </div>
-                    <div class='col-4 col-md-2'>
+                    <div class='col-4 col-md-3'>
                         <figure class='square-img mb-md-1'>
                             <img alt='khách sạn tình yêu' loading='lazy' src='uploads/img/24-icon-7.webp'>
                         </figure>
@@ -337,7 +78,7 @@
                             <b>an toàn</b>
                         </p>
                     </div>
-                    <div class='col-4 col-md-2'>
+                    <div class='col-4 col-md-3'>
                         <figure class='square-img mb-md-1'>
                             <img alt='khách sạn tình yêu' loading='lazy' src='uploads/img/24-icon-5.webp'>
                         </figure>
@@ -345,7 +86,7 @@
                             <b>đồ chơi</b>
                         </p>
                     </div>
-                    <div class='col-4 col-md-2'>
+                    <div class='col-4 col-md-3'>
                         <figure class='square-img mb-md-1'>
                             <img alt='khách sạn tình yêu' loading='lazy' src='uploads/img/24-icon-8.webp'>
                         </figure>

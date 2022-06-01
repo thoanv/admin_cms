@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DestinationPost extends Model
+class Room extends Model
 {
     use HasFactory;
-    protected $table = 'destination_post';
 }

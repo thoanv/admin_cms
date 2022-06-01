@@ -41,12 +41,13 @@
                         <div class="col-sm-9">
                             <select name="type" id="type" class="form-control">
                                 <option {{$category['type'] == 'posts' ? 'selected' : ''}} value="posts">Tin tức</option>
-                                <option {{$category['type'] == 'product' ? 'selected' : ''}} value="product">Sản phẩm</option>
+                                <option {{$category['type'] == 'room' ? 'selected' : ''}} value="room">Phòng</option>
                                 <option {{$category['type'] == 'policy' ? 'selected' : ''}} value="policy">Chính sách
                                 </option>
                                 <option {{$category['type'] == 'contact' ? 'selected' : ''}} value="contact">Liên hệ</option>
                                 <option {{$category['type'] == 'tutorial' ? 'selected' : ''}} value="tutorial">Hướng dẫn</option>
                                 <option {{$category['type'] == 'introduce' ? 'selected' : ''}} value="introduce">Giới thiệu</option>
+                                <option {{$category['type'] == 'image' ? 'selected' : ''}} value="image">Hình ảnh</option>
                             </select>
                             @if ($errors->has('type'))
                                 <div class="mt-1 notification-error">

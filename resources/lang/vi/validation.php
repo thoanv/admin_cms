@@ -172,6 +172,8 @@ return [
         'confirm_password' => 'Nhập lại mật khẩu mới',
         'categories' => 'Danh mục',
         'destinations' => 'Điểm đến',
+        'category_id' => 'Danh mục',
+        'title' => 'Tiêu đề',
     ],
 
 ];

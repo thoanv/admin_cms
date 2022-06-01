@@ -97,35 +97,4 @@ class PostPolicy
     {
         //
     }
-
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function pending(Employee $employee)
-    {
-        return $employee->hasPermission('post-pending');
-    }
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function published(Employee $employee)
-    {
-        return $employee->hasPermission('post-published');
-    }
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function unpublished(Employee $employee)
-    {
-        return $employee->hasPermission('post-unpublished');
-    }
 }

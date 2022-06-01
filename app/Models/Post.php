@@ -26,7 +26,8 @@ class Post extends Model
         'published',
         'time_published',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'category_id'
     ];
     public function owner()
     {
@@ -36,13 +37,9 @@ class Post extends Model
     {
         return $this->belongsTo(Employee::class, 'updated_by');
     }
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class, 'category_post');
-    }
-    public function destinations()
-    {
-        return $this->belongsToMany(Destination::class, 'destination_post');
+       return $this->belongsTo(Category::class, 'category_id');
     }
     public function getPublisher()
     {

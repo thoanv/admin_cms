@@ -7,12 +7,12 @@
                     <h5 class="card-title">Thông tin chung</h5>
                     <hr>
                     <div class="form-group row mb-3">
-                        <label for="name" class="col-sm-3 col-form-label">Tên</label>
+                        <label for="name" class="col-sm-3 col-form-label">Tiêu đề</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" placeholder="" name="name" value="{{old('name', $slide['name'])}}">
-                            @if ($errors->has('name'))
+                            <input type="text" class="form-control" id="title" placeholder="" name="title" value="{{old('title', $slide['title'])}}">
+                            @if ($errors->has('title'))
                                 <div class="mt-1 notification-error">
-                                    {{$errors->first('name')}}
+                                    {{$errors->first('title')}}
                                 </div>
                             @endif
                         </div>
@@ -39,6 +39,15 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Mô tả</h5>
+                    <hr>
+                    <div class="form-group">
+                        <textarea rows="4" cols="70" id="description" class="form-control" name="description">{{$slide['description']}}</textarea>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-3">

@@ -15,7 +15,7 @@ class SlideRepository extends AbstractRepository
     {
         $query = $this->model;
         if($request->name){
-            $query = $query->where('name', 'like', '%' . $request->name . '%');
+            $query = $query->where('title', 'like', '%' . $request->name . '%');
         }
 
         if($request->status == 0 && $request->status !=''){

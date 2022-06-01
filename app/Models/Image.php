@@ -10,9 +10,8 @@ class Image extends Model
     use HasFactory;
     protected $fillable = [
         'url',
-        'project_id',
-        'journal_id',
+        'room_id',
         'category_id',
-        'page',
+        'create_by',
     ];
 }

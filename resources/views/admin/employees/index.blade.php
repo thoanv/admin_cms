@@ -38,7 +38,7 @@
                                     <th scope="col">STT</th>
                                     <th scope="col" >Thông tin</th>
                                     <th scope="col" class="text-center">Hình ảnh</th>
-                                    <th scope="col" class="text-center">Quyền</th>
+{{--                                    <th scope="col" class="text-center">Quyền</th>--}}
                                     <th scope="col" class="text-center">Trạng thái</th>
                                     <th scope="col" class="text-center">Hành động</th>
                                 </tr>
@@ -62,13 +62,13 @@
                                         <td role="cell" class="text-center">
                                             <img class="img-sm rounded-circle me-3" style="width: 100px; height: unset; border-radius: unset!important;" src="{{$item['avatar'] ? $item['avatar'] : '/assets/images/faces/man.png'}}" alt="avatar">
                                         </td>
-                                        <td role="cell" class="text-center">
-                                            @if($item['is_admin'])
-                                                <div class="badge badge-outline-danger badge-pill">Quyền Admin</div>
-                                            @else
-                                                <div class="badge badge-outline-success badge-pill">{{isset($item->role) ? $item->role->name : '..........'}}</div>
-                                            @endif
-                                        </td>
+{{--                                        <td role="cell" class="text-center">--}}
+{{--                                            @if($item['is_admin'])--}}
+{{--                                                <div class="badge badge-outline-danger badge-pill">Quyền Admin</div>--}}
+{{--                                            @else--}}
+{{--                                                <div class="badge badge-outline-success badge-pill">{{isset($item->role) ? $item->role->name : '..........'}}</div>--}}
+{{--                                            @endif--}}
+{{--                                        </td>--}}
                                         <td role="cell" class="text-center">
                                             <div class="form-check form-switch" style="display: inline-block">
                                                 <input name="my-checkbox" type="checkbox" class="form-check-input css-switch" data-id="{{$item['id']}}"
@@ -77,32 +77,32 @@
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            @if(!$item->isSuperAdmin())
-                                            <div class="mb-2">
-                                                @if(!count($item->roles))
-                                                    <a href="{{route('authorization-employee',['employee_id'=> $item['id']])}}"
-                                                       class="btn btn-primary btn-sm">
-                                                        <i class="mdi mdi-key-plus icon-mr" aria-hidden="true"></i> Cấp quyền
-                                                    </a>
-                                                @else
-                                                    @if(count($item->roles) && !empty($item->roles))
-                                                        <a href="{{route('authorization-employee-role',['employee_id'=> $item['id'], 'role_id' => $item->roles[0]->id])}}"
-                                                           class="btn btn-success btn-sm">
-                                                            <i class="fa fa-balance-scale" aria-hidden="true"></i> Cập
-                                                            nhật quyền
-                                                        </a>
-                                                        @can('delete', $item)
-                                                        <form class="d-inline-block" action="{{ route('employees.destroy', $item['id']) }}" method="POST" >
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')">
-                                                                <i class="fa fa-trash-o"></i> Xóa quyền</button>
-                                                        </form>
-                                                        @endcan
-                                                    @endif
-                                                @endif
-                                            </div>
-                                            @endif
+{{--                                            @if(!$item->isSuperAdmin())--}}
+{{--                                            <div class="mb-2">--}}
+{{--                                                @if(!count($item->roles))--}}
+{{--                                                    <a href="{{route('authorization-employee',['employee_id'=> $item['id']])}}"--}}
+{{--                                                       class="btn btn-primary btn-sm">--}}
+{{--                                                        <i class="mdi mdi-key-plus icon-mr" aria-hidden="true"></i> Cấp quyền--}}
+{{--                                                    </a>--}}
+{{--                                                @else--}}
+{{--                                                    @if(count($item->roles) && !empty($item->roles))--}}
+{{--                                                        <a href="{{route('authorization-employee-role',['employee_id'=> $item['id'], 'role_id' => $item->roles[0]->id])}}"--}}
+{{--                                                           class="btn btn-success btn-sm">--}}
+{{--                                                            <i class="fa fa-balance-scale" aria-hidden="true"></i> Cập--}}
+{{--                                                            nhật quyền--}}
+{{--                                                        </a>--}}
+{{--                                                        @can('delete', $item)--}}
+{{--                                                        <form class="d-inline-block" action="{{ route('employees.destroy', $item['id']) }}" method="POST" >--}}
+{{--                                                            @csrf--}}
+{{--                                                            @method('DELETE')--}}
+{{--                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?')">--}}
+{{--                                                                <i class="fa fa-trash-o"></i> Xóa quyền</button>--}}
+{{--                                                        </form>--}}
+{{--                                                        @endcan--}}
+{{--                                                    @endif--}}
+{{--                                                @endif--}}
+{{--                                            </div>--}}
+{{--                                            @endif--}}
                                             @can('update', $item)
                                             <a href="{{route('employees.edit', $item['id'])}}" class="btn btn-primary btn-icon-text"><i class="mdi mdi-file-check btn-icon-prepend icon-mr"></i> Sửa</a>
                                             @endcan

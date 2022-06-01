@@ -136,6 +136,6 @@ class CategoryController extends Controller
     {
         $this->authorize('delete', $category);
         $category->delete();
-        return redirect()->route('type-permissions.index')->with('success','Xóa thành công');
+        return redirect()->route('categories.index')->with('success','Xóa thành công');
     }
 }

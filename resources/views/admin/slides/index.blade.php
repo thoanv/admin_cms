@@ -33,7 +33,7 @@
                                    <div class="col-md-3">
                                        <div class="form-group">
                                            <label for="name">Từ khóa</label>
-                                           <input type="text" class="form-control" name="name" value="{{isset($request->name) ? $request->name : ''}}" id="name" placeholder="Nhập từ khóa ....">
+                                           <input type="text" class="form-control" name="title" value="{{isset($request->title) ? $request->title : ''}}" id="name" placeholder="Nhập từ khóa ....">
                                        </div>
                                    </div>
                                    <div class="col-md-3">
@@ -76,7 +76,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">STT</th>
-                                    <th scope="col">Tên</th>
+                                    <th scope="col">Tiêu đề</th>
                                     <th scope="col">Hình ảnh</th>
                                     <th scope="col">Tảo bởi</th>
                                     <th scope="col">Đường dẫn</th>
@@ -89,7 +89,7 @@
                                     <tr role="row" >
                                         <td role="cell">{{$loop->iteration}}</td>
                                         <td role="cell">
-                                            {{$item['name']}}
+                                            {{$item['title']}}
                                         </td>
                                         <td><img style="width: 100px; height: unset; border-radius: unset!important;" src="{{$item['image']}}" /></td>
                                         <td role="cell">{{$item->createdBy->name}}</td>

@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Admin\EmployeeController;
-use App\Http\Controllers\Admin\DestinationController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\BannerController;
@@ -33,9 +32,6 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/', [DasboadController::class, 'index'])->name('dashboard');
     Route::get('/thay-doi-mat-khau',[DasboadController::class, 'showChangePasswordGet'])->name('changePasswordGet');
     Route::post('/changePassword',[DasboadController::class, 'changePasswordPost'])->name('changePasswordPost');
-    Route::get('/posts/pending',[PostController::class, 'pending'])->name('posts.pending');
-    Route::get('/posts/unpublished',[PostController::class, 'unpublished'])->name('posts.unpublished');
-    Route::get('/posts/published',[PostController::class, 'published'])->name('posts.published');
     Route::get('menus/{menu}/setup', [MenuController::class, 'setup'])->name('menus.setup');
     Route::post('menus/{menu}/setup', [MenuController::class, 'setupStore'])->name('menus.setup-store');
     Route::resources([
@@ -45,7 +41,6 @@ Route::middleware('auth:admin')->group(function (){
         'aboutUs'           => AboutUController::class,
         'contacts'          => ContactController::class,
         'employees'         => EmployeeController::class,
-        'destinations'      => DestinationController::class,
         'posts'             => PostController::class,
         'slides'            => SlideController::class,
         'banners'           => BannerController::class,
@@ -67,6 +62,6 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/banners-detail/create/{banner}', [BannerDetailController::class, 'create'])->name('banners_detail_create');
     Route::post('/banners-detail/create', [BannerDetailController::class, 'store'])->name('banners_detail_store');
 //    Route::any('/ckfinder/connector', 'CKSource\CKFinderBridge\Controller\CKFinderController@requestAction') ->name('ckfinder_connector');
-//    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
+    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
 });
 

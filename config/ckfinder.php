@@ -188,4 +188,5 @@ $config['csrfProtection'] = true;
 /**
  * Config must be returned - do not change it.
  */
+
 return $config;

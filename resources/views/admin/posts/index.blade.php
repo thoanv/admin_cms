@@ -38,13 +38,11 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="publisher">Trạng thái</label>
-                                        <select name="publisher" id="" class="form-control">
+                                        <label for="status">Trạng thái</label>
+                                        <select name="status" id="" class="form-control">
                                             <option value="">Tất cả</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_DRAFT)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_DRAFT}}">Bản Nháp</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_PENDING)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_PENDING}}">Chờ Xuất Bản</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_PUBLISHED)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_PUBLISHED}}">Đã Xuất Bản</option>
-                                            <option {{(isset($request->publisher) && $request->publisher == \App\Models\Post::STATUS_UNPUBLISHED)  ? 'selected' : ''}} value="{{\App\Models\Post::STATUS_UNPUBLISHED}}">Không Xuất Bản</option>
+                                            <option {{(isset($request->status) && $request->status === 'YES' ) ? 'selected' : ''}} value="YES">Hoạt động</option>
+                                            <option {{(isset($request->status) && $request->status === 'NO' ) ? 'selected' : ''}} value="NO">Không hoạt động</option>
                                         </select>
                                     </div>
                                 </div>
@@ -54,22 +52,12 @@
                                         <select name="category" id="category" class="form-control">
                                             <option value="">Tất cả</option>
                                             @foreach($categories as $cate)
-                                            <option {{(isset($request->category) && $request->category == $cate['id']) ? 'selected' : ''}} value="{{$cate['id']}}">{{$cate['name']}}</option>
+                                                <option {{(isset($request->category) && $request->category == $cate['id']) ? 'selected' : ''}} value="{{$cate['id']}}">{{$cate['name']}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="destination">Điểm đến</label>
-                                        <select name="destination" id="destination" class="form-control">
-                                            <option value="">Tất cả</option>
-                                            @foreach($destinations as $des)
-                                                <option {{(isset($request->destination) && $request->destination == $des['id']) ? 'selected' : ''}} value="{{$des['id']}}">{{$des['name']}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-3">
@@ -89,7 +77,7 @@
                             <h4 class="card-title">
                                 Danh sách
                                 @can('create', \App\Models\Post::class)
-                                <a href="{{route('posts.create')}}" class="btn btn-primary btn-fw float-end">Thêm mới</a>
+                                    <a href="{{route('posts.create')}}" class="btn btn-primary btn-fw float-end">Thêm mới</a>
                                 @endcan
                             </h4>
 
@@ -102,7 +90,6 @@
                                     <th scope="col" >Tên bài viết</th>
                                     <th scope="col" class="text-center">Hình ảnh</th>
                                     <th scope="col" class="text-center">Danh mục</th>
-                                    <th scope="col" class="text-center">Điểm đến</th>
                                     <th scope="col" class="text-center">Lượt xem</th>
                                     <th scope="col" class="text-center">Ngày tạo</th>
                                     <th scope="col" class="text-center">Trạng thái</th>
@@ -120,29 +107,21 @@
                                             <img class="img-dev-custom" src="{{$item['avatar'] ? $item['avatar'] : '/assets/images/no-image.png'}}" alt="{{$item->name}}">
                                         </td>
                                         <td class="text-center">
-                                            <div>
-                                                @foreach($item->categories as $category)
-                                                    <span class="badge badge-outline-primary badge-pill">{{$category['name']}}</span>
-                                                @endforeach
+                                            <div class="badge badge-outline-primary badge-pill">
+                                                {{$item->category->name}}
                                             </div>
                                         </td>
-                                        <td class="text-center">
-                                            <div>
-                                                @foreach($item->destinations as $destination)
-                                                    <span class="badge badge-outline-success badge-pill">{{$destination['name']}}</span>
-                                                @endforeach
-                                            </div>
-                                        </td>
+
                                         <td class="text-center">
                                             {{$item->view}}
                                         </td>
                                         <td role="cell" class="text-center">{{date('H:i d/m/Y', strtotime($item->created_at))}}</td>
                                         <td role="cell" class="text-center">
-                                            @php
-                                                $status = $item->getPublisher();
-                                            @endphp
-                                            <span class="badge {{$status['color_status']}}">{{$status['name_status']}}</span>
-
+                                            <div class="form-check form-switch" style="display: inline-block">
+                                                <input name="my-checkbox" type="checkbox" class="form-check-input css-switch" data-id="{{$item['id']}}"
+                                                       data-api="{{route('enable-column')}}" data-table="posts" data-column="status"
+                                                    {{ $item ['status'] ? 'checked="checked"' : '' }}>
+                                            </div>
                                         </td>
                                         <td class="text-center">
                                             @if($item['published'] === \App\Models\Post::STATUS_DRAFT || $item['published'] === \App\Models\Post::STATUS_UNPUBLISHED)
@@ -151,10 +130,10 @@
                                                 @endcan
                                                 @can('delete', $item)
                                                     <form class="d-inline-block" action="{{ route('posts.destroy', $item['id']) }}" method="POST" >
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
-                                                </form>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không?')"><i class="mdi mdi-delete btn-icon-prepend icon-mr"></i> Xóa</button>
+                                                    </form>
                                                 @endcan
                                             @endif
                                             <a href="{{route('posts.showDetail', ['post' => $item['id'], 'type' => 'index'])}}" class="btn btn-primary btn-icon-text btn-sm"><i class="mdi mdi-eye btn-icon-prepend icon-mr"></i> Xem</a>

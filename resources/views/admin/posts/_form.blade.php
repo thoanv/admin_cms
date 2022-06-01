@@ -18,63 +18,25 @@
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label for="parent_id" class="col-sm-3 col-form-label">Danh mục</label>
+                    <label for="category_id" class="col-sm-3 col-form-label">Danh mục</label>
                     <div class="col-sm-9">
-                        @if(isset($list_cates))
-                        <select class="js-example-basic-multiple select2-hidden-accessible" multiple=""
-                                name="categories[]"
-                                style="width:100%">
+                        <select class="form-control" id="category_id"
+                                name="category_id" style="width: 100%">
+                            <option value="">--Chọn--</option>
                             @foreach($categories as $category)
-                                <option {{ (in_array($category['id'], $list_cates)) ? 'selected' : '' }}
+                                <option {{($category['id'] == old('category_id', $post['category_id']) ? 'selected="selected"' : '') ? 'selected' : '' }}
                                     value="{{$category['id']}}">{{$category['name']}}</option>
                             @endforeach
                         </select>
-                        @else
-                            <select class="js-example-basic-multiple select2-hidden-accessible" multiple=""
-                                    name="categories[]"
-                                    style="width:100%">
-                                @foreach($categories as $category)
-                                    <option {{ (collect(old('categories'))->contains($category['id'])) ? 'selected':'' }}
-                                            value="{{$category['id']}}">{{$category['name']}}</option>
-                                @endforeach
-                            </select>
-                        @endif
-                        @if ($errors->has('categories'))
+
+                        @if ($errors->has('category_id'))
                             <div class="mt-1 notification-error">
-                                {{$errors->first('categories')}}
+                                {{$errors->first('category_id')}}
                             </div>
                         @endif
                     </div>
                 </div>
-                <div class="form-group row mb-3">
-                    <label for="parent_id" class="col-sm-3 col-form-label">Điểm đến</label>
-                    <div class="col-sm-9">
-                        @if(isset($list_des))
-                            <select class="js-example-basic-multiple select2-hidden-accessible" multiple=""
-                                    name="destinations[]"
-                                    style="width:100%">
-                                @foreach($destinations as $destination)
-                                    <option {{ (in_array($destination['id'], $list_des)) ? 'selected' : '' }}
-                                        value="{{$destination['id']}}">{{$destination['name']}}</option>
-                                @endforeach
-                            </select>
-                        @else
-                            <select class="js-example-basic-multiple select2-hidden-accessible" multiple=""
-                                    name="destinations[]"
-                                    style="width:100%">
-                                @foreach($destinations as $destination)
-                                    <option {{ (collect(old('destinations'))->contains($destination['id'])) ? 'selected':'' }}
-                                            value="{{$destination['id']}}">{{$destination['name']}}</option>
-                                @endforeach
-                            </select>
-                        @endif
-                        @if ($errors->has('destinations'))
-                            <div class="mt-1 notification-error">
-                                {{$errors->first('destinations')}}
-                            </div>
-                        @endif
-                    </div>
-                </div>
+
                 <div class="form-group  row mb-3">
                     <label class="col-sm-3 col-form-label" for="description">Mô tả</label>
                     <div class="col-sm-9">
@@ -111,11 +73,22 @@
             <div class="card-body">
                 <h5 class="card-title">Chức năng</h5>
                 <hr>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary me-2" name="type_submit" value="save&default">Lưu bản nháp</button>
-                    <button type="submit" class="btn btn-success me-2" name="type_submit" value="save&send">Gửi duyệt</button>
-                    <a href="{{route('posts.index')}}" class="btn btn-dark">Quay lại</a>
-                </div>
+                <div class="form-check form-check-flat form-check-primary mb-4">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input"
+                                   {{$post['status'] ? "checked" : ''}} value="{{$post['status']}}" name="status">
+                            Trạng thái <i class="input-helper"></i></label>
+                    </div>
+                    <div class="form-check form-check-flat form-check-primary mb-4">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input"
+                                   {{$post['featured'] ? "checked" : ''}} value="{{$post['featured']}}" name="featured">
+                            Nổi bật <i class="input-helper"></i></label>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary me-2" value="save&amp;exit">Lưu</button>
+                        <a href="{{route('posts.index')}}" class="btn btn-dark">Quay lại</a>
+                    </div>
             </div>
         </div>
         <div class="card mt-3">

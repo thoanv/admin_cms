@@ -3,6 +3,7 @@
 }
 .form-control:disabled{
     background-color: #2A3038!important;
+    color: #ccc;
 }
 textarea.form-control{
     height: unset!important;
@@ -19,7 +20,7 @@ textarea.form-control{
     top: -6px;
 }
 .notifyjs-corner {
-   font-weight: inherit;
+    font-weight: inherit;
     font-size: 13px;
 }
 .css-switch{
@@ -82,4 +83,9 @@ textarea.form-control{
 .txt-12{
     font-size: 12px;
     margin-bottom: 5px;
+}
+.box-check-cate{
+    border: 1px solid rgb(0 144 231 / 48%);
+    padding: 0 10px;
+    margin-bottom: 15px;
 }
