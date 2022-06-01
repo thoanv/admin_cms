@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-
+    const CATE_POST = 'posts';
+    const CATE_ROOM = 'room';
+    const CATE_POLICY = 'policy';
+    const CATE_CONTACT = 'contact';
+    const CATE_TUTORIAL = 'tutorial';
+    const CATE_INTRODUCE = 'introduce';
     protected $fillable = [
         'name',
         'slug',

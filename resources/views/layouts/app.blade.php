@@ -57,7 +57,7 @@
     <script src="{{asset('front-end/js/script.js')}}"></script>
 </head>
 <body>
-    @include('layouts.header', ['menus' => $menus])
+    @include('layouts.header', ['menus' => $menus, 'aboutUs' => $info_web])
     @yield('content')
 </body>
 </html>

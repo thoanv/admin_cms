@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Repositories\AboutURepository as AboutURepo;
 use App\Repositories\SlideRepository as SlideRepo;
@@ -35,5 +36,31 @@ class HomeController extends Controller
             'slides'  => $slides,
             'categories' => $categories
         ]);
+    }
+    public function slug($category_slug, $slug = '')
+    {
+        $category = $this->categoryRepo->getCategoryBySlug($category_slug);
+        if(!$category) return abort('404');
+        switch ($category['type']) {
+            case Category::CATE_POST :
+                if($category['parent_id']){
+
+                }
+              break;
+            case Category::CATE_ROOM :
+              
+              break;
+            case Category::CATE_CONTACT :
+              break;
+            case Category::CATE_POLICY :
+                break;
+            case Category::CATE_INTRODUCE :
+                break;
+            default:
+          }
+    }
+    public function post()
+    {
+        return view('posts.list');
     }
 }

@@ -12,14 +12,14 @@
                         <div class='menuPart'>
                             @foreach($menus as $menu)
                             <div class='menuItem {{(isset($menu['children']) && count($menu['children']) > 0) ? 'dropDown' : ''}}'>
-                                <a class='link1' href='#'>
+                                <a class='link1' href='{{route('slug',['category_slug' => $menu['slug']])}}'>
                                     <p class='text text-uppercase'>{{$menu['name']}}</p>
                                 </a>
                                 @if(isset($menu['children']) && count($menu['children']) > 0)
                                 <ul class='blockLevel2'>
                                     @foreach($menu['children'] as $menu_child)
                                     <li>
-                                        <a class='link2' href='chinh-sach-thanh-toan/index.html'>{{$menu_child['name']}}</a>
+                                        <a class='link2' href='{{route('slug',['category_slug' => $menu_child['slug']])}}'>{{$menu_child['name']}}</a>
                                     </li>
                                     @endforeach
                                 </ul>

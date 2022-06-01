@@ -9,7 +9,7 @@
                 <div class='wrapBox'>
                     <div class='imgBanner'>
                         <picture>
-                            <source media='(min-width:768px)' srcset='{{$slide['ima    ge']}}'>
+                            <source media='(min-width:768px)' srcset='{{$slide['image']}}'>
                             <img alt='khách sạn tình yêu' src='{{$slide['image']}}'>
                             </source>
                         </picture>

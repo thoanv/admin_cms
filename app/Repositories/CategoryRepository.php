@@ -28,5 +28,9 @@ class CategoryRepository extends AbstractRepository
     {
         return $this->model->where('status', true)->get();
     }
+    public function getCategoryBySlug($slug)
+    {
+        return $this->model->where([['slug', $slug], ['status', true]])->first();
+    }
 
 }
