@@ -117,7 +117,7 @@
                                 <div class='part_1' style="display: inline-block">
                                     <div>
                                         <a class='aTagTitle' href='khach-san-tinh-yeu/room-601/index.html'>
-                                            <h4 class='titleNews'>{{$room['name']}} </h4>
+                                            <h4 class='titleNews mt-0'>{{$room['name']}} </h4>
                                         </a>
                                     </div>
 
