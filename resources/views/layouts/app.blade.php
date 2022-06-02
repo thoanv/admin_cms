@@ -4,7 +4,6 @@
     $dataMenus = \App\Models\Menu::where('key', 'menu-header')->first();
     if(count(unserialize($dataMenus['data'])))
         $menus = unserialize($dataMenus['data']);
-
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -59,5 +58,6 @@
 <body>
     @include('layouts.header', ['menus' => $menus, 'aboutUs' => $info_web])
     @yield('content')
+    @include('layouts.footer', ['aboutUs' => $info_web])
 </body>
 </html>

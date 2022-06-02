@@ -93,16 +93,16 @@
         <div class='blockCateMobile'>
             <div class='container'>
                 <div class='wrapCateParts'>
-                    @foreach($menus as $menu)
-                    <div class='catePart {{(isset($menu['children']) && count($menu['children']) > 0) ? 'dropMore' : ''}}'>
-                        <a class='link1' href=''>{{$menu['name']}}</a>
-                        @if(isset($menu['children']) && count($menu['children']) > 0)
+                    @foreach($menus as $menu_)
+                    <div class='catePart {{(isset($menu_['children']) && count($menu_['children']) > 0) ? 'dropMore' : ''}}'>
+                        <a class='link1' href='{{route('slug', ['category_slug' => $menu_['slug']])}}'>{{$menu_['name']}}</a>
+                        @if(isset($menu_['children']) && count($menu_['children']) > 0)
                         <i aria-hidden='true' class='fa fa-angle-right faFix'></i>
                         <i aria-hidden='true' class='fa fa-angle-down faFix'></i>
                         <ul class='blockLevel2'>
-                            @foreach($menu['children'] as $menu_child)
+                            @foreach($menu_['children'] as $menu_child_)
                             <li>
-                                <a class='link2' href=''>{{$menu_child['name']}}</a>
+                                <a class='link2' href='{{route('slug', ['category_slug' => $menu_child_['slug']])}}'>{{$menu_child_['name']}}</a>
                             </li>
                             @endforeach
                         </ul>

@@ -26,6 +26,8 @@ class AboutU extends Model
 
         'video_intro',
         'facebook',
+        'fanpage_facebook',
+        'instagram',
         'twitter',
         'youtube',
         'created_by',

@@ -104,6 +104,8 @@ class AboutUController extends Controller
             'meta_description',
             'video_intro',
             'facebook',
+            'instagram',
+            'fanpage_facebook',
             'twitter',
             'description',
             'youtube');

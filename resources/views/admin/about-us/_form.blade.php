@@ -95,6 +95,20 @@
                                    value="{{$aboutU['youtube']}}">
                         </div>
                     </div>
+                    <div class="form-group row mb-3">
+                        <label for="instagram" class="col-sm-3 col-form-label">Instagram</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="instagram" placeholder="" name="instagram"
+                                   value="{{$aboutU['instagram']}}">
+                        </div>
+                    </div>
+                    <div class="form-group  row mb-3">
+                        <label for="fanpage_facebook" class="col-sm-3 col-form-label">Fanpage Facebook</label>
+                        <div class="col-sm-9">
+                        <textarea  rows="9" cols="70" id="fanpage_facebook" class="form-control"
+                                   name="fanpage_facebook">{!! $aboutU['fanpage_facebook'] !!}</textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

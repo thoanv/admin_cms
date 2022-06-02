@@ -16,6 +16,11 @@ class CategoryRepository extends AbstractRepository
         return $this->model->where([['status', true],['type', $type]])->whereNotNull('parent_id')->get();
 
     }
+    public function getCategoriesByTypePost($type= 'post')
+    {
+        return $this->model->where([['status', true],['type', $type]])->get();
+
+    }
     public function getCategoriesStatus($status = false)
     {
         $query = $this->model;

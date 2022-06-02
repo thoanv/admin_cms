@@ -25,7 +25,6 @@ class AuthServiceProvider extends ServiceProvider
         Post::class => PostPolicy::class,
         Category::class => CategoryPolicy::class,
         Employee::class => EmployeePolicy::class,
-        Destination::class => DestinationPolicy::class
     ];
 
     /**

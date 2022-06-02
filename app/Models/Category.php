@@ -14,6 +14,7 @@ class Category extends Model
     const CATE_CONTACT = 'contact';
     const CATE_TUTORIAL = 'tutorial';
     const CATE_INTRODUCE = 'introduce';
+    const CATE_IMAGE = 'image';
     protected $fillable = [
         'name',
         'slug',

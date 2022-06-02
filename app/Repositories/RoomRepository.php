@@ -31,7 +31,7 @@ class RoomRepository extends AbstractRepository
     }
     public function getRoomByCategoryId($cate_id)
     {
-        return $this->model->where([['category_id' , $cate_id], ['status', true]])->get();
+        return $this->model->where([['category_id' , $cate_id], ['status', true]])->orderBy('id', 'DESC')->get();
     }
     public function getCategoriesStatus($status = false)
     {
@@ -41,6 +41,9 @@ class RoomRepository extends AbstractRepository
 
         return $query->orderBy('ID', 'DESC')->get();
     }
-
+    public function getRoomBySlug($slug, $cate_id)
+    {
+        return $this->model->where([['category_id' , $cate_id], ['status', true], ['slug', $slug]])->first();
+    }
 
 }

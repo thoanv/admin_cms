@@ -14,4 +14,8 @@ class Image extends Model
         'category_id',
         'create_by',
     ];
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id', 'id');
+    }
 }

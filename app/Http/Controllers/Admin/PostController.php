@@ -50,7 +50,7 @@ class PostController extends Controller
     public function create(Post $post)
     {
         $this->authorize('create', $post);
-        $categories = $this->categoryRepo->getCategoriesStatus(true);
+        $categories = $this->categoryRepo->getCategoriesByTypePost('posts');
         return view($this->view.'.create', [
             'post' => $post,
             'view' => $this->view,
@@ -103,7 +103,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $this->authorize('update', $post);
-        $categories = $this->categoryRepo->getCategoriesStatus(true);
+        $categories = $this->categoryRepo->getCategoriesByTypePost('posts');
         return view($this->view.'.update', [
             'post' => $post,
             'view' => $this->view,

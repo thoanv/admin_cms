@@ -68,4 +68,8 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function relates()
+    {
+        return Post::where([['id', '<>', $this->id], ['status', 'YES']])->take(5);
+    }
 }

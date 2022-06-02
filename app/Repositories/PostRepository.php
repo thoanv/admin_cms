@@ -13,6 +13,10 @@ class PostRepository extends AbstractRepository
     {
         return Post::class;
     }
+    public function getPostFeatured()
+    {
+        return $this->model->where([['featured', 'YES'],['status', 'YES']])->get();
+    }
     public function getData($request)
     {
         $query = $this->model;
@@ -29,5 +33,20 @@ class PostRepository extends AbstractRepository
         return $query->orderBy('id', 'DESC')->paginate();
 
     }
+    public function getPostByCategoryId($cate_id)
+    {
+        return $this->model->where([['category_id', $cate_id],['status', 'YES']])->orderBy('id', 'DESC')->paginate(15);
+    }
+    public function getPostBySlug($slug, $cate_id)
+    {
+        return $this->model->where([['category_id' , $cate_id], ['status', true], ['slug', $slug]])->first();
+    }
+    public function getPostRelates($id = 0)
+    {
+        $query = $this->model->where('status', 'YES');
+        if($id)
+            $query = $query->where('id', '<>', $id);
 
+        return $query->take(10)->get();
+    }
 }
