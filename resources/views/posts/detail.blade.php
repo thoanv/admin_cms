@@ -118,7 +118,7 @@
                                                     @for($i=0; $i<2; $i++)
                                                     <div class="box-content-comment d-flex">
                                                         <div class="avatar-user-comment">
-                                                            <img src="/front-end/icons/twitter.png" alt="">
+                                                            <img src="/front-end/icons/icon_avatar.png" alt="">
                                                         </div>
                                                         <div class="comment-detail">
                                                             <h5 class="name-user-comment">Thỏa Nguyễn</h5>
@@ -149,10 +149,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4">
-                    <div>
-                        <span>Truyền cảm hứng </span>
-                        <span></span>
+                <div class="col-lg-3 col-md-4 post-detail-right">
+                    <div class="d-flex">
+                        <div class="txt-truyen-cam-hung">Truyền cảm hứng </div>
+                        <div class="border-horiz"></div>
+                    </div>
+                    <div class="list-categories">
+                        <div class="category-inner position-relative">
+                            <div class="position-absolute box-name-category">
+                                <h4 class="text-center">Khám phá điểm đến</h4>
+                            </div>
+                            <img src="/front-end/images/slide.jpg" alt="">
+                        </div>
+                        <div class="category-inner position-relative">
+                            <div class="position-absolute box-name-category">
+                                <h4 class="text-center">Khám phá ẩm thực</h4>
+                            </div>
+                            <img src="/front-end/images/nhahang.jpg" alt="">
+                        </div>
+                        <div class="category-inner position-relative">
+                            <div class="position-absolute box-name-category">
+                                <h4 class="text-center">Người trong muôn nghề</h4>
+                            </div>
+                            <img src="/front-end/images/nguoitrongnghe.jpg" alt="">
+                        </div>
+                        <div class="category-inner position-relative">
+                            <div class="position-absolute box-name-category">
+                                <h4 class="text-center">Khám phá ẩm thực</h4>
+                            </div>
+                            <img src="/front-end/images/nhahang.jpg" alt="">
+                        </div>
+                        <div class="category-inner position-relative">
+                            <div class="position-absolute box-name-category">
+                                <h4 class="text-center">Người trong muôn nghề</h4>
+                            </div>
+                            <img src="/front-end/images/nguoitrongnghe.jpg" alt="">
+                        </div>
                     </div>
                     <div class="box-banner">
                         <img src="/front-end/images/banner1.png" alt="">

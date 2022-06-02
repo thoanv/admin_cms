@@ -16,3 +16,4 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/detail', [PostController::class, 'detail'])->name('post.detail');
+Route::get('/list', [PostController::class, 'index'])->name('post.list');

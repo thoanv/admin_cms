@@ -37,7 +37,7 @@ $(document).ready(function () {
                 items: 2,
             },
             1000: {
-                items: 5,
+                items: 6,
             },
 
         }
@@ -62,5 +62,5 @@ $(document).ready(function () {
 
         }
     });
-    
+
 });
