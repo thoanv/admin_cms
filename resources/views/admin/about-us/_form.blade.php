@@ -154,10 +154,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="">Logo</label>
+                    <label for="">Logo màu tím</label>
                     <div class="upload_image" data-name="logo">
                         <input type="hidden" class="logo" name="logo" value="{{old('logo', $aboutU['logo'])}}">
                         <img src="{{$aboutU['logo'] ? $aboutU['logo'] : '/assets/images/department.jpg'}}" width="180px" alt="" class="image-logo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Logo màu trắng</label>
+                    <div class="upload_image" data-name="logo_white">
+                        <input type="hidden" class="logo_white" name="logo_white" value="{{old('logo_white', $aboutU['logo_white'])}}">
+                        <img src="{{$aboutU['logo_white'] ? $aboutU['logo_white'] : '/assets/images/department.jpg'}}" width="180px" alt="" class="image-logo_white">
                     </div>
                 </div>
                 <div class="form-group">

@@ -4,28 +4,21 @@
     @include('layouts.header')
     <section id="slide" class="hero-animated d-flex align-items-center specialBlock_1">
         <div class="slide owl-carousel owl-theme">
-            <div class="item">
-                <div class="wrapBox">
-                    <div class="imgBanner">
-                        <picture>
-                            <source media="(min-width:768px)" srcset="/front-end/images/slide.jpg">
-                            <img alt="khách sạn tình yêu" loading="lazy" src="/front-end/images/slide.jpg">
+            @foreach($slides as $slide)
+                <div class="item">
+                    <a href="{{$slide['url']}}">
+                        <div class="wrapBox">
+                            <div class="imgBanner">
+                                <picture>
+                                    <source media="(min-width:768px)" srcset="{{$slide['image']}}">
+                                    <img alt="khách sạn tình yêu" loading="lazy" src="{{$slide['image']}}">
 
-                        </picture>
-                    </div>
+                                </picture>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="item">
-                <div class="wrapBox">
-                    <div class="imgBanner">
-                        <picture>
-                            <source media="(min-width:768px)" srcset="/front-end/images/slide1.jpg">
-                            <img alt="khách sạn tình yêu" loading="lazy" src="/front-end/images/slide1.jpg">
-
-                        </picture>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <section id="destination">

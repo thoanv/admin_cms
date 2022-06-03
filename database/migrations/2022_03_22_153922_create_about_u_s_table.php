@@ -17,6 +17,7 @@ class CreateAboutUSTable extends Migration
             $table->id();
             $table->string('logo_admin')->nullable();
             $table->string('logo')->nullable();
+            $table->string('logo_white')->nullable();
             $table->string('favicon')->nullable();
             $table->string('thumbnail')->nullable();
 

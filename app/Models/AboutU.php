@@ -11,6 +11,7 @@ class AboutU extends Model
     protected $fillable = [
         'logo_admin',
         'logo',
+        'logo_white',
         'favicon',
         'thumbnail',
 

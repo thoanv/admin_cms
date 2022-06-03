@@ -93,6 +93,7 @@ class AboutUController extends Controller
             'company',
             'logo_admin',
             'logo',
+            'logo_white',
             'favicon',
             'thumbnail',
             'email',
