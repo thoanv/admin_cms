@@ -35,4 +35,8 @@ class CategoryRepository extends AbstractRepository
     {
         return $this->model->where('status', true)->get();
     }
+    public function getCategoriesFeatured()
+    {
+        return $this->model->where([['status', true],['featured', true]])->orderBy('ID', 'DESC')->get();
+    }
 }

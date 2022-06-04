@@ -15,5 +15,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/diem-den/{slug}', [HomeController::class, 'destination'])->name('destination');
+Route::get('/{category_slug?}/{slug?}', [HomeController::class, 'slug'])->name('slug');
 Route::get('/detail', [PostController::class, 'detail'])->name('post.detail');
 Route::get('/list', [PostController::class, 'index'])->name('post.list');

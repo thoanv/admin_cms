@@ -9,8 +9,8 @@ use App\Http\Requests\UpdateBannerDetailRequest;
 use App\Repositories\BannerDetailRepository as BannerDetailRepo;
 use App\Repositories\BannerRepository as BannerRepo;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use App\Models\Banner;
+use Illuminate\Http\Request;
 
 class BannerDetailController extends Controller
 {
@@ -57,13 +57,14 @@ class BannerDetailController extends Controller
      * @param  \App\Http\Requests\StoreBannerDetailRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBannerDetailRequest $request)
+    public function store(StoreBannerDetailRequest $request, Banner $banner)
     {
         $data = $request->only('name', 'image', 'url');
         $data['status'] = isset($request['status']) ? 1 : 0;
         $data['created_by'] = Auth::id();
+        $data['banner_id'] = $banner['id'];
         $this->bannerDetailRepo->create($data);
-        return redirect(route('slides.index'))->with('success',  'Thêm mới thành công');
+        return redirect(route('banners_detail_list', $banner))->with('success',  'Thêm mới thành công');
     }
 
     /**
@@ -85,7 +86,11 @@ class BannerDetailController extends Controller
      */
     public function edit(BannerDetail $bannerDetail)
     {
-        //
+        if(!$bannerDetail) return abort(404);
+        return view($this->view.'.update',[
+            'bannerDetail'  => $bannerDetail,
+            'view'          => $this->view,
+        ]);
     }
 
     /**
@@ -95,9 +100,13 @@ class BannerDetailController extends Controller
      * @param  \App\Models\BannerDetail  $bannerDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBannerDetailRequest $request, BannerDetail $bannerDetail)
+    public function update(Request $request)
     {
-        //
+        $bannerDetail = $this->bannerDetailRepo->find($request->id);
+        $data = $request->only('name', 'image', 'url');
+        $data['status'] = isset($request['status']) ? 1 : 0;
+        $this->bannerDetailRepo->update($data, $bannerDetail['id']);
+        return redirect(route('banners_detail_list', $bannerDetail['banner_id']))->with('success',  'Cập nhật thành công');
     }
 
     /**
@@ -108,6 +117,8 @@ class BannerDetailController extends Controller
      */
     public function destroy(BannerDetail $bannerDetail)
     {
-        //
+        $banner_id = $bannerDetail['banner_id'];
+        $bannerDetail->delete();
+        return redirect()->route('banners_detail_list', $banner_id)->with('success','Xóa thành công');
     }
 }

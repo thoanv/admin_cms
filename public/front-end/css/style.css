@@ -137,6 +137,21 @@ body {
 .header .violet{
     display: none;
 }
+.header .icon-search-top{
+    display: block;
+}
+.header .icon-search{
+    display: none;
+}
+.header .sticked .icon-search-top{
+    display: none;
+}
+.header.sticked .icon-search{
+    display: block;
+}
+.header.sticked .icon-search-top{
+    display: none;
+}
 .header.sticked .violet{
     display: block;
 }
@@ -372,6 +387,11 @@ body {
     color: var(--color-white);
     padding: 0.2rem 1.5rem
 }
+.box-post .post-detail .post-button .raise-yellow{
+    background: var(--color-yellow);
+    color: var(--color-white);
+    padding: 0.2rem 1.5rem
+}
 .box-category{
 
 }
@@ -386,6 +406,12 @@ body {
     text-align: center;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+.box-category .d-category.c---color-violet:hover{
+    background-image: linear-gradient(to right,var(--color-yellow), #F17127)!important;
+}
+.box-category .d-category.c---color-yellow:hover{
+    background-image: linear-gradient(to right, var(--color-violet) , var(--color-pink));
 }
 .box-category .d-category h4{
     font-size: 24px;
@@ -525,6 +551,10 @@ article {
 .list-post-read .box-post .post-detail{
     padding: 5px 10px;
 }
+.list-post-read .box-post .post-detail .post-description{
+    -webkit-line-clamp: 2;
+    height: 40px;
+}
 .list-post-read .box-post .post-detail .post-button .raise{
     padding: 0rem 0.5rem;
 }
@@ -625,10 +655,15 @@ article {
 .raise:focus {
     box-shadow: 0 0.5em 0.5em -0.4em var(--color-yellow);
     transform: translateY(-0.1em);
-    background-image: linear-gradient(to right, #F17127, var(--color-yellow))!important;
+    background-image: linear-gradient(to right,var(--color-yellow), #F17127)!important;
     color: var(--color-white);
 }
-
+.raise-yellow:hover, .raise-yellow:focus{
+    box-shadow: 0 0.5em 0.5em -0.4em var(--color-pink);
+    transform: translateY(-0.1em);
+    background-image: linear-gradient(to right, var(--color-violet), var(--color-pink))!important;
+    color: var(--color-white);
+}
 /*Bài viết chi tiết*/
 .box-post-detail{
     margin-top: 40px;

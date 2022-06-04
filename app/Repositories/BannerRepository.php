@@ -29,5 +29,9 @@ class BannerRepository extends AbstractRepository
     {
         return $this->model->where('status', $status)->get();
     }
+    public function getBannerByKey($key)
+    {
+        return $this->model->where([['status', true],['key', $key]])->first();
+    }
 
 }

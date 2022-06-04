@@ -37,4 +37,8 @@ class DestinationRepository extends AbstractRepository
 
         return $query->orderBy('ID', 'DESC')->get();
     }
+    public function getDestinationFeatured()
+    {
+        return $this->model->where([['status', true],['featured', true]])->orderBy('ID', 'DESC')->get();
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Ajax;
 
+use App\Models\BannerDetail;
 use App\Models\Category;
 use App\Models\Destination;
 use App\Models\Employee;
@@ -50,6 +51,9 @@ class AjaxController extends BaseController
                 break;
             case 'slides':
                 $model = Slide::find($id);
+                break;
+            case 'banner_details':
+                $model = BannerDetail::find($id);
                 break;
             default:
                 break;

@@ -63,4 +63,8 @@ class PostRepository extends AbstractRepository
 
         return $query->orderBy('ID', 'DESC')->paginate();
     }
+    public function getPostReadALots()
+    {
+        return $this->model->where([['status', 'YES'], ['featured', 'YES'],['published', 'published']])->orderBy('view', 'DESC')->take(3)->get();
+    }
 }

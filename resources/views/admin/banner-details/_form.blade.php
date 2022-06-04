@@ -54,7 +54,7 @@
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary me-2" value="save&amp;exit">Lưu</button>
-                        <a href="{{route('banners_detail_list', $banner)}}" class="btn btn-dark">Quay lại</a>
+                        <a href="{{route('banners_detail_list', $bannerDetail['banner_id'] ? $bannerDetail['banner_id'] : $banner['id'])}}" class="btn btn-dark">Quay lại</a>
                     </div>
                 </div>
             </div>

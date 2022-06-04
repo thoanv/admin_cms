@@ -66,7 +66,10 @@ Route::middleware('auth:admin')->group(function (){
     //Banner Detail
     Route::get('/banners-detail/{banner}', [BannerDetailController::class, 'index'])->name('banners_detail_list');
     Route::get('/banners-detail/create/{banner}', [BannerDetailController::class, 'create'])->name('banners_detail_create');
-    Route::post('/banners-detail/create', [BannerDetailController::class, 'store'])->name('banners_detail_store');
+    Route::post('/banners-detail/store/{banner}', [BannerDetailController::class, 'store'])->name('banners_detail_store');
+    Route::get('/banners-detail/edit/{bannerDetail}', [BannerDetailController::class, 'edit'])->name('banners_detail_edit');
+    Route::post('/banners-detail/update', [BannerDetailController::class, 'update'])->name('banners_detail_update');
+    Route::delete('/banners-detail/destroy/{bannerDetail}', [BannerDetailController::class, 'destroy'])->name('banners_detail_destroy');
 //    Route::any('/ckfinder/connector', 'CKSource\CKFinderBridge\Controller\CKFinderController@requestAction') ->name('ckfinder_connector');
 //    Route::any('/ckfinder/browser', 'CKSource\CKFinderBridge\Controller\CKFinderController@browserAction') ->name('ckfinder_browser');
 });

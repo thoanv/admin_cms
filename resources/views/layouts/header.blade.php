@@ -32,7 +32,8 @@
                     <form class="d-flex">
                         <div class="search position-relative">
                             <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-                            <img src="/front-end/images/search.png" alt="search" width="20">
+                            <img class="icon-search" src="/front-end/images/search.png" alt="search" width="20">
+                            <img class="icon-search-top" src="/front-end/icons/search_white.png" alt="search" width="20">
                         </div>
                         {{--                            <button class="btn btn-outline-success" type="submit">Search</button>--}}
                     </form>
