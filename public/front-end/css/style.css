@@ -517,7 +517,14 @@ article {
     color: var(--color-pink);
     border-bottom: 1px solid var(--color-pink);
 }
-
+.more.pink:hover{
+    color: var(--color-yellow);
+    border-bottom: 1px solid var(--color-yellow);
+}
+.item-post .more.yellow:hover{
+    color: var(--color-pink);
+    border-bottom: 1px solid var(--color-pink);
+}
 
 /*Đọc nhiều nhất*/
 .list-post-read .box-post{
@@ -987,6 +994,12 @@ article {
     box-shadow: 0px 2px 3px rgb(0 0 0 / 45%);
     margin-bottom: 15px;
 }
+.category-inner:hover img{
+    opacity: 0.3
+}
+.category-inner:hover .box-name-category h4{
+    color: var(--color-yellow);
+}
 .box-name-category{
     width: 50%;
     left: 0;
@@ -1000,7 +1013,7 @@ article {
 
 .category-inner img{
     background: var(--color-black);
-    opacity: 0.7;
+    opacity: 0.6;
     height: 120px;
     object-fit: cover;
 }
@@ -1030,6 +1043,7 @@ article {
     border-radius: 15px;
     margin-bottom: 20px;
     overflow: hidden;
+    height: 260px;
 }
 .post-category-info{
     padding: 20px 20px 10px 0;
@@ -1045,6 +1059,12 @@ article {
     text-overflow: ellipsis;
     height: 46px;
 }
+.post-category-info .name-post a{
+    color: var(--color-black);
+}
+.post-category-info .name-post a:hover{
+    color: var(--color-violet);
+}
 .post-category-info .post-description{
     text-align: justify;
 }
@@ -1054,6 +1074,16 @@ article {
 }
 .belong-categories{
     bottom: 10px;
+}
+.belong-categories .a-category:hover .yellow{
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+    background: var(--color-yellow);
+}
+.belong-categories .a-category:hover .violet{
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+    background: #93278F;
 }
 .belong-categories a{
     cursor: pointer;
@@ -1070,4 +1100,13 @@ article {
 .belong-categories span.yellow{
     border: 1px solid var(--color-yellow);
     color: var(--color-yellow);
+}
+.line-load { display: inline-block; width: 12px; height: 12px; border-radius: 12px; background-color: var(--color-pink); margin-right: 6px; }
+.load-3 .line-load:nth-last-child(1) {animation: loadingC .8s .1s linear infinite;}
+.load-3 .line-load:nth-last-child(2) {animation: loadingC .8s .2s linear infinite;}
+.load-3 .line-load:nth-last-child(3) {animation: loadingC .8s .3s linear infinite;}
+@keyframes loadingC {
+    0% {transform: translate(0,0);}
+    50% {transform: translate(0,15px);}
+    100% {transform: translate(0,0);}
 }

@@ -67,4 +67,8 @@ class PostRepository extends AbstractRepository
     {
         return $this->model->where([['status', 'YES'], ['featured', 'YES'],['published', 'published']])->orderBy('view', 'DESC')->take(3)->get();
     }
+    public function getPostBySlug($slug)
+    {
+        return $this->model->where([['status', 'YES'], ['slug', $slug],['published', 'published']])->first();
+    }
 }

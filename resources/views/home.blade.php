@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Blog - 2stay')
+@section('title', $about['company'])
 @section('content')
-    @include('layouts.header')
+    @include('layouts.header',['menus' => $menus])
     <section id="slide" class="hero-animated d-flex align-items-center specialBlock_1">
         <div class="slide owl-carousel owl-theme">
             @foreach($slides as $slide)

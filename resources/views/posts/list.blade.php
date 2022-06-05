@@ -1,5 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Blog - 2stay')
+@section('title', $category['name'])
+@section('canonical', route('slug',['category_slug' => $category['slug']]))
 @section('content')
     @include('layouts.header-white')
     <section id="main" class="page-category">
@@ -7,104 +8,65 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="category-select">
-                        <span class="name-cate">Đà Nẵng</span>
+                        <span class="name-cate">{{$category['name']}}</span>
                     </div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-lg-9 col-md-8">
                     <div class="list-post-categories">
-                        @for($i=0; $i<=6; $i++)
-                        <div class="post-category">
+                    @foreach($posts as $post)
+                        <div class="post-category item-post">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <img src="/front-end/images/slide.jpg" alt="">
+                                    <img src="{{$post['avatar']}}" alt="{{$post['name']}}">
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="post-category-info position-relative">
-                                        <h4 class="name-post">Phố cổ Hội An - Thành phố cổ đẹp hàng đầu Châu Á Một phố cổ giữ được gần như nguyên vẹn với hơn 1000 di tích kiến trúc từ phố</h4>
+                                        <h4 class="name-post">
+                                            <a class="" href="{{route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']])}}">
+                                                {{$post['name']}}
+                                            </a>
+                                        </h4>
                                         <div class="post-extend">
-                                            <span class="post-view">2987 Lượt xem</span>
+                                            <span class="post-view">{{$post['view']}} Lượt xem</span>
                                             <span>|</span>
-                                            <span class="post-date">17/02/2022</span>
+                                            <span class="post-date">{{date('d/m/Y', strtotime($post['created_at']))}}</span>
                                         </div>
                                         <div class="post-description">
-                                            Một phố cổ giữ được gần như nguyên vẹn với hơn 1000 di tích kiến trúc từ phố
-                                            xá, nhà cửa, hội quán, đình, chùa, miếu, nhà thờ tộc, giếng cổ, Một phố cổ
-                                            giữ được gần như nguyên vẹn với hơn 1000 di tích kiến trúc từ phố xá
+                                            {{$post['description']}}
                                         </div>
-                                        <div class="belong-categories  position-absolute">
-                                            <a href="">
-                                                <span class="violet">
-                                                    Khám phá điểm đến
+                                        <div class="a-xem-them">
+                                            <a class="more yellow" href="{{route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']])}}" >Xem thêm</a>
+                                        </div>
+                                        <div class="belong-categories position-absolute">
+                                            @foreach(($post->categories()->where('status', true)->get()) as $key => $cate)
+                                            <a class="a-category" href="{{ $cate['id'] == $category['id'] ? 'javascript:' : route('slug', ['category_slug' => $cate['slug']])}}">
+                                                <span class="{{$key%2==0 ? 'violet' : 'yellow'}}">
+                                                    {{$cate['name']}}
                                                 </span>
                                             </a>
-                                            <a href="">
-                                                <span class="yellow">
-                                                    Khám phá ẩm thực
-                                                </span>
-                                            </a>
-                                            <a href="">
-                                                <span>
-                                                    Người trong muôn nghề
-                                                </span>
-                                            </a>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endfor
+                        @endforeach
                         <div class="text-center mt-4">
                             <button class="btn btn-xem-them raise">Xem thêm</button>
                         </div>
+                        <div class="text-center loading-box"><div class="loader text-center"><p class="text-center load-3" style="display: inline-block"><i class="line-load"></i><i class="line-load"></i><i class="line-load"></i></p></div></div>
+
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 post-detail-right">
-                    <div class="d-flex">
-                        <div class="txt-truyen-cam-hung">Truyền cảm hứng </div>
-                        <div class="border-horiz"></div>
-                    </div>
-                    <div class="list-categories">
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Khám phá điểm đến</h4>
-                            </div>
-                            <img src="/front-end/images/slide.jpg" alt="">
-                        </div>
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Khám phá ẩm thực</h4>
-                            </div>
-                            <img src="/front-end/images/nhahang.jpg" alt="">
-                        </div>
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Người trong muôn nghề</h4>
-                            </div>
-                            <img src="/front-end/images/nguoitrongnghe.jpg" alt="">
-                        </div>
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Khám phá ẩm thực</h4>
-                            </div>
-                            <img src="/front-end/images/nhahang.jpg" alt="">
-                        </div>
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Người trong muôn nghề</h4>
-                            </div>
-                            <img src="/front-end/images/nguoitrongnghe.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="box-banner">
-                        <img src="/front-end/images/banner1.png" alt="">
-                        <img src="/front-end/images/banner1.png" alt="">
-                    </div>
-                </div>
+                @include('components.inspire',['categories' => $categories, 'banner' => $banner])
             </div>
         </div>
     </section>
 
 @endsection
 
+<style>
+
+</style>

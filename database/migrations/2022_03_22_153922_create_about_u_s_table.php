@@ -37,6 +37,9 @@ class CreateAboutUSTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('youtube')->nullable();
+            $table->string('tiktok')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('bo_cong_thuong')->nullable();
 
             $table->unsignedInteger('created_by')->nullable();
             $table->timestamps();

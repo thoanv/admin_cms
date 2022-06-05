@@ -1,14 +1,13 @@
 @extends('layouts.app')
-@section('title', '')
+@section('title', $post['name'])
+@section('image', $post['avatar'])
+@section('canonical', route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']]))
 @section('content')
     @include('layouts.header-white')
     <section class="avatar hero-animated align-items-center specialBlock_1">
         <div class="wrapBox">
             <div class="imgBanner">
-                <picture>
-                    <source media="(min-width:768px)" srcset="/front-end/images/slide.jpg">
-                    <img alt="khách sạn tình yêu" loading="lazy" src="/front-end/images/slide.jpg">
-                </picture>
+                <img alt="{{$post['name']}}" loading="lazy" src="{{$post['avatar']}}">
             </div>
         </div>
     </section>
@@ -17,16 +16,16 @@
             <div class="row">
                 <div class="col-lg-9 col-md-8">
                     <div class="post-inner">
-                        <h1 class="name-post">Cầu hôn – Biểu tượng kiến trúc mới ở Phú Quốc, liệu có soán ngôi Cầu Vàng?</h1>
+                        <h1 class="name-post">{{$post['name']}}</h1>
                         <div class="row mt-3">
                             <div class="col-lg-6">
                                 <div class="category">
-                                    <span> Khám phá điểm đến</span>
+                                    <span> {{$category['name']}}</span>
                                 </div>
                                 <div class="post-extend">
-                                    <span class="post-view">2987 Lượt xem</span>
+                                    <span class="post-view">{{$post['view']}} Lượt xem</span>
                                     <span>|</span>
-                                    <span class="post-date">17/02/2022</span>
+                                    <span class="post-date">{{date('d/m/Y', strtotime($post['created_at']))}}</span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -60,7 +59,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="#listComment">
-                                                        <span tooltip="32 Bình luận" flow="down">
+                                                        <span tooltip="{{$comments->count()}} Bình luận" flow="down">
                                                             <img src="/front-end/icons/icon-comment.png" alt="comment">
                                                         </span>
                                                     </a>
@@ -74,14 +73,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="content-post">
-                                    <br>Cầu Hôn được thiết kế bởi kiến trúc sư Marco Casamonti, một đại sứ về văn hóa nghệ thuật Ý tại Việt Nam.
-                                    <br> Ông đã thực hiện công trình này mất 2 năm. Cầu Hôn đích thực là cây cầu kết nối hai bờ đảo ngọc nên ý nghĩa của biểu tượng cho sự gắn kết giữa con người với con người, giữa con người và thiên nhiên. Cây cầu có tổng chiều dài lên đến 810m, được xây bằng thép với tổng khối lượng bằng 1/2 lượng thép để xây tháp Eiffel.
-                                    <br>
-                                    <br>Đây chính là cây cầu duy nhất tại Việt Nam không kết nối thẳng hay phía hai đầu, mà cong lại chính giữa sẽ là một khoảng hở rộng 50cm. Chính khoảng hở này được lấp đầy ánh nắng mặt trời lúc ban chiều hoàng hôn tạo nên nụ hôn nồng cháy của đôi uyên ương dưới sự chứng kiến của trời đất. Được biết, ông đã lên ý tưởng từ năm 2018 nhưng mất đến 2 năm để hoàn thiện toàn bộ khâu thiết kế, bản vẽ. Vào tháng 12/2021, công trình Cầu Hôn đã bước vào giai đoạn ép trụ. Hiện tại, những nền móng đầu tiên cho công trình biểu tượng du lịch mới tại phương Nam đảo ngọc đã thành hình.
-                                    <br>
-                                    <br>Cầu Hôn Phú Quốc là công trình nghệ thuận quy mô và độc đáo, Cầu Hôn – Kiss Brigde tại Nam Phú Quốc hứa hẹn sẽ là biểu tượng mà du khách nhất định phải đến một lần khi đặt chân tới đảo Ngọc. Không chỉ mang lại giá trị về mặt kiến trúc, cảnh quan, cầu Hôn còn là tâm điểm thu hút du khách, giúp đem đến lợi ích đáng quan tâm. Nếu Đà Nẵng đã từng thành công với Cầu Vàng danh tiếng, thì Nam Phú Quốc sẽ tiếp nối để tạo nên quy mô còn hoành tráng hơn thế tại Cầu Hôn.
-                                    <br>
-                                    <br>Không chỉ dừng lại ở việc kiến tạo một công trình điểm nhấn, chủ đầu tư cũng sẽ tổ chức những lễ hội về tình yêu, tình bạn với quy mô lên tới hàng nghìn người tại đây
+                                    {!!$post['content'] !!}
                                 </div>
                                 <div class="border-horizontal"></div>
                                 <div class="form-comment" id="listComment">
@@ -90,14 +82,14 @@
                                             <div class="col-lg-4">
                                                 <div class="d-flex txt-comment">
                                                     <img src="/front-end/icons/icon-comment.png" alt="comment">
-                                                    <p class="txt-bl">Bình luận (32)</p>
+                                                    <p class="txt-bl">Bình luận ({{$comments->count()}})</p>
                                                 </div>
                                             </div>
                                             <div class="col-lg-8">
                                                 <div class="float-end d-flex list-input">
-                                                    <input type="text" class="form-control" placeholder="Họ & tên*">
-                                                    <input type="text" class="form-control" placeholder="Email*">
-                                                    <input type="text" class="form-control" placeholder="Số điện thoại*">
+                                                    <input type="text" class="form-control name_user" placeholder="Họ & tên*">
+                                                    <input type="email" class="form-control email_user" placeholder="Email*">
+                                                    <input type="text" class="form-control phone_user" placeholder="Số điện thoại*">
                                                 </div>
 
                                             </div>
@@ -107,15 +99,15 @@
                                                 <textarea id="w3review" name="w3review" rows="3" cols="10" style="width: 100%;; border-radius: 7px; border: 1px solid #D4145A; padding: 10px"></textarea>
                                                 <div class="d-flex mt-2">
                                                     <label class="container-input">Lưu tên, email và số điện thoại cho các lần bình luận sau
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" name="checkUserComment">
                                                         <span class="checkmark"></span>
                                                     </label>
                                                     <div class="btn-comment">
-                                                        <button class="btn raise">Đăng bình luận</button>
+                                                        <button class="btn raise" onclick="comment()">Bình luận</button>
                                                     </div>
                                                 </div>
                                                 <div class="list-comments">
-                                                    @for($i=0; $i<2; $i++)
+                                                    @if($comments->count())
                                                     <div class="box-content-comment d-flex">
                                                         <div class="avatar-user-comment">
                                                             <img src="/front-end/icons/icon_avatar.png" alt="">
@@ -125,12 +117,15 @@
                                                             <p>ĐT Thái Lan có trận giao hữu thứ hai trong tháng 5 và đối thủ là ĐT Bahrain. HLV Polking có một vài sự thay đổi trong đội hình xuất phát để tiếp những vị khách tới từ Tây Á. Ngay ở phút thứ tư, đội chủ nhà đã có bàn mở tỉ số. </p>
                                                         </div>
                                                     </div>
-                                                    @endfor
+                                                    @endif
                                                 </div>
+                                                @if($comments->count())
                                                 <div class="text-center mt-1">
                                                     <button class="btn btn-more-comment raise">Xem thêm</button>
                                                 </div>
+                                                @endif
                                             </div>
+                                           
                                         </div>
                                     </form>
                                 </div>
@@ -138,60 +133,29 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
+                            <div class="border-horizontal" style="height: 1px;background: #662D91;margin: 15px 0 0px;"></div>
                                 <div class="list-post-relate owl-carousel owl-theme">
-                                    @for($i=0; $i<3; $i++)
+                                    @foreach($relates as $relate)
                                     <div class="item">
-                                        @include('components.post_relate_item')
+                                        @include('components.post_relate_item', ['relate' => $relate, 'category_slug' => $category['slug']])
                                     </div>
-                                    @endfor
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 post-detail-right">
-                    <div class="d-flex">
-                        <div class="txt-truyen-cam-hung">Truyền cảm hứng </div>
-                        <div class="border-horiz"></div>
-                    </div>
-                    <div class="list-categories">
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Khám phá điểm đến</h4>
-                            </div>
-                            <img src="/front-end/images/slide.jpg" alt="">
-                        </div>
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Khám phá ẩm thực</h4>
-                            </div>
-                            <img src="/front-end/images/nhahang.jpg" alt="">
-                        </div>
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Người trong muôn nghề</h4>
-                            </div>
-                            <img src="/front-end/images/nguoitrongnghe.jpg" alt="">
-                        </div>
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Khám phá ẩm thực</h4>
-                            </div>
-                            <img src="/front-end/images/nhahang.jpg" alt="">
-                        </div>
-                        <div class="category-inner position-relative">
-                            <div class="position-absolute box-name-category">
-                                <h4 class="text-center">Người trong muôn nghề</h4>
-                            </div>
-                            <img src="/front-end/images/nguoitrongnghe.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="box-banner">
-                        <img src="/front-end/images/banner1.png" alt="">
-                        <img src="/front-end/images/banner1.png" alt="">
-                    </div>
-                </div>
+                @include('components.inspire',['categories' => $categories, 'banner' => $banner])
             </div>
         </div>
     </section>
 @endsection
+@push('scripts')
+<script>
+    function comment(){
+        let name = $('.name_user').val();
+        let email = $('.email_user').val();
+        let phone = $('.phone_user').val();
+    }
+</script>
+@endpush

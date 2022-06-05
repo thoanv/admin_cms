@@ -39,4 +39,12 @@ class CategoryRepository extends AbstractRepository
     {
         return $this->model->where([['status', true],['featured', true]])->orderBy('ID', 'DESC')->get();
     }
+    public function getCategoryBySlug($slug)
+    {
+        return $this->model->where([['status', true], ['slug', $slug]])->first();
+    }
+    public function getCategoriesOtherCateId($cate_id)
+    {
+        return $this->model->where([['status', true],['id', '<>' , $cate_id]])->take(5)->get();
+    }
 }

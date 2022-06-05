@@ -107,7 +107,10 @@ class AboutUController extends Controller
             'facebook',
             'twitter',
             'description',
-            'youtube');
+            'youtube',
+            'tiktok',
+            'instagram'
+        );
         $this->aboutURepo->update($data, $aboutU['id']);
         return redirect(route('aboutUs.edit', 1))->with('success',  'Cập nhật thành công');
     }

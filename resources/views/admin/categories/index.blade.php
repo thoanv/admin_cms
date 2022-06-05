@@ -37,7 +37,7 @@
                                 <tr>
                                     <th scope="col">STT</th>
                                     <th scope="col">Tên</th>
-                                    <th scope="col">Danh mục cha</th>
+                                    <th scope="col">Hình ảnh</th>
                                     <th scope="col">Tảo bởi</th>
                                     <th scope="col" class="text-center">Trạng thái</th>
                                     <th scope="col" class="text-center">Hành động</th>
@@ -57,7 +57,7 @@
                                             @endphp
                                             {{$category->name}}
                                         </td>
-                                        <td role="cell">{{$category->parent_id ? $category->parent->name : '' }}</td>
+                                        <td role="cell"><img style="width: 100px; height: unset; border-radius: unset!important;" src="{{$category['avatar'] ? $category['avatar'] : '/assets/images/no-image.png'}}" alt="{{$category->name}}"></td>
                                         <td role="cell">{{$category->createdBy->name}}</td>
                                         <td role="cell" class="text-center">
                                             <div class="form-check form-switch" style="display: inline-block">

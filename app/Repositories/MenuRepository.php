@@ -20,4 +20,16 @@ class MenuRepository extends AbstractRepository
         return $this->model->where('status', $status)->get();
 
     }
+    public function getMenuBykey($key)
+    {
+        $menus = [];
+        $model = $this->model->where([['key', $key],['status', true]])->first();
+        if($model && $model['data']){
+            $data = unserialize($model['data']);
+            if($data && !empty($data)){
+                $menus = $data;
+            }
+        }
+        return $menus;
+    }
 }

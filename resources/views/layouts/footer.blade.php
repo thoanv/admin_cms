@@ -2,19 +2,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
-                <h4>2stay - Du lịch thông minh với một ứng dụng duy nhất</h4>
+                <h4>{{$info_web['company']}}</h4>
                 <div class="information-company">
                     <p>
                         <img class="icons" src="/front-end/icons/icon-location.png" alt="location">
-                        <span>Tầng 2, Tổ hợp TMDV và nhà ở The Pride - KĐTM An Hưng Q. Hà Đông - TP. Hà Nội.</span>
+                        <span>{{$info_web['address']}}</span>
                     </p>
                     <p>
                         <img class="icons" src="/front-end/icons/icon-mail.png" alt="location">
-                        <span>info@2stay.vn</span>
+                        <span>{{$info_web['email']}}</span>
                     </p>
                     <p>
                         <img class="icons" src="/front-end/icons/icon-phone.png" alt="location">
-                        <span>0567288999 - 19002167</span>
+                        <span>{{$info_web['phone']}}</span>
                     </p>
                 </div>
                 <div class="row">
@@ -30,27 +30,27 @@
                         <div class="network">
                             <ul>
                                 <li>
-                                    <a href="">
+                                    <a href="{{$info_web['facebook']}}" target="_blank" title="Facebook">
                                         <img src="/front-end/icons/facebook.png" alt="facebook">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{$info_web['youtube']}}" target="_blank" title="Youtube">
                                         <img src="/front-end/icons/youtube.png" alt="youtube">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{$info_web['instagram']}}" target="_blank" title="Instagram">
                                         <img src="/front-end/icons/instagram.png" alt="instagram">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{$info_web['tiktok']}}" target="_blank" title="Tiktok">
                                         <img src="/front-end/icons/tiktok.png" alt="tiktok">
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{$info_web['twitter']}}" target="_blank" title="Twitter">
                                         <img src="/front-end/icons/twitter.png" alt="twitter">
                                     </a>
                                 </li>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <a href="">
+                        <a href="{{$info_web['bo_cong_thuong']}}"  target="_blank" title="Bộ Công Thương">
                             <img src="/front-end/images/bo-cong-thuong.png" alt="bo-cong-thuong">
                         </a>
                     </div>

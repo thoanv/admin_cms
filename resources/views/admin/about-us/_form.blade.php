@@ -6,7 +6,7 @@
                 <h5 class="card-title">Thông tin chung</h5>
                 <hr>
                 <div class="form-group row mb-3">
-                    <label for="company" class="col-sm-3 col-form-label">Tên công ty</label>
+                    <label for="company" class="col-sm-3 col-form-label">Tiêu đề</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="company" placeholder="" name="company"
                                value="{{old('company', $aboutU['company'])}}">
@@ -51,6 +51,13 @@
                                value="{{$aboutU['address']}}">
                     </div>
                 </div>
+                <div class="form-group row mb-3">
+                    <label for="bo_cong_thuong" class="col-sm-3 col-form-label">Link Bộ Công Thương</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="bo_cong_thuong" placeholder="" name="bo_cong_thuong"
+                               value="{{$aboutU['bo_cong_thuong']}}">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card mt-4">
@@ -93,6 +100,20 @@
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="youtube" placeholder="" name="youtube"
                                    value="{{$aboutU['youtube']}}">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label for="tiktok" class="col-sm-3 col-form-label">TikTok</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="tiktok" placeholder="" name="tiktok"
+                                   value="{{$aboutU['tiktok']}}">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label for="instagram" class="col-sm-3 col-form-label">Instagram</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="instagram" placeholder="" name="instagram"
+                                   value="{{$aboutU['instagram']}}">
                         </div>
                     </div>
                 </div>
