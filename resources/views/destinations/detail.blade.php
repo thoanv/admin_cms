@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', $post['name'])
 @section('image', $post['avatar'])
-@section('canonical', route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']]))
+@section('canonical', route('destination',['destination_slug' => $destination['slug'], 'slug' => $post['slug']]))
 @section('content')
     @include('layouts.header-white')
     <section class="avatar hero-animated align-items-center specialBlock_1">
@@ -20,7 +20,7 @@
                         <div class="row mt-3">
                             <div class="col-lg-6">
                                 <div class="category">
-                                    <span> {{$category['name']}}</span>
+                                    <span> {{$destination['name']}}</span>
                                 </div>
                                 <div class="post-extend">
                                     <span class="post-view">{{$post['view']}} Lượt xem</span>
@@ -34,16 +34,12 @@
                                         <div class="network">
                                             <ul>
                                                 <li>
-                                                    <button onclick="myFunction()" onmouseout="outFunc()" class="w3-button w3-border w3-light-grey w3-left w3-mobile">
-                                                        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
-                                                        Copy text
-                                                    </button>
-                                                    <a href="javascript:void(0);" onclick="copyToClipboard('{{route('slug',['category_slug' => $category, 'slug' => $post['slug']])}}')">
+                                                    <a href="">
                                                         <img src="/front-end/icons/icon-copy.png" alt="copy">
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0);">
+                                                    <a href="">
                                                         <img src="/front-end/icons/facebook_blur.png" alt="facebook_blur">
                                                     </a>
                                                 </li>
@@ -165,7 +161,7 @@
                                 <div class="list-post-relate owl-carousel owl-theme">
                                     @foreach($relates as $relate)
                                     <div class="item">
-                                        @include('components.post_relate_item', ['relate' => $relate, 'category_slug' => $category['slug']])
+                                        @include('components.post_relate_item', ['relate' => $relate, 'category_slug' => $destination['slug'], 'destination' => true])
                                     </div>
                                     @endforeach
                                 </div>
@@ -180,13 +176,6 @@
 @endsection
 @push('scripts')
 <script>
-    function copyToClipboard(element) {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(element).text()).select();
-        document.execCommand("copy");
-        $temp.remove();
-    }
     function comment(e){
         e.preventDefault();
         const total_comment =  $('.total_comment').text();
@@ -248,7 +237,7 @@
         let page = $('.page').val();
         console.log(page);
         $.ajax({
-            url: '{{route('slug',['category_slug' => $category['slug'],'slug' => $post['slug']])}}?page='+page,
+            url: '{{route('destination',['destination_slug' => $destination['slug'],'slug' => $post['slug']])}}?page='+page,
             success: function (res) {
                 if (res.success) {
                     let comments = res.data.data;

@@ -71,4 +71,12 @@ class PostRepository extends AbstractRepository
     {
         return $this->model->where([['status', 'YES'], ['slug', $slug],['published', 'published']])->first();
     }
+    public function searchPosts($key)
+    {
+        $query = $this->model->where([['status', 'YES'],['published', 'published']]);
+        if($key){
+            $query = $query->where('name', 'like', '%' . $key . '%');
+        }
+        return $query->orderBy('id', 'DESC')->paginate(7);
+    }
 }

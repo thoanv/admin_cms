@@ -30,9 +30,9 @@
                         @endif
                         @endforeach
                     </ul>
-                    <form class="d-flex">
+                    <form class="d-flex" action="{{route('search')}}">
                         <div class="search position-relative">
-                            <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+                            <input class="form-control me-2" type="search" name="key" placeholder="Từ khóa ..." aria-label="Search">
                             <img class="icon-search" src="/front-end/images/search.png" alt="search" width="20">
                             <img class="icon-search-top" src="/front-end/icons/search_white.png" alt="search" width="20">
                         </div>

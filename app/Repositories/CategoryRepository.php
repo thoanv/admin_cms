@@ -47,4 +47,8 @@ class CategoryRepository extends AbstractRepository
     {
         return $this->model->where([['status', true],['id', '<>' , $cate_id]])->take(5)->get();
     }
+    public function getCategoriesShowRight()
+    {
+        return $this->model->where([['status', true]])->take('5')->orderBy('ID', 'DESC')->get();
+    }
 }

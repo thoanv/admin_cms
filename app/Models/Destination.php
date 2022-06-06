@@ -23,6 +23,6 @@ class Destination extends Model
     }
     public function posts()
     {
-        return $this->morphToMany(Post::class, 'destination_posts');
+        return $this->belongsToMany(Post::class, 'destination_post');
     }
 }

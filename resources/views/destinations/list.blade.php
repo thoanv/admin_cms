@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', $category['name'])
-@section('canonical', route('slug',['category_slug' => $category['slug']]))
+@section('title', $destination['name'])
+@section('canonical', route('destination',['destination_slug' => $destination['slug']]))
 @section('content')
     @include('layouts.header-white')
     <section id="main" class="page-category">
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="category-select">
-                        <span class="name-cate">{{$category['name']}}</span>
+                        <span class="name-cate">{{$destination['name']}}</span>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                                 <div class="col-lg-6">
                                     <div class="post-category-info position-relative">
                                         <h4 class="name-post">
-                                            <a class="" href="{{route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']])}}">
+                                            <a class="" href="{{route('destination',['destination_slug' => $destination['slug'], 'slug' => $post['slug']])}}">
                                                 {{$post['name']}}
                                             </a>
                                         </h4>
@@ -37,11 +37,11 @@
                                             {{$post['description']}}
                                         </div>
                                         <div class="a-xem-them">
-                                            <a class="more yellow" href="{{route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']])}}" >Xem thêm</a>
+                                            <a class="more yellow" href="{{route('destination',['destination_slug' => $destination['slug'], 'slug' => $post['slug']])}}" >Xem thêm</a>
                                         </div>
                                         <div class="belong-categories position-absolute">
                                             @foreach(($post->categories()->where('status', true)->get()) as $key => $cate)
-                                            <a class="a-category" href="{{ $cate['id'] == $category['id'] ? 'javascript:' : route('slug', ['category_slug' => $cate['slug']])}}">
+                                            <a class="a-category" href="{{ route('destination', ['destination_slug' => $cate['slug']])}}">
                                                 <span class="{{$key%2==0 ? 'violet' : 'yellow'}}">
                                                     {{$cate['name']}}
                                                 </span>
@@ -55,7 +55,6 @@
                     @endforeach
                     </div>
                     <input type="hidden" class="page" value="2">
-                    <input type="hidden" class="cate_id" value="{{$category['id']}}">
                     <div class="text-center mt-4 btn-loading">
                         <button class="btn btn-xem-them raise" onclick="getPost()">Xem thêm</button>
                     </div>
@@ -82,7 +81,7 @@
             $('.loading-box').css('display', 'block');
             let page = $('.page').val();
             $.ajax({
-                url: '{{route('slug',['category_slug' => $category['slug']])}}?page='+page,
+                url: '{{route('destination',['destination_slug' => $destination['slug']])}}?page='+page,
                 success: function (res) {
                     if (res.success) {
                         let listPosts = res.data.data;
@@ -90,13 +89,10 @@
                             let html = '';
                             listPosts.forEach((val, index) => {
                                 let list_cate = '';
-                                const cate_id = {{$category['id']}};
                                 if(val.categories.length >0){
                                     val.categories.forEach((v_c, index_c) => {
                                         let color = index_c%2 === 0 ? 'violet' : 'yellow';
-                                        let route = 'javascript:';
-                                        if(v_c['id'] !== cate_id)
-                                          route = '{{url('/')}}'+'/'+v_c['slug'];
+                                        let route = '{{url('/')}}'+'/'+v_c['slug'];
 
                                         let txt_c = `<a class="a-category" href="${route}">
                                             <span class="${color}">
@@ -114,7 +110,7 @@
                                         <div class="col-lg-6">
                                             <div class="post-category-info position-relative">
                                                 <h4 class="name-post">
-                                                    <a class="" href="http://127.0.0.1:8000/kham-pha-am-thuc/ha-noi-chot-chi-hon-23-nghin-ti-dong-lam-duong-vanh-dai-4-16">
+                                                    <a class="" href="${val['url']}">
                                                         ${val['name']}
                                                     </a>
                                                 </h4>

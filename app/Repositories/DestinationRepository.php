@@ -41,4 +41,8 @@ class DestinationRepository extends AbstractRepository
     {
         return $this->model->where([['status', true],['featured', true]])->orderBy('ID', 'DESC')->get();
     }
+    public function getDestinationBySlug($slug)
+    {
+        return $this->model->where([['status', true], ['slug', $slug]])->first();
+    }
 }

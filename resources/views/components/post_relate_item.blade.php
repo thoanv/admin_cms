@@ -13,7 +13,11 @@
             <span class="post-date">{{date('d/m/Y', strtotime($relate['created_at']))}}</span>
         </div>
         <div class="post-button text-center">
-            <a href="{{route('slug', ['category_slug' => $category_slug, 'slug' => $relate['slug']])}}" class="btn raise">Xem thêm</a>
+            @if(isset($destination))
+                <a href="{{route('destination', ['destination_slug' => $category_slug, 'slug' => $relate['slug']])}}" class="btn raise">Xem thêm</a>
+            @else
+                <a href="{{route('slug', ['category_slug' => $category_slug, 'slug' => $relate['slug']])}}" class="btn raise">Xem thêm</a>
+            @endif
         </div>
     </div>
 </div>
