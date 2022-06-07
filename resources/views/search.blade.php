@@ -53,8 +53,15 @@
                             </div>
                         </div>
                     @endforeach
+                        @if(!count($posts))
+                            <div class="dataTables_empty"></div>
+                            <div class="notify">
+                                <h5 style="color:#d4145a;">Không có dữ liệu</h5>
+                            </div>
+                        @endif
                     </div>
                     <input type="hidden" class="page" value="2">
+                    @if(count($posts) >7)
                     <div class="text-center mt-4 btn-loading">
                         <button class="btn btn-xem-them raise" onclick="getPost()">Xem thêm</button>
                     </div>
@@ -67,6 +74,7 @@
                             </p>
                         </div>
                     </div>
+                    @endif
                 </div>
                 @include('components.inspire',['categories' => $categories, 'banner' => $banner])
             </div>
@@ -76,77 +84,74 @@
 @endsection
 @push('scripts')
     <script>
-        {{--function getPost(){--}}
-        {{--    $('.btn-loading').css('display', 'none');--}}
-        {{--    $('.loading-box').css('display', 'block');--}}
-        {{--    let page = $('.page').val();--}}
-        {{--    $.ajax({--}}
-        {{--        url: '{{route('slug',['category_slug' => $category['slug']])}}?page='+page,--}}
-        {{--        success: function (res) {--}}
-        {{--            if (res.success) {--}}
-        {{--                let listPosts = res.data.data;--}}
-        {{--                if(listPosts.length > 0){--}}
-        {{--                    let html = '';--}}
-        {{--                    listPosts.forEach((val, index) => {--}}
-        {{--                        let list_cate = '';--}}
-        {{--                        const cate_id = {{$category['id']}};--}}
-        {{--                        if(val.categories.length >0){--}}
-        {{--                            val.categories.forEach((v_c, index_c) => {--}}
-        {{--                                let color = index_c%2 === 0 ? 'violet' : 'yellow';--}}
-        {{--                                let route = 'javascript:';--}}
-        {{--                                if(v_c['id'] !== cate_id)--}}
-        {{--                                  route = '{{url('/')}}'+'/'+v_c['slug'];--}}
+        function getPost(){
+            $('.btn-loading').css('display', 'none');
+            $('.loading-box').css('display', 'block');
+            let page = $('.page').val();
+            $.ajax({
+                url: window.location.href+'&page='+page,
+                success: function (res) {
+                    if (res.success) {
+                        let listPosts = res.data.data;
+                        if(listPosts.length > 0){
+                            let html = '';
+                            listPosts.forEach((val, index) => {
+                                let list_cate = '';
+                                if(val.categories.length >0){
+                                    val.categories.forEach((v_c, index_c) => {
+                                        let color = index_c%2 === 0 ? 'violet' : 'yellow';
+                                        let route = '{{url('/')}}'+'/'+v_c['slug'];
 
-        {{--                                let txt_c = `<a class="a-category" href="${route}">--}}
-        {{--                                    <span class="${color}">--}}
-        {{--                                        ${v_c['name']}--}}
-        {{--                                    </span>--}}
-        {{--                                </a>`;--}}
-        {{--                                list_cate+=txt_c;--}}
-        {{--                            });--}}
-        {{--                        }--}}
-        {{--                        let txt = `<div class="post-category item-post">--}}
-        {{--                            <div class="row">--}}
-        {{--                                <div class="col-lg-6">--}}
-        {{--                                    <img src="${val['avatar']}" alt="${val['name']}">--}}
-        {{--                                </div>--}}
-        {{--                                <div class="col-lg-6">--}}
-        {{--                                    <div class="post-category-info position-relative">--}}
-        {{--                                        <h4 class="name-post">--}}
-        {{--                                            <a class="" href="http://127.0.0.1:8000/kham-pha-am-thuc/ha-noi-chot-chi-hon-23-nghin-ti-dong-lam-duong-vanh-dai-4-16">--}}
-        {{--                                                ${val['name']}--}}
-        {{--                                            </a>--}}
-        {{--                                        </h4>--}}
-        {{--                                        <div class="post-extend">--}}
-        {{--                                            <span class="post-view">${val['view']} Lượt xem</span>--}}
-        {{--                                            <span>|</span>--}}
-        {{--                                            <span class="post-date">${val['create']}</span>--}}
-        {{--                                        </div>--}}
-        {{--                                        <div class="post-description">--}}
-        {{--                                            ${val['description']}--}}
-        {{--                                        </div>--}}
-        {{--                                        <div class="a-xem-them">--}}
-        {{--                                            <a class="more yellow" href="${val['url']}">Xem thêm</a>--}}
-        {{--                                        </div>--}}
-        {{--                                        <div class="belong-categories position-absolute">--}}
-        {{--                                            ${list_cate}--}}
-        {{--                                        </div>--}}
-        {{--                                    </div>--}}
-        {{--                                </div>--}}
-        {{--                            </div>--}}
-        {{--                        </div>`;--}}
-        {{--                        html+=txt;--}}
-        {{--                    });--}}
-        {{--                    $('.list-post-categories').append(html);--}}
-        {{--                    $('.btn-loading').css('display', 'block');--}}
-        {{--                }else{--}}
-        {{--                    $('.btn-loading').css('display', 'none');--}}
-        {{--                }--}}
-        {{--                $('.loading-box').css('display', 'none');--}}
-        {{--            }--}}
-        {{--        }--}}
-        {{--    });--}}
-        {{--    $('.page').val(Number(page) +1);--}}
-        {{--}--}}
+                                        let txt_c = `<a class="a-category" href="${route}">
+                                            <span class="${color}">
+                                                ${v_c['name']}
+                                            </span>
+                                        </a>`;
+                                        list_cate+=txt_c;
+                                    });
+                                }
+                                let txt = `<div class="post-category item-post">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <img src="${val['avatar']}" alt="${val['name']}">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="post-category-info position-relative">
+                                                <h4 class="name-post">
+                                                    <a class="" href="http://127.0.0.1:8000/kham-pha-am-thuc/ha-noi-chot-chi-hon-23-nghin-ti-dong-lam-duong-vanh-dai-4-16">
+                                                        ${val['name']}
+                                                    </a>
+                                                </h4>
+                                                <div class="post-extend">
+                                                    <span class="post-view">${val['view']} Lượt xem</span>
+                                                    <span>|</span>
+                                                    <span class="post-date">${val['create']}</span>
+                                                </div>
+                                                <div class="post-description">
+                                                    ${val['description']}
+                                                </div>
+                                                <div class="a-xem-them">
+                                                    <a class="more yellow" href="${val['url']}">Xem thêm</a>
+                                                </div>
+                                                <div class="belong-categories position-absolute">
+                                                    ${list_cate}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+                                html+=txt;
+                            });
+                            $('.list-post-categories').append(html);
+                            $('.btn-loading').css('display', 'block');
+                        }else{
+                            $('.btn-loading').css('display', 'none');
+                        }
+                        $('.loading-box').css('display', 'none');
+                    }
+                }
+            });
+            $('.page').val(Number(page) +1);
+        }
     </script>
 @endpush

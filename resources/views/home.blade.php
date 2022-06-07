@@ -63,6 +63,13 @@
                     <div class="post-categories">
                         <div class="row">
                             <div class="col-lg-5">
+                                <div class="box-title-cate-mobile">
+                                    <a href="{{route('slug', ['category_slug' => $category['slug']])}}">
+                                        <div class="d-category {{$key_cate%2 == 0 ? 'c---color-violet' : 'c---color-yellow'}}">
+                                            <h4 class="name-category">{{$category['name']}}</h4>
+                                        </div>
+                                    </a>
+                                </div>
                                 @foreach($category['posts'] as $k_pro => $post)
                                 @if($k_pro == 0)
                                 <div class="box-post">
@@ -92,12 +99,13 @@
                             </div>
                             <div class="col-lg-7">
                                 <div class="box-category">
-                                    <a href="{{route('slug', ['category_slug' => $category['slug']])}}">
-                                        <div class="d-category {{$key_cate%2 == 0 ? 'c---color-violet' : 'c---color-yellow'}}">
-                                            <h4 class="name-category">{{$category['name']}}</h4>
-                                        </div>
-                                    </a>
-
+                                    <div class="box-title-cate-desktop">
+                                        <a href="{{route('slug', ['category_slug' => $category['slug']])}}">
+                                            <div class="d-category {{$key_cate%2 == 0 ? 'c---color-violet' : 'c---color-yellow'}}">
+                                                <h4 class="name-category">{{$category['name']}}</h4>
+                                            </div>
+                                        </a>
+                                    </div>
                                     <div class="list-posts">
                                         @foreach($category['posts'] as $k_pro => $post)
                                             @if($k_pro > 0)
@@ -129,6 +137,11 @@
                                             </article>
                                             @endif
                                         @endforeach
+                                    </div>
+                                    <div>
+                                        <div class="text-center more-all">
+                                            <a class="more {{$key_cate%2 == 0 ? 'pink' : 'yellow'}}" style="padding: 0" href="{{route('slug', ['category_slug' => $category['slug']])}}">Xem tất cả <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                        </div>
                                     </div>
                                 </div>
 

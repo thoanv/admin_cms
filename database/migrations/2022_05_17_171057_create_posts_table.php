@@ -21,7 +21,8 @@ class CreatePostsTable extends Migration
             $table->text('description')->nullable();
             $table->text('content')->nullable();
 
-            $table->tinyInteger('view')->default(0);
+            $table->integer('view')->default(0);
+            $table->integer('like')->default(0);
             $table->tinyInteger('featured')->default(0);
             $table->enum('featured', ['YES', 'NO'])->default('NO');
             $table->enum('status', ['YES', 'NO'])->default('YES');

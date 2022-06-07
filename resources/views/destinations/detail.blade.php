@@ -19,8 +19,14 @@
                         <h1 class="name-post">{{$post['name']}}</h1>
                         <div class="row mt-3">
                             <div class="col-lg-6">
-                                <div class="category">
-                                    <span> {{$destination['name']}}</span>
+                                <div class="category belong-categories">
+                                    @foreach(($post->categories()->where('status', true)->get()) as $key => $cate)
+                                        <a class="a-category" href="{{route('slug', ['category_slug' => $cate['slug']])}}">
+                                                    <span class="{{$key%2==0 ? 'violet' : 'yellow'}}">
+                                                        {{$cate['name']}}
+                                                    </span>
+                                        </a>
+                                    @endforeach
                                 </div>
                                 <div class="post-extend">
                                     <span class="post-view">{{$post['view']}} Lượt xem</span>
@@ -29,7 +35,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="float-end">
+                                <div class="action">
                                     <div class="networkComment d-flex">
                                         <div class="network">
                                             <ul>
@@ -53,7 +59,8 @@
                                         <div class="comment">
                                             <ul>
                                                 <li>
-                                                    <span tooltip="102 Thích" flow="down">
+                                                    <input type="hidden" class="number_like" value="{{$post['like']}}">
+                                                    <span class="like" tooltip="{{$post['like']}} Thích" flow="down" onclick="like({{$post['id']}})">
                                                         <img src="/front-end/icons/icon-like.png" alt="like">
                                                     </span>
                                                 </li>
@@ -267,6 +274,25 @@
 
         $('.loading-comment').css('display', 'none');
         $('.page').val(Number(page) +1);
+    }
+    function like(post_id){
+        let number_like = $('.number_like').val();
+        let number = Number(number_like)+1;
+        $('.like').attr('tooltip', number+' Thích')
+        $('.number_like').val(number);
+        $.ajax({
+            url: '{{route('plus-like')}}',
+            type: 'POST',
+            data: {
+                post_id: post_id,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (res) {
+                if (res.success) {
+                    console.log(true);
+                }
+            }
+        });
     }
 </script>
 @endpush

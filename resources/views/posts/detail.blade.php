@@ -18,9 +18,15 @@
                     <div class="post-inner">
                         <h1 class="name-post">{{$post['name']}}</h1>
                         <div class="row mt-3">
-                            <div class="col-lg-6">
-                                <div class="category">
-                                    <span> {{$category['name']}}</span>
+                            <div class="col-xs-6 col-lg-6">
+                                <div class="category belong-categories">
+                                    @foreach(($post->categories()->where('status', true)->get()) as $key => $cate)
+                                        <a class="a-category" href="{{ $cate['id'] == $category['id'] ? 'javascript:' : route('slug', ['category_slug' => $cate['slug']])}}">
+                                                    <span class="{{$key%2==0 ? 'violet' : 'yellow'}}">
+                                                        {{$cate['name']}}
+                                                    </span>
+                                        </a>
+                                    @endforeach
                                 </div>
                                 <div class="post-extend">
                                     <span class="post-view">{{$post['view']}} Lượt xem</span>
@@ -28,17 +34,14 @@
                                     <span class="post-date">{{date('d/m/Y', strtotime($post['created_at']))}}</span>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="float-end">
+                            <div class="col-xs-6 col-lg-6">
+                                <div class="action">
                                     <div class="networkComment d-flex">
                                         <div class="network">
                                             <ul>
                                                 <li>
-                                                    <button onclick="myFunction()" onmouseout="outFunc()" class="w3-button w3-border w3-light-grey w3-left w3-mobile">
-                                                        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
-                                                        Copy text
-                                                    </button>
-                                                    <a href="javascript:void(0);" onclick="copyToClipboard('{{route('slug',['category_slug' => $category, 'slug' => $post['slug']])}}')">
+                                                    <div id="selectText" style="display: none">This will be copied to clipboard!</div>
+                                                    <a href="javascript:void(0);" onclick="copyData(selectText)">
                                                         <img src="/front-end/icons/icon-copy.png" alt="copy">
                                                     </a>
                                                 </li>
@@ -57,7 +60,8 @@
                                         <div class="comment">
                                             <ul>
                                                 <li>
-                                                    <span tooltip="102 Thích" flow="down">
+                                                    <input type="hidden" class="number_like" value="{{$post['like']}}">
+                                                    <span class="like" tooltip="{{$post['like']}} Thích" flow="down" onclick="like({{$post['id']}})">
                                                         <img src="/front-end/icons/icon-like.png" alt="like">
                                                     </span>
                                                 </li>
@@ -180,12 +184,16 @@
 @endsection
 @push('scripts')
 <script>
-    function copyToClipboard(element) {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(element).text()).select();
+    function copyData(containerid) {
+        var range = document.createRange();
+        range.selectNode(containerid); //changed here
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
         document.execCommand("copy");
-        $temp.remove();
+        window.getSelection().removeAllRanges();
+    }
+    function copyToClipboard(elementId) {
+        copyToClipboard(elementId)
     }
     function comment(e){
         e.preventDefault();
@@ -278,6 +286,25 @@
 
         $('.loading-comment').css('display', 'none');
         $('.page').val(Number(page) +1);
+    }
+    function like(post_id){
+        let number_like = $('.number_like').val();
+        let number = Number(number_like)+1;
+        $('.like').attr('tooltip', number+' Thích')
+        $('.number_like').val(number);
+        $.ajax({
+            url: '{{route('plus-like')}}',
+            type: 'POST',
+            data: {
+                post_id: post_id,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (res) {
+                if (res.success) {
+                    console.log(true);
+                }
+            }
+        });
     }
 </script>
 @endpush

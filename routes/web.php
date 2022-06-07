@@ -21,3 +21,4 @@ Route::get('/diem-den/{destination_slug?}/{slug?}', [HomeController::class, 'des
 Route::get('/{category_slug?}/{slug?}', [HomeController::class, 'slug'])->name('slug');
 Route::get('/detail', [PostController::class, 'detail'])->name('post.detail');
 Route::post('/send-comment/comment/send', [PostController::class, 'ajaxComment'])->name('ajax-comment');
+Route::post('plus-like', [PostController::class, 'plusLike'])->name('plus-like');

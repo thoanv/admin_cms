@@ -5,24 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\CategoryRepository as CategoryRepo;
 use App\Repositories\CommentRepository as CommentRepo;
+use App\Repositories\PostRepository as PostRepo;
 
 class PostController extends Controller
 {
     protected $categoryRepo;
     protected $commentRepo;
+    protected $postRepo;
 
-    public function __construct(CategoryRepo $categoryRepo, CommentRepo $commentRepo)
+    public function __construct(CategoryRepo $categoryRepo, CommentRepo $commentRepo, PostRepo $postRepo)
     {
         $this->categoryRepo = $categoryRepo;
         $this->commentRepo = $commentRepo;
+        $this->postRepo = $postRepo;
     }
     public function index()
     {
         return view('posts.list');
     }
-    public function detail()
+    public function plusLike(Request $request)
     {
-        return view('posts.detail');
+        $post_id = $request['post_id'];
+        $post = $this->postRepo->find($post_id);
+        $data['like'] = $post['like']+1;
+        $this->postRepo->update($data, $post_id);
+        return $this->sendResponse(true, 'successfully.');
     }
     public function ajaxComment(Request $request)
     {

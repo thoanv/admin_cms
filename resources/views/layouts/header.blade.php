@@ -43,3 +43,57 @@
         </nav>
     </div>
 </header>
+<div id="menuNKTA_MOBILE">
+    <div class="blockUnderMenuTopPage"></div>
+    <div class="menuTopPage">
+        <div class="container">
+            <div class="row">
+                <div class="logoPart">
+                    <a class="imgPart" href="{{route('home')}}">
+                        <img alt="logo" src="{{$info_web['logo']}}">
+                    </a>
+                </div>
+                <div class="barsPart">
+                    <a class="aTag aTagBars">
+                        <img alt="danh_muc" class="barsPartImg" src="/front-end/images/bars_item.svg">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blockCateMobile">
+        <div class="container">
+            <div class="wrapCateParts">
+                <div class="logoPart" style="border-bottom: 1px dashed #cdcdcd;padding-bottom: 15px;">
+                    <a class="imgPart" href="{{route('home')}}">
+                        <img alt="logo" src="{{$info_web['logo']}}" style="width: 135px;">
+                    </a>
+                </div>
+                @foreach($menus as $menu)
+                    @if(isset($menu['slug']))
+                        <div class="catePart ">
+                            <a class="link1 text-uppercase" href="{{route('slug',['category_slug' => $menu['slug']])}}">{{$menu['name']}}</a>
+                        </div>
+                    @else
+                        <div class="catePart ">
+                            <a class="link1 text-uppercase" target="_blank" href="{{$menu['url']}}">{{$menu['name']}}</a>
+                        </div>
+                    @endif
+                @endforeach
+                <div class="catePart d-block">
+                    <form action="{{route('search')}}" style="margin: 10px 0">
+                        <div class="search position-relative">
+                            <input class="form-control me-2" type="search" name="key" placeholder="Từ khóa ..." aria-label="Search">
+                            <img class="icon-search" src="/front-end/images/search.png" alt="search" style="width: 20px">
+                        </div>
+                        {{--                            <button class="btn btn-outline-success" type="submit">Search</button>--}}
+                    </form>
+                </div>
+
+            </div>
+            <div class="hideBlock">
+                <i aria-hidden="true" class="fa fa-times xItem"></i>
+            </div>
+        </div>
+    </div>
+</div>

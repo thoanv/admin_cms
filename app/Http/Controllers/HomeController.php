@@ -178,7 +178,17 @@ class HomeController extends Controller
     }
     public function search(Request $request){
         $key = $request['key'];
-        $posts = $this->postRepo->searchPosts($key);
+//        dd($request->all());
+        $posts = $this->postRepo->searchPosts($key, $request);
+        if(isset($request['page']) && $request['page']){
+            foreach ($posts as $k_pot => $pot){
+                $slug_cate = $pot->categories()->where('status', true)->first();
+                $posts[$k_pot]['categories'] = $pot->categories()->where('status', true)->get();
+                $posts[$k_pot]['url'] = route('slug',['category_slug' => $slug_cate['slug'], 'slug' => $pot['slug']]);
+                $posts[$k_pot]['create'] = date('d/m/Y', strtotime($pot['created_at']));
+            }
+            return $this->sendResponse($posts, 'successfully.');
+        }
         $categories = $this->categoryRepo->getCategoriesShowRight();
         $menus = $this->menuRepo->getMenuBykey('menu-header');
         $banner = $this->bannerRepo->getBannerByKey('banner-list-page');
