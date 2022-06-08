@@ -46,7 +46,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0);">
+                                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']])}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
                                                         <img src="/front-end/icons/facebook_blur.png" alt="facebook_blur">
                                                     </a>
                                                 </li>

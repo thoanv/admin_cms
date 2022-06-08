@@ -32,9 +32,12 @@
     <meta name="twitter:description" content="{{$info_web['meta_description']}}"/>
     <meta name="twitter:title" content="@yield('title')"/>
     @include('layouts.css')
+
 </head>
 <body class="antialiased">
 <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=993315024807075&autoLogAppEvents=1" nonce="zXBQ5DFB"></script>
     @yield('content')
     @include('layouts.footer')
 </div>
