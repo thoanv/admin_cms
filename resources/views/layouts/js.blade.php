@@ -23,6 +23,36 @@
             t()
         });
     });
+    $('#copy-to-clipboard-button').on('click', function(e) {
+        e.preventDefault();
 
+        /* Get the text field */
+        var copyText = document.getElementById("copy-to-clipboard-input");
+
+        /* Prevent iOS keyboard from opening */
+        copyText.readOnly = true;
+
+        /* Change the input's type to text so its text becomes selectable */
+        copyText.type = 'text';
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+        /* Replace the tooltip's text */
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Đã Copy";
+
+        /* Change the input's type back to hidden */
+        copyText.type = 'hidden';
+    });
+
+    $('#copy-to-clipboard-button').on('mouseout', function(e) {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy link";
+    });
 </script>
 @stack('scripts')

@@ -30,9 +30,9 @@
                     <a href="{{route('destination', $destination['slug'])}}">
                         <div class="box-destination bg-violet">
                             <div class="description">
-                                <img class="img" alt="khách sạn tình yêu" loading="lazy"
+                                <img class="img" alt="{{$destination['name']}}" loading="lazy"
                                      src="{{$destination['avatar']}}">
-                                <p class="title">{{$destination['name']}}</p>
+                                <p class="title text-center">{{$destination['name']}}</p>
                             </div>
                         </div>
                     </a>
@@ -42,9 +42,9 @@
                         <a href="{{route('destination', $destination['slug'])}}">
                             <div class="box-destination bg-pink">
                                 <div class="description">
-                                    <img class="img" alt="khách sạn tình yêu" loading="lazy"
+                                    <img class="img" alt="{{$destination['name']}}" loading="lazy"
                                          src="{{$destination['avatar']}}">
-                                    <p class="title">{{$destination['name']}}</p>
+                                    <p class="title text-center">{{$destination['name']}}</p>
                                 </div>
                             </div>
                         </a>
@@ -74,7 +74,9 @@
                                 @if($k_pro == 0)
                                 <div class="box-post">
                                     <div class="post-avatar">
-                                        <img src="{{$post['avatar']}}" alt="">
+                                        <a href="{{route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']])}}">
+                                            <img src="{{$post['avatar']}}" alt="">
+                                        </a>
                                     </div>
                                     <div class="post-detail">
                                         <div class="post-title"
@@ -159,7 +161,9 @@
                             @foreach($postReadALots as $postRead)
                                 <div class="box-post">
                                     <div class="post-avatar">
-                                        <img src="{{$postRead['avatar']}}" alt="">
+                                        <a href="{{route('slug',['category_slug' => $postRead->categories[0]['slug'], 'slug' => $postRead['slug']])}}">
+                                            <img src="{{$postRead['avatar']}}" alt="">
+                                        </a>
                                     </div>
                                     <div class="post-detail">
                                         <div class="post-title"

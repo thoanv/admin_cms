@@ -19,7 +19,9 @@
                         <div class="post-category item-post">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <img src="{{$post['avatar']}}" alt="{{$post['name']}}">
+                                    <div class="post-avatar">
+                                        <img src="{{$post['avatar']}}" alt="{{$post['name']}}">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="post-category-info position-relative">
@@ -53,7 +55,14 @@
                             </div>
                         </div>
                     @endforeach
+                    @if(!count($posts))
+                        <div class="dataTables_empty"></div>
+                        <div class="notify">
+                            <h5 style="color:#d4145a;">Không có dữ liệu</h5>
+                        </div>
+                    @endif
                     </div>
+                    @if(count($posts) >7)
                     <input type="hidden" class="page" value="2">
                     <input type="hidden" class="cate_id" value="{{$category['id']}}">
                     <div class="text-center mt-4 btn-loading">
@@ -68,6 +77,7 @@
                             </p>
                         </div>
                     </div>
+                    @endif
                 </div>
                 @include('components.inspire',['categories' => $categories, 'banner' => $banner])
             </div>

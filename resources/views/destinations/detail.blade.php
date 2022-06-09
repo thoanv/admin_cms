@@ -39,13 +39,18 @@
                                     <div class="networkComment d-flex">
                                         <div class="network">
                                             <ul>
-                                                <li>
-                                                    <a href="">
-                                                        <img src="/front-end/icons/icon-copy.png" alt="copy">
-                                                    </a>
+                                                <li class="copy-link">
+                                                    <input value="{{route('destination',['destination_slug' => $destination['slug'], 'slug' => $post['slug']])}}" id="copy-to-clipboard-input" type="hidden">
+                                                    <!-- The button used to copy the text -->
+                                                    <div class="tooltip">
+                                                        <button class="btn" id="copy-to-clipboard-button">
+                                                            <span class="tooltiptext" id="myTooltip">Copy link</span>
+                                                            <img src="/front-end/icons/icon-copy.png" alt="copy">
+                                                        </button>
+                                                    </div>
                                                 </li>
                                                 <li>
-                                                    <a href="">
+                                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{route('destination',['destination_slug' => $destination['slug'], 'slug' => $post['slug']])}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
                                                         <img src="/front-end/icons/facebook_blur.png" alt="facebook_blur">
                                                     </a>
                                                 </li>

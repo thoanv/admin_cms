@@ -39,11 +39,15 @@
                                     <div class="networkComment d-flex">
                                         <div class="network">
                                             <ul>
-                                                <li>
-                                                    <div id="selectText" style="display: none">This will be copied to clipboard!</div>
-                                                    <a href="javascript:void(0);" onclick="copyData(selectText)">
-                                                        <img src="/front-end/icons/icon-copy.png" alt="copy">
-                                                    </a>
+                                                <li class="copy-link">
+                                                    <input value="{{route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']])}}" id="copy-to-clipboard-input" type="hidden">
+                                                    <!-- The button used to copy the text -->
+                                                    <div class="tooltip">
+                                                        <button class="btn" id="copy-to-clipboard-button">
+                                                            <span class="tooltiptext" id="myTooltip">Copy link</span>
+                                                            <img src="/front-end/icons/icon-copy.png" alt="copy">
+                                                        </button>
+                                                    </div>
                                                 </li>
                                                 <li>
                                                     <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{route('slug',['category_slug' => $category['slug'], 'slug' => $post['slug']])}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
@@ -184,17 +188,6 @@
 @endsection
 @push('scripts')
 <script>
-    function copyData(containerid) {
-        var range = document.createRange();
-        range.selectNode(containerid); //changed here
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-        window.getSelection().removeAllRanges();
-    }
-    function copyToClipboard(elementId) {
-        copyToClipboard(elementId)
-    }
     function comment(e){
         e.preventDefault();
         const total_comment =  $('.total_comment').text();

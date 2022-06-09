@@ -408,6 +408,10 @@ body {
     text-overflow: ellipsis;
     height: 50px;
 }
+.box-post .post-detail .post-title h2:hover{
+    color: var(--color-pink);
+    cursor: pointer;
+}
 .box-post .post-detail .post-extend, .post-category-info .post-extend{
     font-size: 12px;
     margin-top: 10px;
@@ -1015,6 +1019,22 @@ article {
 .list-post-relate .box-post .post-avatar{
     box-shadow: 0px 2px 3px rgb(0 0 0 / 45%);
 }
+.post-avatar, .thumb-art, .box-destination .description{
+    overflow: hidden;
+}
+.post-avatar img, .thumb-art img, .box-destination .description img{
+    transition: transform .8s; /* Animation */
+}
+.post-avatar img:hover, .thumb-art img:hover{
+    transform: scale(1.5);
+}
+.box-destination .description img:hover{
+    transform: scale(1.5);
+}
+.box-destination .description .title:hover{
+    color: var(--color-yellow);
+}
+
 .list-post-relate .box-post .post-detail .post-button{
     margin: 20px 0 0;
 }
@@ -1115,7 +1135,7 @@ article {
 .post-category-info .name-post a{
     color: var(--color-black);
 }
-.post-category-info .name-post a:hover{
+.post-category-info .name-post a:hover, .txt-title:hover{
     color: var(--color-violet);
 }
 .post-category-info .post-description{
@@ -1626,4 +1646,46 @@ article {
     text-align: center;
     margin-bottom: 10px;
 }
+.copy-link .tooltip {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+}
+.copy-link .tooltip .btn{
+    padding: 0!important;
+}
 
+.copy-link .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 80px;
+    background-color: #FFF;
+    color: #D4145A;
+    border: 1px solid #D4145A;
+    text-align: center;
+    border-radius: 6px;
+    padding: 7px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 137%;
+    margin-left: -75px;
+    opacity: 1;
+    transition: opacity 0.3s;
+    font-size: 14px;
+}
+
+.copy-link .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 54%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #D4145A transparent transparent transparent;
+}
+
+.copy-link  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
